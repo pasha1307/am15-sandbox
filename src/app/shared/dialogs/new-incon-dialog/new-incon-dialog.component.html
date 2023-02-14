@@ -1,5 +1,5 @@
-<h2 mat-dialog-title *ngIf="!customData.length">Create Inconsistency Details</h2>
-<h2 mat-dialog-title *ngIf="customData.length">Update Inconsistency Details</h2>
+<h2 mat-dialog-title *ngIf="!customData?.length">Create Inconsistency Details</h2>
+<h2 mat-dialog-title *ngIf="customData?.length">Update Inconsistency Details</h2>
 <mat-dialog-content [formGroup]="form" class="flex-col modal-content flex-grow justify-between">
 
   <mat-form-field appearance="fill">
@@ -101,7 +101,7 @@
 
   <mat-dialog-actions>
     <button mat-raised-button (click)="onClose()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="onSave()" *ngIf="!customData.length">Create</button>
-    <button mat-raised-button color="primary" (click)="onSave()" *ngIf="customData.length">Update</button>
+    <button mat-raised-button color="primary" (click)="onSave()" *ngIf="!customData?.length">Create</button>
+    <button mat-raised-button color="primary" (click)="onSave()" *ngIf="customData?.length">Update</button>
   </mat-dialog-actions>
 </mat-dialog-content>
