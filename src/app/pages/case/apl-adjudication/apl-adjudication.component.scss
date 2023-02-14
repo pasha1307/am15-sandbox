@@ -1,0 +1,16 @@
+
+.adj {
+  min-height: 80vh;
+  overflow-y: auto;
+  //background-color: pink;
+  .radio-btn-block {
+    margin: 1rem 0 0.5rem 1rem;
+  }
+
+  mat-form-field {
+    width: 40%;
+    margin: 1rem;
+    min-width: 100px;
+    max-width: 250px;
+  }
+}

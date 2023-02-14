@@ -1,0 +1,56 @@
+.active {
+  background-color: #E1F3F8;
+  backdrop-filter: blur('20px');
+
+  .item-block {
+    color: #3f51b5;
+    font-weight: 500;
+
+    span {
+      color: #3f51b5;
+      font-weight: 500;
+    }
+  }
+}
+
+.second-stepper {
+  background-color: #E1F3F8;
+}
+
+.second-active {
+  background-color: #E1F3F8;
+  color: black;
+}
+
+.stepper-content {
+  height: 88vh;
+  overflow-y: hidden;
+  //background-color: green;
+}
+
+.sidenav-container {
+  height: 88vh;
+  overflow-y: hidden;
+}
+
+.stepper-content-area {
+  overflow: auto;
+  height: calc(100% - 180px);
+  background-color: #E1F3F8;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.side-logo {
+  width: 180px;
+}
+
+.menu-tool {
+  color: white;
+}

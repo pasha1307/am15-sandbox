@@ -1,0 +1,51 @@
+<app-nav-stepper [menu]="menu">
+  <cdk-step [completed]="completed">step one is here
+    <button color="primary" mat-raised-button (click)="onFoo(1)">Toggle Completed</button>
+
+  </cdk-step>
+  <cdk-step>
+    <div>
+
+    </div>
+  </cdk-step>
+  <cdk-step [errorMessage]="err" [stepControl]="firstFormGroup">
+    <!--  <cdk-step editable="false" [completed]="completed" [stepControl]="firstFormGroup">-->
+    <form [formGroup]="firstFormGroup" class="flex flex-col">
+      <mat-form-field appearance="fill">
+        <mat-label>Input</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Control Input</mat-label>
+        <input matInput name="a" value="Cannot proceed to next step">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select</mat-label>
+        <mat-select>
+          <mat-option value="one">First option</mat-option>
+          <mat-option value="two">Second option</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Textarea</mat-label>
+        <textarea matInput></textarea>
+      </mat-form-field>
+      <div class="flex justify-around">
+        <div>
+          <p>Go to a different step to see the error state</p>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+        <button mat-flat-button color="primary" (click)="completeStep()">Complete Step</button>
+        <button mat-raised-button color="primary" (click)="onTest()">On Test</button>
+      </div>
+
+    </form>
+
+  </cdk-step>
+  <cdk-step>Content 4</cdk-step>
+  <cdk-step>Content 5</cdk-step>
+  <cdk-step>Content 6</cdk-step>
+  <cdk-step>Content 7
+  </cdk-step>
+</app-nav-stepper>

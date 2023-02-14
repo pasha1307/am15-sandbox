@@ -1,0 +1,50 @@
+<mat-nav-list>
+
+  <ng-container *ngFor="let m of menu">
+    <ng-container *ngIf="m.subMenu === undefined">
+      <a mat-list-item
+         class="item-li px-0"
+         *ngIf="m.title"
+         [routerLinkActiveOptions]="{ exact: true }"
+         [routerLink]="m?.link"
+         routerLinkActive="active"
+         ariaCurrentWhenActive="page"
+      >
+        <div class="item-block flex justify-start gap-3 items-center px-7">
+           <span class="material-symbols-outlined" [style.color]="m.color">
+{{m.icon}}
+</span>
+          <span class="item-li">{{m?.title}}</span>
+        </div>
+      </a>
+
+    </ng-container>
+    <mat-divider></mat-divider>
+    <ng-container *ngIf="m?.subMenu?.length">
+      <mat-accordion displayMode="flat" class="mat-elevation-z10">
+        <mat-expansion-panel [expanded]="m.expanded" clas="mat-elevation-z0" hideToggle="false">
+          <mat-expansion-panel-header style="height: 45px;" class="px-3">
+            <mat-panel-title class="flex item-title items-center justify-start gap-3 px-4">
+              <span class="material-symbols-outlined" [style.color]="m.color">
+{{m.icon}}
+</span>
+              <span mat-line class="list-item" [routerLink]="m?.link">
+                {{ m.title }}
+              </span>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <app-nav-list [menu]="m.subMenu"></app-nav-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <!--      <mat-divider></mat-divider>-->
+    </ng-container>
+  </ng-container>
+  <div>
+    <p></p>
+  </div>
+
+  <!--  <a mat-list-item routerLink="contacts" routerLinkActive ariaCurrentWhenActive="page">SMARTY Integration</a>-->
+  <!--  &lt;!&ndash;      <a mat-list-item routerLink="ggle" routerLinkActive ariaCurrentWhenActive="page">Google Maps</a>&ndash;&gt;-->
+  <!--  <a mat-list-item routerLink="appeal" routerLinkActive ariaCurrentWhenActive="page">Appeal</a>-->
+  <!--  <a mat-list-item routerLink="wb" routerLinkActive ariaCurrentWhenActive="page">Workbasket</a>-->
+</mat-nav-list>

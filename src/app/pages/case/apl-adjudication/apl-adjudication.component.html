@@ -1,0 +1,264 @@
+<div class="adj">
+  <app-nav-stepper [menu]="menu" [isOpened]="sideOpened">
+    <button
+      class="absolute z-20"
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button
+      (click)="onToggle()"
+    >
+      <mat-icon aria-label="Side nav toggle icon" *ngIf="!sideOpened">menu_close</mat-icon>
+      <mat-icon aria-label="Side nav toggle icon" *ngIf="sideOpened">menu_open</mat-icon>
+    </button>
+    <cdk-step [stepControl]="f1" [completed]="oneCompleted">
+      <mat-card class="w-1/2 m-auto">
+        <form [formGroup]="f1">
+          <mat-card-header class="my-2">
+            <mat-card-title>Adjudication Overview</mat-card-title>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <div class="radio-btn-block flex flex-col">
+              <label id="high-profile-label" class="font-medium text-gray-600 w-full">Pick High Profile Type</label>
+              <mat-radio-group
+                color="primary"
+                aria-labelledby="high-profile-label"
+                formControlName="profile"
+              >
+                <mat-radio-button class="example-radio-button" *ngFor="let pf of profiles" [value]="pf">
+                  {{pf}}
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Appeal Phase</mat-label>
+              <mat-select formControlName="aplPhase">
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+              <mat-label>Next Action</mat-label>
+              <mat-select formControlName="nextAction">
+                <mat-option value="one">First option</mat-option>
+                <mat-option value="two">Second option</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>Next Action Date</mat-label>
+              <input matInput [matDatepicker]="datepicker1" formControlName="nextActionDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker1"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker1>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>FTR Tool Due Date</mat-label>
+              <input matInput [matDatepicker]="datepicker2" formControlName="ftrDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker2"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker2>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>Response KPI Date A02</mat-label>
+              <input matInput [matDatepicker]="datepicker3" formControlName="respKpiDateA02">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker3"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker3>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>ADJ KPI Date A01</mat-label>
+              <input matInput [matDatepicker]="datepicker4" formControlName="adjKpiDateA01">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker4"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker4>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>ADJ KPI Date A02</mat-label>
+              <input matInput [matDatepicker]="datepicker5" formControlName="adjKpiDateA02">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker5"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker5>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>ADJ KPI Date A04</mat-label>
+              <input matInput [matDatepicker]="datepicker6" formControlName="adjKpiDateA04">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker6"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker6>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="example-form-field">
+              <mat-label>Extension Date</mat-label>
+              <input matInput [matDatepicker]="datepicker7" formControlName="extDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="datepicker7"></mat-datepicker-toggle>
+              <mat-datepicker #datepicker7>
+                <mat-datepicker-actions>
+                  <button mat-button matDatepickerCancel>Cancel</button>
+                  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+                </mat-datepicker-actions>
+              </mat-datepicker>
+            </mat-form-field>
+
+          </mat-card-content>
+          <mat-divider></mat-divider>
+          <mat-card-actions align="end" class="my-3">
+            <div class="flex justify-around">
+              <button mat-button matStepperNext>Next</button>
+              <button mat-flat-button color="primary" (click)="completeStep(f1)" [disabled]="!f1.valid">Complete Step
+              </button>
+            </div>
+          </mat-card-actions>
+        </form>
+        <pre>
+          {{f1.value | json}}
+        </pre>
+      </mat-card>
+    </cdk-step>
+    <cdk-step>
+      <mat-card class="w-1/2 m-auto">
+        <mat-card-header class="my-2">
+          <mat-card-title>Exemption Documentation Request (Phase, Section??)</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <p>Documents Requested</p>
+          <p>Comments</p>
+          <p>Phase</p>
+          <p>Request Number</p>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions align="end" class="my-3">
+          <div class="flex justify-around">
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+    </cdk-step>
+
+    <cdk-step [completed]="threeCompleted">
+      <mat-card class="w-2/3 m-auto">
+        <mat-card-header class="my-2 flex justify-between">
+          <mat-card-title class=""><span>Inconsistency Details </span>
+          </mat-card-title>
+          <button mat-raised-button (click)="onCreate()" color="primary">Add New</button>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+            <ng-container matColumnDef="btns">
+              <th mat-header-cell *matHeaderCellDef>Edit/Del</th>
+              <td mat-cell *matCellDef="let el">
+                <button mat-icon-button [matMenuTriggerFor]="crud" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #crud="matMenu">
+                  <button mat-menu-item (click)="onUpdate(el, el.id)">
+                    <mat-icon>edit</mat-icon>
+                    <span>Edit</span>
+                  </button>
+                  <button mat-menu-item (click)="removeData(el?.id)">
+                    <mat-icon>delete</mat-icon>
+                    <span>Delete</span>
+                  </button>
+                </mat-menu>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Appellant</th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="inconType">
+              <th mat-header-cell *matHeaderCellDef> Type</th>
+              <td mat-cell *matCellDef="let element"> {{element.inconType}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="serco">
+              <th mat-header-cell *matHeaderCellDef> SERCO</th>
+              <td mat-cell *matCellDef="let element"> {{element.serco}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="resolved">
+              <th mat-header-cell *matHeaderCellDef> Resolved</th>
+              <td mat-cell *matCellDef="let element"> {{element.resolved}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="expDate">
+              <th mat-header-cell *matHeaderCellDef> Expiration Date</th>
+              <td mat-cell *matCellDef="let element"> {{element.expDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="reasonInsuff">
+              <th mat-header-cell *matHeaderCellDef> Insufficiency Reason</th>
+              <td mat-cell *matCellDef="let element"> {{element.reasonInsuff}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="elDate">
+              <th mat-header-cell *matHeaderCellDef> Notification Date</th>
+              <td mat-cell *matCellDef="let element"> {{element.elDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="infoNeeded">
+              <th mat-header-cell *matHeaderCellDef>Info Needed</th>
+              <td mat-cell *matCellDef="let element"> {{element.infoNeeded}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </mat-card-content>
+
+      </mat-card>
+    </cdk-step>
+    <cdk-step>Content 4</cdk-step>
+    <cdk-step completed="true">Content 5</cdk-step>
+    <cdk-step>Content 6</cdk-step>
+    <cdk-step>
+      content is here
+    </cdk-step>
+
+  </app-nav-stepper>
+</div>
+
+

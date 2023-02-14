@@ -1,0 +1,420 @@
+<div class="grid-container">
+  <h1 class="mat-h1">My Work Dashboard</h1>
+  <!--  <h3>Sections: My Cases, CRM Workbaskets, Recent Work, My Team</h3>-->
+  <!--  <h3>My Cases: Appeals, Correspondence Tasks, InterCommunication Tasks, CPM Cases</h3>-->
+  <!--  <mat-grid-list [cols]="ccol" rowHeight="250px">-->
+  <mat-grid-list [cols]="3" rowHeight="200px">
+    <ng-container id="apl">
+      <mat-grid-tile [colspan]="3" [rowspan]="4" *ngIf="isApl">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3">
+          <mat-card-header>
+            <mat-card-title>
+              Appeals
+              <button mat-icon-button class="more-button" aria-label="Toggle menu" (click)="isApl = false">
+              <span class="material-symbols-outlined">
+close_fullscreen
+</span>
+              </button>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <app-d-table></app-d-table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="!isApl">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3" style="border-left: 9px solid lightcoral">
+          <mat-card-header>
+            <mat-card-title>
+              Appeals
+              <button mat-icon-button class="more-button" aria-label="Toggle menu" (click)="isApl = true">
+                <span class="material-symbols-outlined">
+expand_content
+</span>
+              </button>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <h1 class="mat-headline-3">
+                <span class="apl-number mat-elevation-z1">9</span>
+              </h1>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+    <ng-container id="corr-task">
+      <mat-grid-tile [colspan]="4" [rowspan]="4" *ngIf="isTask">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3">
+          <mat-card-header>
+            <mat-card-title>
+              My Corresponding Tasks
+              <button mat-icon-button class="more-button" aria-label="Toggle menu" (click)="isTask=false">
+                <span class="material-symbols-outlined">close_fullscreen</span>
+              </button>
+              <!--              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">-->
+              <!--                <mat-icon>more_vert</mat-icon>-->
+              <!--              </button>-->
+              <!--              <mat-menu #menu="matMenu" xPosition="before">-->
+              <!--                <button mat-menu-item (click)="isTask = false" >Minimize</button>-->
+              <!--                <button mat-menu-item>Remove</button>-->
+              <!--              </mat-menu>-->
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <app-d-task></app-d-task>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="!isTask">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3" style="border-left: 9px solid slategray">
+          <mat-card-header>
+            <mat-card-title>
+              Corresponding Tasks
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <button mat-icon-button class="more-button" aria-label="Toggle menu" (click)="isTask=true">
+                <span class="material-symbols-outlined">
+expand_content
+                </span></button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="isTask = true">Maximize</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <h1 class="mat-headline-3">
+                <span class="apl-number mat-elevation-z1">14</span>
+              </h1>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+    <ng-container id="ic-task">
+      <mat-grid-tile [colspan]="4" [rowspan]="4" *ngIf="isIc">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3">
+          <mat-card-header>
+            <mat-card-title>
+              My Intercommunication Tasks
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="isTask = false">Minimize</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <app-d-table></app-d-table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="!isIc">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3" style="border-left: 9px solid orange">
+          <mat-card-header>
+            <mat-card-title>
+              Inter Communication Tasks
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="isTask = true">Maximize</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <h1 class="mat-headline-3">
+                <span class="apl-number mat-elevation-z1">11</span>
+              </h1>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+
+    <ng-container id="crm-case">
+      <mat-grid-tile [colspan]="4" [rowspan]="4" *ngIf="isCrm">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3">
+          <mat-card-header>
+            <mat-card-title>
+              My CRM Cases
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="isCrm = false">Minimize</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <app-d-table></app-d-table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="!isCrm">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3">
+          <mat-card-header>
+            <mat-card-title>
+              CRM Cases
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="isCrm = true">Maximize</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <h1 class="mat-headline-3"><span class="apl-number mat-elevation-z1">4</span></h1>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+    <ng-container id="cpm-case">
+      <mat-grid-tile [colspan]="4" [rowspan]="4" *ngIf="isCpm">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3">
+          <mat-card-header>
+            <mat-card-title>
+              Recent CPM Cases
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="isCpm = false">Minimize</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <app-d-table></app-d-table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="!isCpm">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3">
+          <mat-card-header>
+            <mat-card-title>
+              Recent CPM
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="isCpm = true">Maximize</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <h1 class="mat-headline-3 "><span class="apl-number mat-elevation-z4">7</span></h1>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+    <ng-container id="eacms-case">
+      <mat-grid-tile [colspan]="4" [rowspan]="4" *ngIf="isEacms">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3">
+          <mat-card-header>
+            <mat-card-title>
+              Recent EACMS Cases
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="isEacms = false">Minimize</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <app-d-table></app-d-table>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="1" *ngIf="!isEacms">
+        <mat-card class="dashboard-card mat-elevation-z6 m-3">
+          <mat-card-header>
+            <mat-card-title>
+              Recent EACMS Cases
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="isEacms = true">Maximize</button>
+                <button mat-menu-item>Remove</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>
+              <h1 class="mat-headline-3"><span class="apl-number mat-elevation-z2">15</span></h1>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+      <mat-card class="dashboard-card mat-elevation-z6 m-3">
+        <mat-card-header>
+          <mat-card-title>
+            My Team
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Add New</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            <ul>
+              <li>John Doe</li>
+              <li>John Doe</li>
+              <li>John Doe</li>
+              <li>John Doe</li>
+              <li>John Doe</li>
+              <li>John Doe</li>
+              <li>John Doe</li>
+            </ul>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+      <mat-card class="dashboard-card mat-elevation-z6 m-3">
+        <mat-card-header>
+          <mat-card-title>
+            CRM Workbaskets
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Action1</button>
+              <button mat-menu-item>Action2</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            <ul>
+              <li>CC Outbound Calls</li>
+              <li>Inbound Call</li>
+              <li>Outbound Call</li>
+              <li>Outbound Call Staging</li>
+              <li>Pending Outbound Call</li>
+              <li>Quality Review</li>
+              <li>CTI Call Transfers</li>
+            </ul>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+      <mat-card class="dashboard-card mat-elevation-z6 m-3">
+        <mat-card-header>
+          <mat-card-title>
+            My Reports (about 30 types)
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Action1</button>
+              <button mat-menu-item>Action2</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <app-mychart></app-mychart>
+          <!--          <app-my-line-chart></app-my-line-chart>-->
+          <!--          <div>-->
+          <!--            <ul>-->
+          <!--              <li>Complaint Case Analysis - 15</li>-->
+          <!--              <li>CSR Performance Report</li>-->
+          <!--              <li>Customer Satisfaction Report</li>-->
+          <!--              <li>Duplicate Detection Report</li>-->
+          <!--              <li>EACMS Reports</li>-->
+          <!--              <li>GDPR Reports</li>-->
+          <!--              <li>Interaction History</li>-->
+          <!--              <li>Interaction Reports</li>-->
+          <!--              <li>...</li>-->
+          <!--            </ul>-->
+          <!--          </div>-->
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <ng-container id="user-profile">
+      <mat-grid-tile [colspan]="2" [rowspan]="3" *ngIf="isAccount">
+        <mat-card class="dashboard-card mat-elevation-z0 m-3 ">
+          <mat-card-header>
+            <mat-card-title>
+              Test SMARTY
+              <button mat-icon-button class="more-button" aria-label="Toggle menu" (click)="isAccount=false">
+               <span class="material-symbols-outlined">
+close_fullscreen
+</span>
+              </button>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content overflow-auto">
+            <app-address-pega></app-address-pega>
+            <!--            <app-address-form></app-address-form>-->
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <mat-card class="dashboard-card mat-elevation-z0 m-3 bg-amber-50"
+                  style="border-left: 9px solid lawngreen;">
+          <mat-card-header>
+            <mat-card-title>
+              <button mat-icon-button class="more-button" aria-label="Toggle menu" (click)="isAccount=true">
+                <span class="material-symbols-outlined">
+expand_content
+</span>
+              </button>
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+
+            <div class="mt-3 text-justify">
+              <h3 class="mat-headline-2">SMARTY API </h3>
+              <h1 class="mat-subtitle-1">test Autocopmlete Package</h1>
+            </div>
+            <div>
+              <button mat-stroked-button color="primary" (click)="openDialog()" class="mr-3">Add Address</button>
+              <button mat-flat-button color="primary" (click)="openDialog()">Update Address</button>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>
+</div>

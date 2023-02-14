@@ -1,0 +1,70 @@
+<ng-content></ng-content>
+<mat-sidenav-container class="sidenav-container ">
+
+  <mat-sidenav
+    class="mat-elevation-z9"
+    [attr.role]="'dialog'"
+    [mode]="'side'"
+    [opened]="isOpened"
+  >
+    <mat-toolbar class="h-10">
+    </mat-toolbar>
+    <mat-nav-list>
+      <ng-container *ngFor="let s of steps; let i = index;">
+        <a mat-list-item
+           class="item-li px-0"
+           [ngClass]="{'active': selectedIndex === i}"
+           ariaCurrentWhenActive="page"
+           (click)="onStep(i)"
+        >
+          <div class="item-block flex justify-start gap-3 items-center px-7" *ngIf="menu && menu.length > 1">
+            <span *ngIf="!s.completed && !s.hasError" class="material-symbols-outlined">{{menu[i].icon}}</span>
+            <span *ngIf="s.completed && !s.hasError" class="material-symbols-outlined ">task_alt</span>
+            <span *ngIf="s.stepControl && s.hasError" class="material-symbols-outlined text-red-500">error</span>
+
+            <span class="item-li" *ngIf="!isEACMS.value" [class.text-red-500]="s.hasError">{{menu[i].phase}}</span>
+            <span class="item-li" *ngIf="isEACMS.value" [class.text-red-500]="s.hasError">{{menu[i].label}}</span>
+          </div>
+        </a>
+
+      </ng-container>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+    <section class="temp px-5 my-20">
+      <mat-slide-toggle [formControl]="isEACMS" color="primary">
+        <span *ngIf="!isEACMS.value">Enable EACSM</span>
+        <span *ngIf="isEACMS.value">Disable EACSM</span>
+      </mat-slide-toggle>
+    </section>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="stepper-content">
+    <!--    Second Stepper-->
+    <div class="second-stepper flex justify-center py-3">
+      <button mat-icon-button class="mr-10" cdkStepperPrevious>
+        <span class="material-symbols-outlined">
+arrow_back
+</span>
+      </button>
+      <button mat-mini-fab
+              class="mr-10"
+              color="primary"
+              *ngFor="let step of steps; let i = index;"
+              [ngClass]="{'second-active': selectedIndex === i}"
+              [style.background-color]="step.hasError ? 'red': ''"
+              (click)="onStep(i)"
+      >
+        {{i + 1}}
+      </button>
+      <button mat-icon-button class="nav-button" cdkStepperNext> <span class="material-symbols-outlined">
+arrow_forward
+</span></button>
+    </div>
+    <!--    End Second Stepper-->
+    <div class="stepper-content-area p-3" [style.display]="selected ? 'block' : 'none'">
+      <!-- Content from the CdkStep is projected here -->
+      <ng-container [ngTemplateOutlet]="$any(selected?.content)"></ng-container>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

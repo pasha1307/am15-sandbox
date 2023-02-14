@@ -1,0 +1,14 @@
+<div class="feature-header justify-content-between align-items-center">
+  <div class="start">
+    <div class="title">
+      <span class="material-symbols-outlined">
+ {{ icon }}
+</span>
+      <ng-content select="h2"></ng-content>
+    </div>
+
+    <ng-content select="p"></ng-content>
+  </div>
+
+  <ng-content select=".action"></ng-content>
+</div>

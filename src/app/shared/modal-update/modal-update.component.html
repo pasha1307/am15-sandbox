@@ -1,0 +1,90 @@
+<h2 mat-dialog-title>Address Details</h2>
+<mat-dialog-content [formGroup]="form" class="flex modal-content flex-grow justify-between">
+  <form>
+    <mat-form-field>
+      <mat-label>Address type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let t of types" [value]="t">
+          {{t}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Street Address 1</mat-label>
+      <input matInput placeholder="Street Address 1" formControlName="street_line" #street_line/>
+      <mat-error *ngIf="form.controls['street_line'].hasError('required')">
+        Address is <strong>required</strong>
+      </mat-error>
+      <mat-hint align="end">{{street_line.value.length}} / 37</mat-hint>
+    </mat-form-field>
+
+    <div>
+      <mat-label>Do you have Street Address 2 Information? (Apt, Suite, Unit, etc.)</mat-label>
+      <br>
+      <mat-radio-group formControlName="is_second" color="primary">
+        <mat-radio-button value="false">No</mat-radio-button>
+        <mat-radio-button value="true">Yes</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Street Address 2</mat-label>
+      <input matInput placeholder="Address 2" formControlName="secondary"/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <input matInput placeholder="City" formControlName="city">
+      <mat-error *ngIf="form.controls['city'].hasError('required')">
+        City is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>County</mat-label>
+      <input matInput placeholder="City" formControlName="county">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>State/Territory</mat-label>
+      <mat-select placeholder="State/Territory" formControlName="state">
+        <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+          {{ state.abbreviation }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls['state'].hasError('required')">
+        State is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Postal Code</mat-label>
+      <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number"
+             formControlName="zipcode">
+      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+    </mat-form-field>
+  </form>
+  <section class="lookup-result bg-blue-50">
+    <div *ngIf="sm">
+      <h1>Smarty Lookup Validation</h1>
+      <p>Primary Number: <span class="font-semibold">{{sm?.primary_number}}</span></p>
+      <p>Street Name: <span class="font-semibold">{{sm?.street_name}}</span></p>
+      <p>Street Suffix: <span class="font-semibold">{{sm?.street_suffix}}</span></p>
+      <p>City: <span class="font-semibold">{{sm?.city_name}}</span></p>
+      <p>State: <span class="font-semibold">{{sm?.state_abbreviation}}</span></p>
+      <p>ZIP: <span class="font-semibold">{{sm?.zipcode}}</span></p>
+    </div>
+    <div *ngIf="!sm">
+      <h1>The address is not valid</h1>
+    </div>
+
+
+  </section>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="onClose()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onLookup()">Validate</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="!isReady">Update</button>
+</mat-dialog-actions>

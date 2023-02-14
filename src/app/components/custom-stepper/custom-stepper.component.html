@@ -1,0 +1,29 @@
+<section class="container">
+  <header>
+    <h2>Display step (length/index+1): {{selectedIndex + 1}} of {{steps.length}}</h2>
+    <h3>Label: {{steps.get(0)?.stepLabel}}</h3>
+  </header>
+  <div [style.display]="selected ? 'block' : 'none'">
+    <div [style.display]="selected ? 'block' : 'none'">
+      <!-- Content from the CdkStep is projected here -->
+      <ng-container [ngTemplateOutlet]="$any(selected?.content)"></ng-container>
+    </div>
+
+  </div>
+  <footer class="step-navigation-bar">
+    <button class="nav-button" cdkStepperPrevious>&larr;</button>
+    <ng-container *ngFor="let s of steps; let i = index">
+      <button
+        mat-raised-button
+        [ngClass]="{'active': selectedIndex === i}"
+        (click)="onClick(i)"
+      >
+        Step {{i + 1}}
+      </button>
+      <span>Label: {{s.stepLabel}}</span>
+    </ng-container>
+
+    <button class="nav-button" cdkStepperNext>&rarr;</button>
+
+  </footer>
+</section>

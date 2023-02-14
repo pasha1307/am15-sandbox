@@ -1,0 +1,40 @@
+//::ng-deep .mat-tab-group {
+//  flex-direction: row;
+//}
+//
+//::ng-deep .mat-tab-header {
+//  border-bottom: none;
+//}
+//
+//::ng-deep .mat-tab-header-pagination {
+//  display: none !important;
+//}
+//
+//::ng-deep .mat-tab-labels {
+//  flex-direction: column;
+//}
+//
+//::ng-deep .mat-ink-bar {
+//  height: 100%;
+//  left: 98% !important;
+//}
+//
+//::ng-deep .mat-tab-body-wrapper {
+//  flex: 1 1 auto;
+//}
+::ng-deep .mat-tab-group {
+  flex-direction: row !important;
+}
+
+::ng-deep .mat-tab-labels {
+  flex-direction: column !important;
+}
+
+::ng-deep .mat-tab-label-active {
+  border-right: 2px solid red !important;
+}
+
+::ng-deep .mat-ink-bar {
+  display: none;
+}
+

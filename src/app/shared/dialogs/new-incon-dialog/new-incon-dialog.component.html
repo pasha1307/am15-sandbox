@@ -1,0 +1,107 @@
+<h2 mat-dialog-title *ngIf="!customData.length">Create Inconsistency Details</h2>
+<h2 mat-dialog-title *ngIf="customData.length">Update Inconsistency Details</h2>
+<mat-dialog-content [formGroup]="form" class="flex-col modal-content flex-grow justify-between">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Appellant Name</mat-label>
+    <mat-select formControlName="aplName">
+      <mat-option value="">Select</mat-option>
+      <mat-option value="John">John Doe</mat-option>
+      <mat-option value="Mike">Mike Smith</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Inconsistency Type</mat-label>
+    <mat-select formControlName="inconType">
+      <mat-option value="">Select</mat-option>
+      <mat-option [value]="inc" *ngFor="let inc of inconTypes">{{inc}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Reason Insufficient</mat-label>
+    <mat-select formControlName="reasonInsuff">
+      <mat-option value="">Select</mat-option>
+      <mat-option [value]="rs" *ngFor="let rs of reasonInsuff">{{rs}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Info Needed</mat-label>
+    <mat-select formControlName="infoNeeded">
+      <mat-option value="">Select</mat-option>
+      <mat-option [value]="info" *ngFor="let info of infoNeeded">{{info}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="radio-btn-block flex flex-col mb-4">
+    <label id="high-profile-label-3" class="font-medium text-gray-600 w-full">Serco Status</label>
+    <mat-radio-group
+      color="primary"
+      aria-labelledby="high-profile-label"
+      formControlName="serco"
+    >
+      <mat-radio-button class="example-radio-button" *ngFor="let s of serco" [value]="s">
+        {{s}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="radio-btn-block flex flex-col mb-4">
+    <label id="high-profile-label-4" class="font-medium text-gray-600 w-full">Satisfy Inconsistency</label>
+    <mat-radio-group
+      color="primary"
+      aria-labelledby="high-profile-label"
+      formControlName="satisfyIncon"
+    >
+      <mat-radio-button class="example-radio-button" value="yes">
+        Yes
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="no">
+        No
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" value="not_apply">
+        N/A
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="my-4">
+    <mat-slide-toggle formControlName="isResolved" color="primary">Is Resolved</mat-slide-toggle>
+  </div>
+
+
+  <mat-form-field appearance="fill" class="example-form-field">
+    <mat-label>Expired Date</mat-label>
+    <input matInput [matDatepicker]="datepicker11" formControlName="expiredDate">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="datepicker11"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker11>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="example-form-field">
+    <mat-label>Eligibility Notification Date</mat-label>
+    <input matInput [matDatepicker]="datepicker12" formControlName="eligibleDate">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="datepicker12"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker12>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="onClose()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()" *ngIf="!customData.length">Create</button>
+    <button mat-raised-button color="primary" (click)="onSave()" *ngIf="customData.length">Update</button>
+  </mat-dialog-actions>
+</mat-dialog-content>

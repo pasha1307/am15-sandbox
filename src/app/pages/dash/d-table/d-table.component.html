@@ -1,0 +1,94 @@
+<table mat-table [dataSource]="dataSource" class="koo mat-elevation-z0">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="aplId">
+    <th mat-header-cell *matHeaderCellDef class="link-cell"> APL ID</th>
+    <td mat-cell *matCellDef="let element" class="link-cell">
+      <button (click)="onApl(element.aplId, element.aplLink, element)" mat-button color="primary">
+        {{element.aplId}}
+      </button>
+      <!--      <button routerLink="/appeal/{{element.aplId}}/{{element.aplLink}}">-->
+      <!--        {{element.aplId}}-->
+      <!--      </button>-->
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef> Type</th>
+    <td mat-cell *matCellDef="let element"> {{element.aplType}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="subtype">
+    <th mat-header-cell *matHeaderCellDef> Subtype</th>
+    <td mat-cell *matCellDef="let element"> {{element.aplSubType}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="created">
+    <th mat-header-cell *matHeaderCellDef> Created On</th>
+    <td mat-cell *matCellDef="let element"> {{element.createdOn}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expedite">
+    <th mat-header-cell *matHeaderCellDef> Expedited</th>
+    <td mat-cell *matCellDef="let element"> {{element.expedited}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="stage">
+    <th mat-header-cell *matHeaderCellDef> Stage</th>
+    <td mat-cell *matCellDef="let element"> {{element.aplStage}} </td>
+  </ng-container>
+  <ng-container matColumnDef="phase">
+    <th mat-header-cell *matHeaderCellDef> Phase</th>
+    <td mat-cell *matCellDef="let element"> {{element.phase}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="profile">
+    <th mat-header-cell *matHeaderCellDef> High Profile</th>
+    <td mat-cell *matCellDef="let element"> {{element.highProfile}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="updated">
+    <th mat-header-cell *matHeaderCellDef> Updated On</th>
+    <td mat-cell *matCellDef="let element"> {{element.updatedOn}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="plan">
+    <th mat-header-cell *matHeaderCellDef> Plan Year</th>
+    <td mat-cell *matCellDef="let element"> {{element.planYear}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="deadline">
+    <th mat-header-cell *matHeaderCellDef>Adjudication Deadline</th>
+    <td mat-cell *matCellDef="let element"> {{element.adjudDeadline}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="hearing">
+    <th mat-header-cell *matHeaderCellDef> Hearing Date</th>
+    <td mat-cell *matCellDef="let element"> {{element.hearingDate}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actionDate">
+    <th mat-header-cell *matHeaderCellDef> Action Date</th>
+    <td mat-cell *matCellDef="let element"> {{element.nextActionDate}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="rfiDate">
+    <th mat-header-cell *matHeaderCellDef> RFI Date</th>
+    <td mat-cell *matCellDef="let element"> {{element.rfiDate}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="notes">
+    <th mat-header-cell *matHeaderCellDef> Notes</th>
+    <td mat-cell *matCellDef="let element"> {{element.notes}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef> Status</th>
+    <td mat-cell *matCellDef="let element"> {{element.aplStatus}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
