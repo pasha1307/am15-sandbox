@@ -88,6 +88,14 @@ import {MatNativeDateModule} from "@angular/material/core";
 import {CreateInconComponent} from './pages/case/apl-adjudication/modals/create-incon/create-incon.component';
 import {CustomStepComponent} from './pages/case/apl-adjudication/custom-step/custom-step.component';
 import {NewInconDialogComponent} from "./shared/dialogs/new-incon-dialog/new-incon-dialog.component";
+import { IntakeInfoComponent } from './pages/case/apl-intake/sections/intake-info/intake-info.component';
+import { IntakeContactsComponent } from './pages/case/apl-intake/sections/intake-contacts/intake-contacts.component';
+import { NationalDisasterComponent } from './pages/case/apl-intake/sections/national-disaster/national-disaster.component';
+import { ExpediteReqComponent } from './pages/case/apl-intake/sections/expedite-req/expedite-req.component';
+import { AccommodationComponent } from './pages/case/apl-intake/sections/accommodation/accommodation.component';
+import { LanguageAssistComponent } from './pages/case/apl-intake/sections/language-assist/language-assist.component';
+import { MarketplaceComponent } from './pages/case/apl-intake/sections/marketplace/marketplace.component';
+import { AppealReasonComponent } from './pages/case/apl-intake/sections/appeal-reason/appeal-reason.component';
 
 // @ts-ignore
 // import {MaterialTabsModule} from 'angular-vertical-material-tabs/dist/material-tabs';
@@ -143,7 +151,15 @@ import {NewInconDialogComponent} from "./shared/dialogs/new-incon-dialog/new-inc
     AdjAptcComponent,
     CreateInconComponent,
     CustomStepComponent,
-    NewInconDialogComponent
+    NewInconDialogComponent,
+    IntakeInfoComponent,
+    IntakeContactsComponent,
+    NationalDisasterComponent,
+    ExpediteReqComponent,
+    AccommodationComponent,
+    LanguageAssistComponent,
+    MarketplaceComponent,
+    AppealReasonComponent
   ],
   imports: [
     BrowserModule,

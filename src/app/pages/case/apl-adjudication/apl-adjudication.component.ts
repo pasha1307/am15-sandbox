@@ -112,7 +112,7 @@ export class AplAdjudicationComponent implements OnInit {
     if (d) {
 
       const incon = {
-        id: 22,
+        id: d.id + 1,
         name: d.aplName,
         inconType: d.inconType,
         serco: d.serco,

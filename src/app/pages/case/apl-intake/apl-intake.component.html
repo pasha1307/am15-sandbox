@@ -1,12 +1,11 @@
 <app-nav-stepper [menu]="menu">
   <cdk-step [completed]="completed">step one is here
     <button color="primary" mat-raised-button (click)="onFoo(1)">Toggle Completed</button>
-
+    <app-intake-info></app-intake-info>
   </cdk-step>
   <cdk-step>
-    <div>
-
-    </div>
+    <h1>THe form should be here</h1>
+    <app-intake-info></app-intake-info>
   </cdk-step>
   <cdk-step [errorMessage]="err" [stepControl]="firstFormGroup">
     <!--  <cdk-step editable="false" [completed]="completed" [stepControl]="firstFormGroup">-->
