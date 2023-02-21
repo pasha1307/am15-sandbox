@@ -1,50 +1,225 @@
 <app-nav-stepper [menu]="menu">
-  <cdk-step [completed]="completed">step one is here
-    <button color="primary" mat-raised-button (click)="onFoo(1)">Toggle Completed</button>
-    <app-intake-info></app-intake-info>
+  <cdk-step [completed]="completed">
+    <mat-card class="w-1/2 m-auto">
+      <section [formGroup]="f1">
+        <mat-card-header class="my-2">
+          <mat-card-title>Appeal Overview</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <mat-form-field appearance="fill">
+            <mat-label>Intake Type</mat-label>
+            <mat-select formControlName="intakeType">
+              <ng-container *ngFor="let it of intakeType$ | async">
+                <mat-option [value]="it?.code">{{ it?.displayText }}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error *ngIf="hasError('intakeType', 'required')">
+              Intake Type is required. Select an Intake Type option from the dropdown
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field appearance="fill">
+            <mat-label>Form Type</mat-label>
+            <mat-select formControlName="formType">
+              <ng-container *ngFor="let ft of formType$ | async">
+                <mat-option [value]="ft?.code">{{ ft?.displayText }}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error *ngIf="hasError('formType', 'required')"
+            >Form Type is required. Select a Form Type option from the dropdown
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Appeal Receipt Type</mat-label>
+            <mat-select formControlName="receiptType">
+              <ng-container *ngFor="let rt of receiptType$ | async">
+                <mat-option [value]="rt?.code">{{ rt?.displayText }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Appeal Submitted By</mat-label>
+            <mat-select formControlName="aplSubmittedBy">
+              <ng-container *ngFor="let asb of aplSubmitBy$ | async">
+                <mat-option [value]="asb?.code">{{ asb?.displayText }}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error *ngIf="hasError('aplSubmittedBy', 'required')"> Select an Appeal Submitted By from the dropdown
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Pended Reason</mat-label>
+            <mat-select formControlName="pendedReason">
+              <ng-container *ngFor="let pr of pendedReason$ | async">
+                <mat-option [value]="pr.code">{{ pr.displayText }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Pended Appeal Request Date</mat-label>
+            <input matInput formControlName="pendedReqStartDate" [matDatepicker]="pendedReqStartDatePicker"/>
+            <mat-datepicker-toggle matSuffix [for]="pendedReqStartDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #pendedReqStartDatePicker></mat-datepicker>
+            <mat-error *ngIf="hasError('pendedReqStartDate', 'required')">
+              The Pended Appeal Request Date is required after selecting a Pended Reason. Select a Pended Appeal Request
+              Date from the
+              calendar.
+            </mat-error>
+            <mat-error *ngIf="hasError('pendedReqStartDate', 'dateRange')">
+              The Pended Appeal Request Date cannot be dated after the Pended Appeal End Date. Select a valid Pended
+              Appeal Request Date from
+              the calendar.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Pended Appeal End Date</mat-label>
+            <input matInput formControlName="pendedReqEndDate" [matDatepicker]="pendedReqEndDatePicker"/>
+            <mat-datepicker-toggle matSuffix [for]="pendedReqEndDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #pendedReqEndDatePicker></mat-datepicker>
+            <mat-error *ngIf="hasError('pendedReqEndDate', 'required')">Valid End Date is required (MM/DD/YYYY).
+            </mat-error>
+            <mat-error *ngIf="hasError('pendedReqEndDate', 'dateRange')">
+              The Pended Appeal Request End Date cannot be dated before the Pended Appeal Request Date. Select a valid
+              Pended Appeal Request
+              End Date from the calendar.
+            </mat-error>
+          </mat-form-field>
+
+          <div class="div-appeal-info-xref-check">
+            <mat-checkbox color="primary" formControlName="appCallReleaseHold">Appellant will call to release hold
+            </mat-checkbox>
+          </div>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Xreference Type</mat-label>
+            <mat-select formControlName="xreferenceType">
+              <ng-container *ngFor="let xrt of xRefType$ | async">
+                <mat-option [value]="xrt.code">{{ xrt.displayText }}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error *ngIf="hasError('xreferenceType', 'required')"> Please, select a Xreference Type from the
+              dropdown
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Appeal Xreference</mat-label>
+            <input matInput formControlName="xreference" class="uppercase"/>
+            <mat-error *ngIf="hasError('xreference', 'pattern')"> Only valid Appeal format, APL-XX is allowed.
+            </mat-error>
+            <mat-error *ngIf="hasError('xreference', 'required')"> Appeal Xreference must be entered in the text box.
+            </mat-error>
+          </mat-form-field>
+
+          <div>
+            <button class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
+                    [mat-dialog-close]="true">Add Xref
+            </button>
+            <button class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
+                    [mat-dialog-close]="true">
+              Xref Appeals
+            </button>
+          </div>
+          <h3 class="mat-subheading-2">Processing Dates</h3>
+          <mat-form-field appearance="fill">
+            <mat-label>Receipt Date</mat-label>
+            <input
+              matInput
+              formControlName="receiptDate"
+              [min]="minDate"
+              [max]="maxDate"
+              [matDatepicker]="pd1"
+              placeholder="Choose a date"
+            />
+            <mat-datepicker-toggle matSuffix [for]="pd1"></mat-datepicker-toggle>
+            <mat-datepicker #pd1></mat-datepicker>
+            <mat-error *ngIf="f1.get('receiptDate')?.hasError('required')">
+              Receipt Date is required. Select a Receipt Date from the calendar.
+            </mat-error>
+            <mat-error *ngIf="f1.get('reciptDate')?.hasError('dateLessThanNewDate')">
+              Receipt Date must be a previous date. Select a valid Receipt Date from the calendar.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Hearing Receipt Date</mat-label>
+            <input matInput formControlName="hearingRecieptDate" [min]="minDate" [max]="maxDate"
+                   [matDatepicker]="pd2"/>
+            <mat-datepicker-toggle matSuffix [for]="pd2"></mat-datepicker-toggle>
+            <mat-datepicker #pd2></mat-datepicker>
+            <mat-hint></mat-hint>
+            <mat-error *ngIf="f1.get('hearingRecieptDate')?.hasError('dateLessThanNewDate')">
+              Hearing Receipt Date must be a previous date. Select a valid Receipt Date from the calendar.
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Benefit Year</mat-label>
+            <mat-select formControlName="planYear" required>
+              <ng-container *ngFor="let item of benefitYear$ | async">
+                <mat-option [value]="item.code">{{ item.displayText }}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error *ngIf="f1.get('planYear')?.hasError('required')"
+            >Benefit year is required. Select a Benefit year option from the dropdown
+            </mat-error
+            >
+          </mat-form-field>
+
+          <h2>EACMS RECERIVED DATES ????</h2>
+
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions align="end" class="my-3">
+          <div class="flex justify-around">
+            <button mat-button matStepperNext>Next</button>
+            <button mat-flat-button color="primary">Complete Step
+            </button>
+          </div>
+        </mat-card-actions>
+      </section>
+      <!--      <pre>-->
+      <!--          {{f1.value | json}}-->
+      <!--        </pre>-->
+    </mat-card>
   </cdk-step>
   <cdk-step>
-    <h1>THe form should be here</h1>
-    <app-intake-info></app-intake-info>
-  </cdk-step>
-  <cdk-step [errorMessage]="err" [stepControl]="firstFormGroup">
-    <!--  <cdk-step editable="false" [completed]="completed" [stepControl]="firstFormGroup">-->
-    <form [formGroup]="firstFormGroup" class="flex flex-col">
-      <mat-form-field appearance="fill">
-        <mat-label>Input</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Control Input</mat-label>
-        <input matInput name="a" value="Cannot proceed to next step">
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Select</mat-label>
-        <mat-select>
-          <mat-option value="one">First option</mat-option>
-          <mat-option value="two">Second option</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Textarea</mat-label>
-        <textarea matInput></textarea>
-      </mat-form-field>
-      <div class="flex justify-around">
-        <div>
-          <p>Go to a different step to see the error state</p>
-          <button mat-button matStepperNext>Next</button>
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+      <mat-tab label="Appellants">
+        <div class="flex justify-around mt-9">
+          <app-intake-contacts *ngFor="let p of addresses1" [person]="p"></app-intake-contacts>
+          <!--          <app-intake-contacts></app-intake-contacts>-->
+          <!--          <app-intake-contacts></app-intake-contacts>-->
         </div>
-        <button mat-flat-button color="primary" (click)="completeStep()">Complete Step</button>
-        <button mat-raised-button color="primary" (click)="onTest()">On Test</button>
-      </div>
+      </mat-tab>
+      <mat-tab label="Representatives">
+        <!--        <div class="flex justify-around mt-9">-->
+        <app-contact></app-contact>
+        <!--          <app-intake-contacts></app-intake-contacts>-->
+        <!--          <app-intake-contacts></app-intake-contacts>-->
+        <!--          <app-intake-contacts></app-intake-contacts>-->
+        <!--          <app-intake-contacts></app-intake-contacts>-->
+        <!--        </div>-->
+      </mat-tab>
+    </mat-tab-group>
 
-    </form>
 
+  </cdk-step>
+  <cdk-step>
+    step 3 is here
   </cdk-step>
   <cdk-step>Content 4</cdk-step>
   <cdk-step>Content 5</cdk-step>
   <cdk-step>Content 6</cdk-step>
-  <cdk-step>Content 7
-  </cdk-step>
+  <cdk-step>Content 7</cdk-step>
+  <cdk-step>Content 8</cdk-step>
+  <cdk-step>Content 9</cdk-step>
+
 </app-nav-stepper>

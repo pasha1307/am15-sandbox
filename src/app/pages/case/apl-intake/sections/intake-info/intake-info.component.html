@@ -3,7 +3,7 @@
   <div fxLayout="row" fxLayoutAlign="space-between start" class="div-appeal-information">
     <div fxLayout="column" class="div-appeal-information-information">
       <div fxFlex fxLayout="row">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
           <mat-label>Intake Type</mat-label>
           <mat-select formControlName="intakeType">
             <ng-container *ngFor="let it of intakeType$ | async">
@@ -15,7 +15,7 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
           <mat-label>Form Type</mat-label>
           <mat-select formControlName="formType">
             <ng-container *ngFor="let ft of formType$ | async">
@@ -29,7 +29,7 @@
       </div>
 
       <div fxLayout="row" fxFlex>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
           <mat-label>Appeal Receipt Type</mat-label>
           <mat-select formControlName="receiptType">
             <ng-container *ngFor="let rt of receiptType$ | async">
@@ -38,7 +38,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
           <mat-label>Appeal Submitted By</mat-label>
           <mat-select formControlName="aplSubmittedBy">
             <ng-container *ngFor="let asb of aplSubmitBy$ | async">
@@ -50,7 +50,7 @@
         </mat-form-field>
       </div>
       <div fxLayout="row" fxFlex>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
           <mat-label>Pended Reason</mat-label>
           <mat-select formControlName="pendedReason">
             <ng-container *ngFor="let pr of pendedReason$ | async">
@@ -59,7 +59,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="fill">
           <mat-label>Pended Appeal Request Date</mat-label>
           <input matInput formControlName="pendedReqStartDate" [matDatepicker]="pendedReqStartDatePicker"/>
           <mat-datepicker-toggle matSuffix [for]="pendedReqStartDatePicker"></mat-datepicker-toggle>
@@ -77,7 +77,7 @@
         </mat-form-field>
       </div>
       <div fxLayout="row" fxFlex>
-        <mat-form-field appearance="outline" fxFlex>
+        <mat-form-field appearance="fill" fxFlex>
           <mat-label>Pended Appeal End Date</mat-label>
           <input matInput formControlName="pendedReqEndDate" [matDatepicker]="pendedReqEndDatePicker"/>
           <mat-datepicker-toggle matSuffix [for]="pendedReqEndDatePicker"></mat-datepicker-toggle>
@@ -98,7 +98,7 @@
       </div>
     </div>
     <div fxLayout="column" fxFlex class="div-appeal-information-xreference">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="fill">
         <mat-label>Xreference Type</mat-label>
         <mat-select formControlName="xreferenceType">
           <ng-container *ngFor="let xrt of xRefType$ | async">
@@ -108,7 +108,7 @@
         <mat-error *ngIf="hasError('xreferenceType', 'required')"> Please, select a Xreference Type from the dropdown
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="outline">
+      <mat-form-field class="full-width" appearance="fill">
         <mat-label>Appeal Xreference</mat-label>
         <input matInput formControlName="xreference" class="uppercase"/>
         <mat-error *ngIf="hasError('xreference', 'pattern')"> Only valid Appeal format, APL-XX is allowed.</mat-error>
@@ -131,7 +131,7 @@
 
   <div>
     <div fxLayout="row" class="div-appeal-dates" fxLayoutAlign="start" fxLayoutGap="2%">
-      <mat-form-field appearance="outline" fxFlex>
+      <mat-form-field appearance="fill" fxFlex>
         <mat-label>Receipt Date</mat-label>
         <input
           matInput
@@ -150,7 +150,7 @@
           Receipt Date must be a previous date. Select a valid Receipt Date from the calendar.
         </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="outline" fxFlex>
+      <mat-form-field appearance="fill" fxFlex>
         <mat-label>Hearing Receipt Date</mat-label>
         <input matInput formControlName="hearingRecieptDate" [min]="minDate" [max]="maxDate" [matDatepicker]="hear"/>
         <mat-datepicker-toggle matSuffix [for]="hear"></mat-datepicker-toggle>
@@ -160,7 +160,7 @@
           Hearing Receipt Date must be a previous date. Select a valid Receipt Date from the calendar.
         </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="outline" fxFlex>
+      <mat-form-field appearance="fill" fxFlex>
         <mat-label>Benefit Year</mat-label>
         <mat-select formControlName="planYear" required>
           <ng-container *ngFor="let item of benefitYear$ | async">
