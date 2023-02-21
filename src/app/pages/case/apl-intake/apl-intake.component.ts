@@ -5,6 +5,9 @@ import {INTAKE_STEPS} from "../../../shared/data/stepper-appeal-data";
 import {of} from "rxjs";
 import {CONTACTS_USER1, CONTACTS_USER2} from "../../../../assets/addresses-sample-data";
 import {DropdownsService} from "../../../services/dropdowns.service";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {ModalUpdateComponent} from "../../../shared/modal-update/modal-update.component";
+import {AplHearingComponent} from "../apl-hearing/apl-hearing.component";
 
 @Component({
   selector: 'app-apl-intake',
@@ -61,7 +64,7 @@ export class AplIntakeComponent implements OnInit {
     }
   );
 
-  constructor(private fb: FormBuilder, private drops: DropdownsService) {
+  constructor(private fb: FormBuilder, private drops: DropdownsService, public dialog: MatDialog) {
     this.f1.controls.pendedReason.valueChanges.subscribe((val) => {
       const pendedReqStartDate = this.f1.controls.pendedReqStartDate;
       const pendedReqEndDate = this.f1.controls.pendedReqEndDate;
@@ -118,5 +121,19 @@ export class AplIntakeComponent implements OnInit {
   completeStep(): void {
     this.isCompleted = true;
     this.completed = true;
+  }
+  onUpdate() {
+    const config = new MatDialogConfig();
+    config.width = '900px';
+    config.autoFocus = false;
+    // config.data = item;
+    const dialogRef = this.dialog.open(AplHearingComponent, config);
+    dialogRef.afterClosed().subscribe(data => {
+      console.log("Dialog output:", data)
+      if (data) {
+        // this.addresses1[index] = data;
+      }
+    });
+
   }
 }

@@ -205,7 +205,7 @@
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
       <mat-tab label="Appellants">
         <div class="flex justify-around mt-9">
-          <app-intake-contacts *ngFor="let p of addresses1" [person]="p"></app-intake-contacts>
+          <app-intake-contacts *ngFor="let p of addresses1" [person]="p" (click)="onUpdate()"></app-intake-contacts>
           <!--          <app-intake-contacts></app-intake-contacts>-->
           <!--          <app-intake-contacts></app-intake-contacts>-->
         </div>
