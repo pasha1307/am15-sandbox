@@ -24,6 +24,7 @@ export class AplIntakeComponent implements OnInit {
   err = 'ERROROWWERWRERE';
   completed = false;
   formTypes = [];
+  aplTypes: any[] = [];
   formType$ = of([{code: '1', displayText: 'option one'}]);
   xRefType$ = of([{code: '1', displayText: 'option one'}]);
   receiptType$ = of([{code: '1', displayText: 'option one'}]);
@@ -94,8 +95,9 @@ export class AplIntakeComponent implements OnInit {
   }
   ngOnInit() {
     // @ts-ignore
-    this.formTypes = this.drops.getTypes();
-    console.log(this.drops.getTypes());
+    this.aplTypes = this.drops.getIntakeTypes();
+    console.log('TYPES', this.aplTypes)
+    // console.log(this.drops.getIntakeTypes())
   }
 
   hasError = (controlName: string, errorName: string) => {

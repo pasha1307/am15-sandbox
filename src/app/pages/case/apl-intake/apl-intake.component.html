@@ -1,6 +1,6 @@
 <app-nav-stepper [menu]="menu">
   <cdk-step [completed]="completed">
-    <mat-card class="w-1/2 m-auto">
+    <mat-card class="w-2/3 m-auto">
       <section [formGroup]="f1">
         <mat-card-header class="my-2">
           <mat-card-title>Appeal Overview</mat-card-title>
@@ -10,14 +10,22 @@
           <mat-form-field appearance="fill">
             <mat-label>Intake Type</mat-label>
             <mat-select formControlName="intakeType">
-              <ng-container *ngFor="let it of intakeType$ | async">
-                <mat-option [value]="it?.code">{{ it?.displayText }}</mat-option>
+              <ng-container *ngFor="let it of aplTypes">
+                <mat-option [value]="it">{{ it?.displayText}}</mat-option>
               </ng-container>
             </mat-select>
             <mat-error *ngIf="hasError('intakeType', 'required')">
               Intake Type is required. Select an Intake Type option from the dropdown
             </mat-error>
           </mat-form-field>
+
+<!--          <mat-form-field appearance="fill">-->
+<!--          <mat-label>Test</mat-label>-->
+<!--          <mat-select >-->
+<!--              <mat-option [value]="it" *ngFor="let it of aplTypes">{{ it?.displayText}}</mat-option>-->
+<!--          </mat-select>-->
+
+<!--          </mat-form-field>-->
 
 
           <mat-form-field appearance="fill">
