@@ -1,40 +1,69 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {APP_DROPDOWNS_OBJ} from "../../assets/mock-data/dropdown-values-data";
 import * as _ from 'lodash';
+import {AplSources, FormTypes, IntakeTypes, ReceiptTypes, XrefTypes} from "../shared/data/dropdowns/intake-stage";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DropdownsService {
-data = APP_DROPDOWNS_OBJ;
-dataArr = [...this.data.result];
-  constructor() { }
-  getAll() {
-    return [...this.dataArr];
-  }
+    data = APP_DROPDOWNS_OBJ;
+    intakeTypes = IntakeTypes;
+    submittedByArr = AplSources;
+    receiptTypes = ReceiptTypes;
+    formTypesArr = FormTypes;
+    xrefTypesArr = XrefTypes;
+    dataArr = [...this.data.result];
 
-  getIntakeTypes() {
-    return _.filter(this.dataArr, {context: 'Intake', type: 'APL_TYPE'});
-  }
-  getIntakeIssues() {
-    return _.filter(this.dataArr, {context: 'Intake', type: 'APL_ISSUE'});
-  }
+    constructor() {
+    }
 
-  getHearingContext() {
-    return _.filter(this.dataArr, {context: 'hearing'});
-  }
+    getAll() {
+        return [...this.dataArr];
+    }
 
-  getTypes() {
-    return _.groupBy(this.dataArr, 'context');
-    // return [...this.dataArr].map(item => {
-    //   return {
-    //     type: item.type,
-    //     item
-    //   }
-    // }).filter(el => el.type === 'APL_TYPE');
-  }
+    getIntakeType() {
+        return [...this.intakeTypes];
+    }
+    getFormType() {
+        return [...this.formTypesArr];
+    }
 
-  getSubTypes() {
-    return _.filter(this.dataArr, {context: 'Intake', type: 'APL_ISSUE'});
-  }
+    getXrefType() {
+        return [...this.xrefTypesArr];
+    }
+
+    getSourceType() {
+        return [...this.submittedByArr];
+    }
+
+    getReceiptType() {
+        return [...this.receiptTypes];
+    }
+
+    getAplTypes() {
+        return _.filter(this.dataArr, {context: 'Intake', type: 'APL_TYPE'});
+    }
+
+    getIntakeIssues() {
+        return _.filter(this.dataArr, {context: 'Intake', type: 'APL_ISSUE'});
+    }
+
+    getHearingContext() {
+        return _.filter(this.dataArr, {context: 'hearing'});
+    }
+
+    getTypes() {
+        return _.groupBy(this.dataArr, 'context');
+        // return [...this.dataArr].map(item => {
+        //   return {
+        //     type: item.type,
+        //     item
+        //   }
+        // }).filter(el => el.type === 'APL_TYPE');
+    }
+
+    getSubTypes() {
+        return _.filter(this.dataArr, {context: 'Intake', type: 'APL_ISSUE'});
+    }
 }

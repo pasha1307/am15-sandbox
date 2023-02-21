@@ -8,10 +8,22 @@
         <mat-divider></mat-divider>
         <mat-card-content>
           <mat-form-field appearance="fill">
-            <mat-label>Intake Type</mat-label>
-            <mat-select formControlName="intakeType">
+            <mat-label>Appeal Type</mat-label>
+            <mat-select formControlName="aplType">
               <ng-container *ngFor="let it of aplTypes">
                 <mat-option [value]="it">{{ it?.displayText}}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error *ngIf="hasError('aplType', 'required')">
+              Intake Type is required. Select an Intake Type option from the dropdown
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Intake Type</mat-label>
+            <mat-select formControlName="intakeType">
+              <ng-container *ngFor="let it of intakeTypes">
+                <mat-option [value]="it">{{ it}}</mat-option>
               </ng-container>
             </mat-select>
             <mat-error *ngIf="hasError('intakeType', 'required')">
@@ -19,20 +31,11 @@
             </mat-error>
           </mat-form-field>
 
-<!--          <mat-form-field appearance="fill">-->
-<!--          <mat-label>Test</mat-label>-->
-<!--          <mat-select >-->
-<!--              <mat-option [value]="it" *ngFor="let it of aplTypes">{{ it?.displayText}}</mat-option>-->
-<!--          </mat-select>-->
-
-<!--          </mat-form-field>-->
-
-
           <mat-form-field appearance="fill">
             <mat-label>Form Type</mat-label>
             <mat-select formControlName="formType">
-              <ng-container *ngFor="let ft of formType$ | async">
-                <mat-option [value]="ft?.code">{{ ft?.displayText }}</mat-option>
+              <ng-container *ngFor="let ft of formTypes">
+                <mat-option [value]="ft">{{ ft }}</mat-option>
               </ng-container>
             </mat-select>
             <mat-error *ngIf="hasError('formType', 'required')"
@@ -43,8 +46,8 @@
           <mat-form-field appearance="fill">
             <mat-label>Appeal Receipt Type</mat-label>
             <mat-select formControlName="receiptType">
-              <ng-container *ngFor="let rt of receiptType$ | async">
-                <mat-option [value]="rt?.code">{{ rt?.displayText }}</mat-option>
+              <ng-container *ngFor="let rt of receiptTypes">
+                <mat-option [value]="rt">{{ rt }}</mat-option>
               </ng-container>
             </mat-select>
           </mat-form-field>
@@ -52,8 +55,8 @@
           <mat-form-field appearance="fill">
             <mat-label>Appeal Submitted By</mat-label>
             <mat-select formControlName="aplSubmittedBy">
-              <ng-container *ngFor="let asb of aplSubmitBy$ | async">
-                <mat-option [value]="asb?.code">{{ asb?.displayText }}</mat-option>
+              <ng-container *ngFor="let asb of submittedByTypes">
+                <mat-option [value]="asb">{{ asb }}</mat-option>
               </ng-container>
             </mat-select>
             <mat-error *ngIf="hasError('aplSubmittedBy', 'required')"> Select an Appeal Submitted By from the dropdown
@@ -63,9 +66,8 @@
           <mat-form-field appearance="fill">
             <mat-label>Pended Reason</mat-label>
             <mat-select formControlName="pendedReason">
-              <ng-container *ngFor="let pr of pendedReason$ | async">
-                <mat-option [value]="pr.code">{{ pr.displayText }}</mat-option>
-              </ng-container>
+                <mat-option value="one">Reason One</mat-option>
+                <mat-option value="two">Reason Two</mat-option>
             </mat-select>
           </mat-form-field>
 
@@ -108,8 +110,8 @@
           <mat-form-field appearance="fill">
             <mat-label>Xreference Type</mat-label>
             <mat-select formControlName="xreferenceType">
-              <ng-container *ngFor="let xrt of xRefType$ | async">
-                <mat-option [value]="xrt.code">{{ xrt.displayText }}</mat-option>
+              <ng-container *ngFor="let xrt of xRefTypes">
+                <mat-option [value]="xrt">{{ xrt}}</mat-option>
               </ng-container>
             </mat-select>
             <mat-error *ngIf="hasError('xreferenceType', 'required')"> Please, select a Xreference Type from the
@@ -119,18 +121,18 @@
 
           <mat-form-field class="full-width" appearance="fill">
             <mat-label>Appeal Xreference</mat-label>
-            <input matInput formControlName="xreference" class="uppercase"/>
-            <mat-error *ngIf="hasError('xreference', 'pattern')"> Only valid Appeal format, APL-XX is allowed.
-            </mat-error>
-            <mat-error *ngIf="hasError('xreference', 'required')"> Appeal Xreference must be entered in the text box.
-            </mat-error>
+            <input matInput formControlName="xreference" placeholder="Only valid Appeal format, APL-XX is allowed"/>
+<!--            <mat-error *ngIf="hasError('xreference', 'pattern')"> Only valid Appeal format, APL-XX is allowed.-->
+<!--            </mat-error>-->
+<!--            <mat-error *ngIf="hasError('xreference', 'required')"> Appeal Xreference must be entered in the text box.-->
+<!--            </mat-error>-->
           </mat-form-field>
 
           <div>
-            <button class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
+            <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
                     [mat-dialog-close]="true">Add Xref
             </button>
-            <button class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
+            <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
                     [mat-dialog-close]="true">
               Xref Appeals
             </button>

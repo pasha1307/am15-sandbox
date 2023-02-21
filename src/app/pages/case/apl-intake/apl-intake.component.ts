@@ -23,13 +23,14 @@ export class AplIntakeComponent implements OnInit {
   menu = INTAKE_STEPS;
   err = 'ERROROWWERWRERE';
   completed = false;
-  formTypes = [];
+  formTypes: any[] = [];
+  receiptTypes: any[] = [];
+  xRefTypes: any[] = [];
+  submittedByTypes: any[] = []
   aplTypes: any[] = [];
-  formType$ = of([{code: '1', displayText: 'option one'}]);
-  xRefType$ = of([{code: '1', displayText: 'option one'}]);
-  receiptType$ = of([{code: '1', displayText: 'option one'}]);
-  intakeType$ = of([{code: '1', displayText: 'option one'}]);
-  aplSubmitBy$ = of([{code: '1', displayText: 'option one'}]);
+  intakeTypes: any[] = [];
+
+
   pendedReason$ = of([{code: '1', displayText: 'option one'}]);
   benefitYear$ = of([{code: '1', displayText: 'option one'}]);
   currentYear = new Date().getFullYear();
@@ -39,6 +40,7 @@ export class AplIntakeComponent implements OnInit {
   isDisplayDate = false;
   f1 = this.fb.group(
     {
+      aplType: ['', Validators.required],
       intakeType: ['', Validators.required],
       receiptType: [''],
       pendedReason: [''],
@@ -48,7 +50,7 @@ export class AplIntakeComponent implements OnInit {
       pendedReqStartDate: [{value: '', disabled: true}, Validators.required],
       appCallReleaseHold: ['', Validators.required],
       xreferenceType: [''],
-      xreference: [{value: ''}, [Validators.required, Validators.pattern('^APL-[0-9]+$')]],
+      xreference: ['', [Validators.required] ],
       receiptDate: ['', {validators: [Validators.required]}],
       hearingRecieptDate: [''],
       planYear: [''],
@@ -95,9 +97,14 @@ export class AplIntakeComponent implements OnInit {
   }
   ngOnInit() {
     // @ts-ignore
-    this.aplTypes = this.drops.getIntakeTypes();
-    console.log('TYPES', this.aplTypes)
-    // console.log(this.drops.getIntakeTypes())
+    this.aplTypes = this.drops.getAplTypes();
+    this.formTypes = this.drops.getFormType()
+    this.receiptTypes = this.drops.getReceiptType();
+    this.xRefTypes = this.drops.getXrefType();
+    this.submittedByTypes = this.drops.getSourceType();
+    this.intakeTypes = this.drops.getIntakeType();
+
+    // submittedByTypes = []
   }
 
   hasError = (controlName: string, errorName: string) => {
