@@ -38,6 +38,7 @@ export class AplIntakeComponent implements OnInit {
   maxDate = new Date(this.currentYear + 10, 11, 31);
   processingDateValue!: number;
   isDisplayDate = false;
+  isCompleted = false;
   f1 = this.fb.group(
     {
       aplType: ['', Validators.required],
@@ -115,6 +116,7 @@ export class AplIntakeComponent implements OnInit {
   };
 
   completeStep(): void {
+    this.isCompleted = true;
     this.completed = true;
   }
 }

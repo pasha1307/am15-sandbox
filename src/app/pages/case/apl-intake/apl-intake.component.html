@@ -1,5 +1,5 @@
 <app-nav-stepper [menu]="menu">
-  <cdk-step [completed]="completed">
+  <cdk-step [completed]="isCompleted" [stepControl]="f1">
     <mat-card class="w-2/3 m-auto">
       <section [formGroup]="f1">
         <mat-card-header class="my-2">
@@ -190,7 +190,7 @@
         <mat-card-actions align="end" class="my-3">
           <div class="flex justify-around">
             <button mat-button matStepperNext>Next</button>
-            <button mat-flat-button color="primary">Complete Step
+            <button mat-flat-button color="primary" [disabled]="f1.invalid" (click)="completeStep()">Complete Step
             </button>
           </div>
         </mat-card-actions>
@@ -200,6 +200,7 @@
       <!--        </pre>-->
     </mat-card>
   </cdk-step>
+
   <cdk-step>
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
       <mat-tab label="Appellants">

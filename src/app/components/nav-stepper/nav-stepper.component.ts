@@ -12,7 +12,7 @@ import {FormBuilder, FormControl} from "@angular/forms";
 export class NavStepperComponent extends CdkStepper {
   @Input() menu?: StepperNav[] = [];
   @Input() isOpened = true;
-  isEACMS = new FormControl(false);
+  isEACMS = new FormControl(true);
 
   onStep(index: number) {
     this.selectedIndex = index;
