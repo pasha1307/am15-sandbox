@@ -10,6 +10,7 @@ import {ModalUpdateComponent} from "../../../shared/modal-update/modal-update.co
 import {AplHearingComponent} from "../apl-hearing/apl-hearing.component";
 import {NewInconDialogComponent} from "../../../shared/dialogs/new-incon-dialog/new-incon-dialog.component";
 import {IntakeContactsComponent} from "./sections/intake-contacts/intake-contacts.component";
+import {CaseContactComponent} from "../case-contact/case-contact.component";
 
 @Component({
   selector: 'app-apl-intake',
@@ -129,7 +130,7 @@ export class AplIntakeComponent implements OnInit {
     config.width = '900px';
     config.autoFocus = false;
     // config.data = item;
-    const dialogRef = this.dialog.open(IntakeContactsComponent, config);
+    const dialogRef = this.dialog.open(CaseContactComponent, config);
     dialogRef.afterClosed().subscribe(data => {
       console.log("Dialog output:", data)
       if (data) {
