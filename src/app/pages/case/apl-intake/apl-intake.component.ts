@@ -8,6 +8,8 @@ import {DropdownsService} from "../../../services/dropdowns.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ModalUpdateComponent} from "../../../shared/modal-update/modal-update.component";
 import {AplHearingComponent} from "../apl-hearing/apl-hearing.component";
+import {NewInconDialogComponent} from "../../../shared/dialogs/new-incon-dialog/new-incon-dialog.component";
+import {IntakeContactsComponent} from "./sections/intake-contacts/intake-contacts.component";
 
 @Component({
   selector: 'app-apl-intake',
@@ -127,7 +129,7 @@ export class AplIntakeComponent implements OnInit {
     config.width = '900px';
     config.autoFocus = false;
     // config.data = item;
-    const dialogRef = this.dialog.open(AplHearingComponent, config);
+    const dialogRef = this.dialog.open(IntakeContactsComponent, config);
     dialogRef.afterClosed().subscribe(data => {
       console.log("Dialog output:", data)
       if (data) {
