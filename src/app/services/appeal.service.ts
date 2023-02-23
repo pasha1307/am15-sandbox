@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {APL_ADJUD_SAMPLE} from "../../assets/mock-data/adjudication-object-data";
 import {APL_INTAKE_SAMPLE} from "../../assets/mock-data/intake-object-data";
+import {from} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +9,17 @@ import {APL_INTAKE_SAMPLE} from "../../assets/mock-data/intake-object-data";
 export class AppealService {
   intakeObj = APL_INTAKE_SAMPLE;
   adjudObj = APL_ADJUD_SAMPLE;
+  arr = ['mo', 'mk', 'ghf'];
 
-  constructor() {
+  constructor() {}
 
+  addToArr(n: string) {
+    return this.arr.push(n);
   }
-  onKoo() {
-    return Object.entries(this.adjudObj).sort();
+
+  getArr() {
+    return from(this.arr);
   }
+
 
 }

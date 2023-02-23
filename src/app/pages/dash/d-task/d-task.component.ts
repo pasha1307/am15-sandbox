@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {MY_CORR_TASKS} from "../../../../assets/my-work-tasks";
+import {MY_CORR_TASKS} from "../../../../assets/mock-data/my-work-tasks";
 
 @Component({
   selector: 'app-d-task',

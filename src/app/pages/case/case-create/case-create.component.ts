@@ -38,7 +38,6 @@ export class CaseCreateComponent {
   };
   onSubmit() {
     if (this.createAppeal.valid) {
-      this.dialogRef.close();
       const appealPayload = {
         aplType: this.createAppeal.value.aplType,
         contact: [
@@ -50,7 +49,8 @@ export class CaseCreateComponent {
           },
         ],
       };
-
+      console.log('PL', appealPayload);
+      this.dialogRef.close(appealPayload);
       //   this.appealService
       //       .createAppeal(appealPayload)
       //       .pipe(filter((x) => !!x))

@@ -28,8 +28,8 @@
               <span class="material-symbols-outlined" [style.color]="m.color">
 {{m.icon}}
 </span>
-              <span mat-line class="list-item" [routerLink]="m?.link">
-                {{ m.title }}
+              <span mat-line class="list-title" [routerLink]="m?.link">
+                {{ m.title | uppercase }}
               </span>
             </mat-panel-title>
           </mat-expansion-panel-header>

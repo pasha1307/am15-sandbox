@@ -1,26 +1,33 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {APP_DROPDOWNS_OBJ} from "../../../assets/mock-data/dropdown-values-data";
 import {DropdownsService} from "../../services/dropdowns.service";
+import {AppealService} from "../../services/appeal.service";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
-  allDrops = APP_DROPDOWNS_OBJ;
-  allTypes = this.allDrops.result.map(el => {
-    return {
-      type: el.type,
-      val: el.value,
-      el
+export class HomeComponent implements OnInit {
+    allDrops = APP_DROPDOWNS_OBJ;
+    allTypes = this.allDrops.result.map(el => {
+        return {
+            type: el.type,
+            val: el.value,
+            el
+        }
+    });
+    openTab = 1;
+
+    constructor(private dropService: DropdownsService, private aplService: AppealService) {
+
     }
-  });
-  openTab = 1;
-constructor(private dropService: DropdownsService) {
-  console.log(this.dropService.getTypes())
-}
-  toggleTabs($tabNumber: number) {
-    this.openTab = $tabNumber;
-  }
+
+    ngOnInit() {
+      this.aplService.getArr().subscribe(r => console.log('ARR', r))
+    }
+
+    toggleTabs($tabNumber: number) {
+        this.openTab = $tabNumber;
+    }
 }

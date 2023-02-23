@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MY_APLS} from "../../../../assets/my-work-appeals";
 import {Router} from "@angular/router";
+import {MY_APPEALS} from "../../../../assets/mock-data/my-appeals-data";
 
 @Component({
   selector: 'app-d-table',
@@ -11,7 +11,7 @@ export class DTableComponent implements OnInit {
   displayedColumns: string[] = ['aplId', 'type', 'subtype', 'created', 'expedite',
     'phase', 'profile', 'updated', 'plan', 'deadline', 'hearing',
     'actionDate', 'rfiDate', 'notes', 'status', 'stage'];
-  dataSource = MY_APLS;
+  dataSource = MY_APPEALS;
 
   constructor(private router: Router) {
   }
