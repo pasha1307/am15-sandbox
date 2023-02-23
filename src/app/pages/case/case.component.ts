@@ -65,8 +65,9 @@ export class CaseComponent implements OnInit, AfterContentInit {
     this.links.push(`Link ${this.links.length + 1}`);
   }
   onCreateApl() {
-    this.aplService.addToArr('LOODSDF');
-    console.log('Added');
+    const doo =  {name: 'Mary', job: 'manager', address: [{street: 'Beans', city: 'Atlanta'}, {street: 'Magnolia', city: 'Cambridge'}]};
+    this.aplService.addToArr(doo);
+    console.log('Added', doo);
       // const config = new MatDialogConfig();
       // config.width = '500px';
       // config.autoFocus = false;

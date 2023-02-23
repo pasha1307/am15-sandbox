@@ -24,7 +24,9 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.aplService.getArr().subscribe(r => console.log('ARR', r))
+      this.aplService.getArr().subscribe(r => {
+          console.log('Home Arr', r);
+      })
     }
 
     toggleTabs($tabNumber: number) {
