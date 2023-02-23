@@ -1,4 +1,4 @@
-export interface Contact {
+export interface AdjContactModel {
     contactId:           string;
     appealId:            string;
     createDateTime:      Date;
