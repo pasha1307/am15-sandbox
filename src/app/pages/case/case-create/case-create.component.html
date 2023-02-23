@@ -1,0 +1,51 @@
+<h1 mat-dialog-title>Create Appeal</h1>
+
+<mat-dialog-content>
+    <section [formGroup]="createAppeal" class="ea-form-section">
+        <mat-form-field appearance="fill">
+            <mat-label>Appeal Type</mat-label>
+            <mat-select formControlName="aplType">
+<!--                <ng-container *ngFor="let at of appealTypes$ | async">-->
+<!--                    <mat-option [value]="at.code">{{ at.displayText }}</mat-option>-->
+<!--                </ng-container>-->
+            </mat-select>
+            <mat-error *ngIf="hasError('aplType', 'required')"
+            >Appeal Type is required. Select an appeal type option from the dropdown before proceeding
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="aplFirstName" #fname />
+            <mat-error *ngIf="hasError('aplFirstName', 'required')">First Name is required</mat-error>
+            <mat-error *ngIf="hasError('aplFirstName', 'maxlength')">First Name should be less than 35 characters</mat-error>
+            <mat-error *ngIf="hasError('aplFirstName', 'pattern')"
+            ><span>{{ fname.value }}</span> is not a valid first name. Please enter alpha characters only
+            </mat-error>
+            <mat-hint align="end">{{ createAppeal.get('aplFirstName')!.value || 0 }}/35</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Middle Name</mat-label>
+            <input matInput formControlName="aplMiddleName" />
+            <mat-error *ngIf="hasError('aplMiddleName', 'maxlength')">Middle Name should be less than 35 characters </mat-error>
+            <mat-error *ngIf="hasError('aplMiddleName', 'pattern')">Only Alpha Characters, '-' are allowed in Middle name </mat-error>
+            <mat-hint align="end">{{ createAppeal.get('aplMiddleName')!.value?.length || 0 }}/35</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="aplLastName" #lname />
+            <mat-error *ngIf="hasError('aplLastName', 'required')">Last Name is required</mat-error>
+            <mat-error *ngIf="hasError('aplLastName', 'maxlength')">Last Name should be less than 35 characters</mat-error>
+            <mat-error *ngIf="hasError('aplLastName', 'pattern')"
+            ><span>{{ lname.value }}</span> is not a valid last name. Please enter alpha characters only
+            </mat-error>
+            <mat-hint align="end">{{ createAppeal.get('aplLastName')!.value || 0 }}/35</mat-hint>
+        </mat-form-field>
+    </section>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button (click)="onSubmit()" mat-raised-button color="primary">Submit</button>
+</mat-dialog-actions>

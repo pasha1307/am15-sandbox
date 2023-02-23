@@ -6,6 +6,9 @@ import {MAIN_SIDE} from "../../nav/nav-data/main-side-menu-data";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {Observable} from "rxjs";
 import {map, shareReplay} from "rxjs/operators";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {NewInconDialogComponent} from "../../shared/dialogs/new-incon-dialog/new-incon-dialog.component";
+import {CaseCreateComponent} from "./case-create/case-create.component";
 
 @Component({
   selector: 'app-case',
@@ -30,7 +33,7 @@ export class CaseComponent implements OnInit, AfterContentInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, public toggleService: ToggleService) {
+  constructor(private dialog: MatDialog, private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, public toggleService: ToggleService) {
     if (history.state.data) {
       this.apl = history.state.data;
       this.toggleService.toOpen = false;
@@ -59,6 +62,16 @@ export class CaseComponent implements OnInit, AfterContentInit {
 
   addLink() {
     this.links.push(`Link ${this.links.length + 1}`);
+  }
+  onCreateApl() {
+      const config = new MatDialogConfig();
+      config.width = '500px';
+      config.autoFocus = false;
+      const dialogRef = this.dialog.open(CaseCreateComponent, config);
+      dialogRef.afterClosed().subscribe(d => {
+           console.log(d)
+          }
+      );
   }
 
 }

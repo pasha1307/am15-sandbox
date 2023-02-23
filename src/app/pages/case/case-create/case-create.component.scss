@@ -1,0 +1,8 @@
+.ea-form-section {
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  mat-form-field {
+    margin: 1rem 0;
+  }
+}

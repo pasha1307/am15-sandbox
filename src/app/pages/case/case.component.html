@@ -7,7 +7,10 @@
 work
 </span><span>APPEAL ID: {{apl?.aplId}} STAGE: {{apl?.aplStage}}</span></h1>
       <div class="flex justify-end gap-2.5">
+
+        <button mat-flat-button color="primary" (click)="onCreateApl()">NEW APPEAL</button>
         <button mat-flat-button color="primary">Take Actions</button>
+        <button mat-flat-button color="primary" *ngIf="apl.aplStage === 'Adjudication'">Open Intake</button>
         <button mat-flat-button color="accent">Save</button>
         <button mat-flat-button color="primary">Attachments</button>
         <button mat-flat-button color="primary">History</button>
