@@ -127,7 +127,7 @@ export class AplIntakeComponent implements OnInit {
   }
   onUpdate() {
     const config = new MatDialogConfig();
-    config.width = '900px';
+    config.width = '600px';
     config.autoFocus = false;
     // config.data = item;
     const dialogRef = this.dialog.open(CaseContactComponent, config);

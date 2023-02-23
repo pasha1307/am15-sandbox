@@ -1,5 +1,6 @@
-<section>
+<section class="flex justify-center m-5 p-5">
     <form [formGroup]="form">
+        <h2>Contact Form</h2>
         <div class="ea-section-row inline-form">
 <!--            <label class="example-listbox-label" id="example-shirt-size-label">-->
 <!--                Suffix-->
@@ -114,82 +115,82 @@
 
 
 
-<table matTable class="cms-table" aria-label="Appellants Information">
-    <thead>
-    <tr>
-        <th></th>
-        <th>Primary Contact</th>
-        <th>Number of Appellants</th>
-        <th>Person Type</th>
-        <th>First Name</th>
-        <th>Middle Name</th>
-        <th>Last Name</th>
-        <th>Suffix</th>
-        <th>Phone Number</th>
-        <th>Address Type</th>
-        <th>Street Address 1</th>
-        <th>Street Address 2</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Zip Code</th>
-        <th>Signature Indicator</th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    table body
-<!--    <ng-container *ngFor="let control of formArray.controls; index as i">-->
-<!--        <tr [hidden]="expandedIndex === i">-->
-<!--            <td>-->
-<!--                <button mat-icon-button color="primary" aria-label="Expand Row" (click)="expandRow(i)">-->
-<!--                    <mat-icon>chevron_right</mat-icon>-->
-<!--                </button>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <mat-icon color="primary" *ngIf="control.value.primaryContact">done</mat-icon>-->
-<!--            </td>-->
-<!--            <td>{{ control.value.numOfAppellants }}</td>-->
-<!--            <td>{{ (personType$ | async | findBy: 'code':control.value.prsnType)?.displayText }}</td>-->
-<!--            <td>{{ control.value.firstName }}</td>-->
-<!--            <td>{{ control.value.middleName }}</td>-->
-<!--            <td>{{ control.value.lastName }}</td>-->
-<!--            <td>-->
-<!--                {{ (aplSuffix$ | async | findBy: 'code':control.value.sfx)?.displayText }}-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <ng-container *ngFor="let p of control.value.contactTellInfo">-->
-<!--                    <small>-->
-<!--                        <span>{{ p.telePhoneNumber }}</span>-->
-<!--                        <span *ngIf="p.extension"> ext: {{ p.extNo }}</span>-->
-<!--                        <span>({{ p.phoneType }}); </span>-->
-<!--                    </small>-->
-<!--                </ng-container>-->
-<!--            </td>-->
-<!--            <td>{{ control.value.aplAddressType }}</td>-->
-<!--            <td>{{ control.value.aplStreetAddress1 }}</td>-->
-<!--            <td>{{ control.value.aplStreetAddress2 }}</td>-->
-<!--            <td>{{ control.value.aplCity }}</td>-->
-<!--            <td>{{ control.value.aplState }}</td>-->
-<!--            <td>{{ control.value.aplZipCode }}</td>-->
-<!--            <td>-->
-<!--                <mat-icon color="primary" *ngIf="control.value.sgntrInd">done</mat-icon>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--                <button mat-icon-button class="gray-icon" aria-label="Delete Row" (click)="deleteRow(i)">-->
-<!--                    <mat-icon>delete</mat-icon>-->
-<!--                </button>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr [hidden]="expandedIndex !== i">-->
-<!--            <td>-->
-<!--                <button mat-icon-button color="primary" aria-label="Expand Row" (click)="expandRow(i)">-->
-<!--                    <mat-icon>expand_more</mat-icon>-->
-<!--                </button>-->
-<!--            </td>-->
-<!--            <td colspan="16">-->
-<!--              -->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </ng-container>-->
-    </tbody>
-</table>
+<!--<table matTable class="cms-table" aria-label="Appellants Information">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th></th>-->
+<!--        <th>Primary Contact</th>-->
+<!--        <th>Number of Appellants</th>-->
+<!--        <th>Person Type</th>-->
+<!--        <th>First Name</th>-->
+<!--        <th>Middle Name</th>-->
+<!--        <th>Last Name</th>-->
+<!--        <th>Suffix</th>-->
+<!--        <th>Phone Number</th>-->
+<!--        <th>Address Type</th>-->
+<!--        <th>Street Address 1</th>-->
+<!--        <th>Street Address 2</th>-->
+<!--        <th>City</th>-->
+<!--        <th>State</th>-->
+<!--        <th>Zip Code</th>-->
+<!--        <th>Signature Indicator</th>-->
+<!--        <th></th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    table body-->
+<!--&lt;!&ndash;    <ng-container *ngFor="let control of formArray.controls; index as i">&ndash;&gt;-->
+<!--&lt;!&ndash;        <tr [hidden]="expandedIndex === i">&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <button mat-icon-button color="primary" aria-label="Expand Row" (click)="expandRow(i)">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-icon>chevron_right</mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;                </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <mat-icon color="primary" *ngIf="control.value.primaryContact">done</mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.numOfAppellants }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ (personType$ | async | findBy: 'code':control.value.prsnType)?.displayText }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.firstName }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.middleName }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.lastName }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                {{ (aplSuffix$ | async | findBy: 'code':control.value.sfx)?.displayText }}&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <ng-container *ngFor="let p of control.value.contactTellInfo">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <small>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span>{{ p.telePhoneNumber }}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span *ngIf="p.extension"> ext: {{ p.extNo }}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <span>({{ p.phoneType }}); </span>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </small>&ndash;&gt;-->
+<!--&lt;!&ndash;                </ng-container>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.aplAddressType }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.aplStreetAddress1 }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.aplStreetAddress2 }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.aplCity }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.aplState }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>{{ control.value.aplZipCode }}</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <mat-icon color="primary" *ngIf="control.value.sgntrInd">done</mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <button mat-icon-button class="gray-icon" aria-label="Delete Row" (click)="deleteRow(i)">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-icon>delete</mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;                </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;        <tr [hidden]="expandedIndex !== i">&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <button mat-icon-button color="primary" aria-label="Expand Row" (click)="expandRow(i)">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <mat-icon>expand_more</mat-icon>&ndash;&gt;-->
+<!--&lt;!&ndash;                </button>&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td colspan="16">&ndash;&gt;-->
+<!--&lt;!&ndash;              &ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;    </ng-container>&ndash;&gt;-->
+<!--    </tbody>-->
+<!--</table>-->
