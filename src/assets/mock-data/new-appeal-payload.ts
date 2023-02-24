@@ -1,4 +1,4 @@
-export const APL_INTAKE_SAMPLE = [ {
+export const PAYLOAD_NEW_APL = {
     appealId: "APL-51",
     aplType: "Large Employer ",
     aplSubType: "CHIP",
@@ -78,64 +78,34 @@ export const APL_INTAKE_SAMPLE = [ {
             aplntSgndDt: "",
             authrzdRprsntvSgntr: "",
             aprsntvSgndDt: "",
-            contactAddress: [
-                {
-                    createDtTime: "",
-                    updateDateTime: "",
-                    addressType: "",
-                    stAddressType1: "",
-                    stAddressType2: "",
-                    city: "",
-                    state: "",
-                    zip: "",
-                    county: "",
-                    country: ""
-                }
-            ],
-            contactEmail: [
-                {
-                    createDtTime: "",
-                    updateDateTime: "",
-                    emailPrefn: "",
-                    emailType: "",
-                    email: ""
-                }
-            ],
-            contactTellInfo: [
-                {
-                    createDtTime: "",
-                    updateDateTime: "",
-                    txtPrefnc: "",
-                    phoneType: "",
-                    extNo: ""
-                }
-            ]
+            contactAddress: [],
+            contactEmail: [],
+            contactTellInfo: []
         }
     ],
     accommReq: [
         {
-            createDataTime: "2022-04-12T12:59:11.332",
-            updateDateTime: "2022-04-12T12:59:11.332",
-            personType: "TESTApp",
-            largPrint: false,
-            audio: false,
+            createDataTime: "",
+            updateDateTime: "",
+            personType: "",
+            largPrint: null,
+            audio: null,
             braille: false,
             vrs: false,
             tty: false,
             other: false,
             reportable: false,
-            comments: "Comments"
+            comments: ""
         }
     ],
     languageAssistReq: [
         {
-            createDataTime: "2022-04-12T12:59:11.332",
-            updateDateTime: "2022-04-12T12:59:11.332",
-            personType: "Appellant",
-            spokenLanguage: "Span",
-            writtenLanguage: "Span",
-            requestDate: "2022-04-13T12:59:11.332"
+            createDataTime: "",
+            updateDateTime: "",
+            personType: "",
+            spokenLanguage: "",
+            writtenLanguage: "",
+            requestDate: ""
         }
     ]
 }
-]
