@@ -1,7 +1,7 @@
 export const APL_INTAKE_SAMPLE = [ {
     id: '222',
     notes: 'Notes Prop',
-    rfiDate: '3/12/21',
+    rfiDate: 'RTF Date',
     nextActionDate: '11/23/22',
     expedited: "Expidite",
     highProfile: 'High Profile Type One',
