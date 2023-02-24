@@ -1,5 +1,7 @@
-export const PAYLOAD_NEW_APL = {
-    appealId: "APL-51",
+export const PAYLOAD_NEW_APL = [{
+    id: '11',
+    notes: 'too short for that',
+    aplId: "APL-51",
     aplType: "Large Employer ",
     aplSubType: "CHIP",
     aplIssue: "Individual Exemption",
@@ -47,8 +49,11 @@ export const PAYLOAD_NEW_APL = {
     ackNoticeDate: "",
     ackNoticeGranted: "",
     hearingId: "",
-    createDataTime: "2022-04-12T12:59:11.332",
-    updateDateTime: "2022-04-12T12:59:11.332",
+    createdOn: "2022-04-12T12:59:11.332",
+    updatedOn: "2022-04-12T12:59:11.332",
+    aplStatus: 'Pending Adjudication',
+    aplStage: 'Adjudication',
+    aplLink: 'adjudication',
     contactReq: [
         {
             sfx: "",
@@ -108,4 +113,4 @@ export const PAYLOAD_NEW_APL = {
             requestDate: ""
         }
     ]
-}
+}]
