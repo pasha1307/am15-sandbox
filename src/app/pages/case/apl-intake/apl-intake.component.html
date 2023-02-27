@@ -11,7 +11,7 @@
             <mat-label>Appeal Type</mat-label>
             <mat-select formControlName="aplType">
               <ng-container *ngFor="let it of aplTypes">
-                <mat-option [value]="it">{{ it?.displayText}}</mat-option>
+                <mat-option [value]="it.displayText">{{ it?.displayText}}</mat-option>
               </ng-container>
             </mat-select>
             <mat-error *ngIf="hasError('aplType', 'required')">

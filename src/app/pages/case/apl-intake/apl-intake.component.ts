@@ -11,6 +11,7 @@ import {AplHearingComponent} from "../apl-hearing/apl-hearing.component";
 import {NewInconDialogComponent} from "../../../shared/dialogs/new-incon-dialog/new-incon-dialog.component";
 import {IntakeContactsComponent} from "./sections/intake-contacts/intake-contacts.component";
 import {CaseContactComponent} from "../case-contact/case-contact.component";
+import {AppealService} from "../../../services/appeal.service";
 
 @Component({
   selector: 'app-apl-intake',
@@ -68,7 +69,7 @@ export class AplIntakeComponent implements OnInit {
     }
   );
 
-  constructor(private fb: FormBuilder, private drops: DropdownsService, public dialog: MatDialog) {
+  constructor(private fb: FormBuilder, private drops: DropdownsService, public dialog: MatDialog, private aplService: AppealService) {
     this.f1.controls.pendedReason.valueChanges.subscribe((val) => {
       const pendedReqStartDate = this.f1.controls.pendedReqStartDate;
       const pendedReqEndDate = this.f1.controls.pendedReqEndDate;
@@ -113,7 +114,7 @@ export class AplIntakeComponent implements OnInit {
         receiptType: this.aplData.receiptType || '',
         pendedReason: this.aplData.pendedReason || '',
         formType: this.aplData.formType || '',
-        aplSubmittedBy: this.aplData.submittedBy || '',
+        aplSubmittedBy: this.aplData.aplSubmittedBy || '',
         pendedReqEndDate: this.aplData.pendedReqEndDate || '',
         pendedReqStartDate: this.aplData.pendedReqStartDate || '',
         appCallReleaseHold: this.aplData.appCallReleaseHold || '',
@@ -145,6 +146,8 @@ export class AplIntakeComponent implements OnInit {
   completeStep(): void {
     this.isCompleted = true;
     this.completed = true;
+    this.aplService.updateApl(this.aplData.aplId, this.f1.value);
+    this.aplService.getArr().subscribe(r => console.log('UPODATED ARR', r));
   }
   onUpdate() {
     const config = new MatDialogConfig();

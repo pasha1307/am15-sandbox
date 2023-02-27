@@ -1,12 +1,12 @@
 <div class="case-page">
   <div class="flex flex-col gap-4 bg-white px-10">
-    <div class="w-full flex justify-between">
+    <div class="w-full flex justify-between mb-0 pb-0">
 
       <h1> <span class="material-symbols-outlined"
                  style="color: #673ab7; font-size: 2.0em; transform: translateY(12px); padding-right: 10px;">
 work
 </span><span>APPEAL ID: {{apl?.aplId}} STAGE: {{apl?.aplStage}}</span></h1>
-      <div class="flex justify-end gap-2.5">
+      <div class="flex justify-end gap-2.5 pt-3">
 
         <button mat-flat-button color="primary">Take Actions</button>
         <button mat-flat-button color="primary" *ngIf="apl.aplStage === 'Adjudication'">Open Intake</button>
@@ -19,7 +19,7 @@ work
     </div>
     <div class="w-full flex justify-between min-h-[70px]">
       <div>
-        <div><span>CREATED:</span><span>{{apl?.createdOn}}</span></div>
+        <div><span>CREATED:</span><span>{{apl?.createdOn | date}}</span></div>
         <div><span>CREATED BY:</span><span>{{apl?.contacts[0]?.firstName}}</span> <span>{{apl?.contacts[0]?.lastName}}</span></div>
       </div>
       <div>
