@@ -26,6 +26,7 @@ import {CaseContactComponent} from "../case-contact/case-contact.component";
 export class AplIntakeComponent implements OnInit {
   addresses1 = CONTACTS_USER1;
   addresses2 = CONTACTS_USER2;
+  aplData?: any;
   menu = INTAKE_STEPS;
   err = 'ERROROWWERWRERE';
   completed = false;
@@ -103,6 +104,25 @@ export class AplIntakeComponent implements OnInit {
     });
   }
   ngOnInit() {
+    if (history.state.data) {
+      this.aplData = history.state.data;
+      this.f1.setValue({
+        aplType: this.aplData.aplType || '',
+        intakeType: this.aplData.intakeType || '',
+        receiptType: this.aplData.receiptType || '',
+        pendedReason: this.aplData.pendedReason || '',
+        formType: this.aplData.formType || '',
+        aplSubmittedBy: this.aplData.submittedBy || '',
+        pendedReqEndDate: this.aplData.pendedReqEndDate || '',
+        pendedReqStartDate: this.aplData.pendedReqStartDate || '',
+        appCallReleaseHold: this.aplData.appCallReleaseHold || '',
+        xreferenceType:  this.aplData.xreferenceType || '',
+        xreference: this.aplData.xreference || '',
+        receiptDate: this.aplData.receiptDate || '',
+        hearingRecieptDate: this.aplData.hearingRecieptDate || '',
+        planYear: this.aplData.planYear || '',
+      })
+    }
     // @ts-ignore
     this.aplTypes = this.drops.getAplTypes();
     this.formTypes = this.drops.getFormType()

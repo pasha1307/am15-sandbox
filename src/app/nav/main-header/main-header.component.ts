@@ -29,9 +29,11 @@ export class MainHeaderComponent implements OnInit {
     config.autoFocus = false;
     const dialogRef = this.dialog.open(CaseCreateComponent, config);
     dialogRef.afterClosed().subscribe(d => {
-      this.aplService.addToArr(d);
-      this.router.navigateByUrl(`/mywork/appeals/`)
-      console.log('Dialog CLosed', d);
+      if (d) {
+        this.aplService.addToArr(d);
+        this.router.navigateByUrl(`/mywork/appeals/`)
+        console.log('Dialog CLosed', d);
+      }
         }
     );
   }

@@ -20,14 +20,14 @@ work
     <div class="w-full flex justify-between min-h-[70px]">
       <div>
         <div><span>CREATED:</span><span>{{apl?.createdOn}}</span></div>
-        <div><span>CREATED BY:</span><span>{{apl?.contact[0].firstName}}</span> <span>{{apl?.contact[0].lastName}}</span></div>
+        <div><span>CREATED BY:</span><span>{{apl?.contacts[0]?.firstName}}</span> <span>{{apl?.contacts[0]?.lastName}}</span></div>
       </div>
       <div>
         <div><span>UPDATED:</span><span>{{apl?.updatedOn | date}}</span></div>
         <div><span>UPDATED BY: </span><span>{{apl?.updatedBy}}</span></div>
       </div>
       <div>
-        <div><span>APPELLANT:</span><span>{{apl?.contact[0].firstName}}</span> <span>{{apl?.contact[0].lastName}}</span></div>
+        <div><span>APPELLANT:</span><span>{{apl?.contacts[0].firstName}}</span> <span>{{apl?.contacts[0].lastName}}</span></div>
         <div><span>AUTHORIZED:</span><span> - </span></div>
       </div>
       <div>

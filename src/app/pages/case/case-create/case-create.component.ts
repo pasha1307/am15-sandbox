@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {DropdownsService} from "../../../services/dropdowns.service";
 
 @Component({
   selector: 'app-case-create',
@@ -8,6 +9,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
   styleUrls: ['./case-create.component.scss']
 })
 export class CaseCreateComponent {
+  aplTypes?:any;
   createAppeal = this.fb.group({
     aplFirstName: [null, [Validators.required, Validators.maxLength(35), Validators.pattern('^[a-zA-Z-]+')]],
     aplLastName: [null, [Validators.required, Validators.maxLength(35), Validators.pattern('^[a-zA-Z-]+')]],
@@ -16,7 +18,9 @@ export class CaseCreateComponent {
   });
 
   constructor(private fb: FormBuilder,  private dialog: MatDialog,
-              private dialogRef: MatDialogRef<CaseCreateComponent>,) {
+              private dialogRef: MatDialogRef<CaseCreateComponent>, private drops: DropdownsService) {
+    this.aplTypes = this.drops.getAplTypes();
+    console.log('TT', this.aplTypes)
     const aplFirstName = this.createAppeal.get('aplFirstName')!;
     aplFirstName.valueChanges.subscribe(() => {
       return aplFirstName.patchValue(aplFirstName?.value, {emitEvent: false});
@@ -99,7 +103,7 @@ export class CaseCreateComponent {
         createdOn: new Date(),
         updatedOn: new Date(),
         aplType: this.createAppeal.value.aplType,
-        contact: [
+        contacts: [
           {
             firstName: this.createAppeal.value.aplFirstName,
             middleName: this.createAppeal.value.aplMiddleName,
