@@ -106,6 +106,7 @@ export class AplIntakeComponent implements OnInit {
   ngOnInit() {
     if (history.state.data) {
       this.aplData = history.state.data;
+      console.log('HISTORY APL', this.aplData);
       this.f1.setValue({
         aplType: this.aplData.aplType || '',
         intakeType: this.aplData.intakeType || '',
@@ -118,7 +119,7 @@ export class AplIntakeComponent implements OnInit {
         appCallReleaseHold: this.aplData.appCallReleaseHold || '',
         xreferenceType:  this.aplData.xreferenceType || '',
         xreference: this.aplData.xreference || '',
-        receiptDate: this.aplData.receiptDate || '',
+        receiptDate: this.aplData.recieptDate || '',
         hearingRecieptDate: this.aplData.hearingRecieptDate || '',
         planYear: this.aplData.planYear || '',
       })
