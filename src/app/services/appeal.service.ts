@@ -29,13 +29,19 @@ export class AppealService {
 
   constructor() {}
 
-  addToArr(n: SampleObj) {
-    this.arr.push(n);
+  // @ts-ignore
+  addToArr(n: any) {
+    if (n) {
+      this.intakeObj.push(n);
+    } else {
+      return this.intakeObj;
+    }
+
   }
 
   getArr() {
-    console.log('LENGTH', this.arr.length)
-    return of(this.arr);
+    console.log('LENGTH', this.intakeObj.length)
+    return of(this.intakeObj);
   }
 
 

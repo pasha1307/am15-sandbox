@@ -27,7 +27,7 @@
 
   <ng-container matColumnDef="created">
     <th mat-header-cell *matHeaderCellDef> Created On</th>
-    <td mat-cell *matCellDef="let element"> {{element.createdOn}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.createdOn | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="expedite">
@@ -51,7 +51,7 @@
 
   <ng-container matColumnDef="updated">
     <th mat-header-cell *matHeaderCellDef> Updated On</th>
-    <td mat-cell *matCellDef="let element"> {{element.updatedOn}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.updatedOn | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="plan">
@@ -66,12 +66,12 @@
 
   <ng-container matColumnDef="hearing">
     <th mat-header-cell *matHeaderCellDef> Hearing Date</th>
-    <td mat-cell *matCellDef="let element"> {{element.hearingDate}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.hearingDate | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="actionDate">
     <th mat-header-cell *matHeaderCellDef> Action Date</th>
-    <td mat-cell *matCellDef="let element"> {{element.nextActionDate}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.nextActionDate | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="rfiDate">

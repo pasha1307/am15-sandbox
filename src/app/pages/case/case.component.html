@@ -8,7 +8,6 @@ work
 </span><span>APPEAL ID: {{apl?.aplId}} STAGE: {{apl?.aplStage}}</span></h1>
       <div class="flex justify-end gap-2.5">
 
-        <button mat-flat-button color="primary" (click)="onCreateApl()">NEW APPEAL</button>
         <button mat-flat-button color="primary">Take Actions</button>
         <button mat-flat-button color="primary" *ngIf="apl.aplStage === 'Adjudication'">Open Intake</button>
         <button mat-flat-button color="accent">Save</button>
@@ -20,27 +19,27 @@ work
     </div>
     <div class="w-full flex justify-between min-h-[70px]">
       <div>
-        <div><span>CREATED:</span><span>Dasdsdfs</span></div>
-        <div><span>CREATED BY:</span><span>John Doe</span></div>
+        <div><span>CREATED:</span><span>{{apl?.createdOn}}</span></div>
+        <div><span>CREATED BY:</span><span>{{apl?.contact[0].firstName}}</span> <span>{{apl?.contact[0].lastName}}</span></div>
       </div>
       <div>
-        <div><span>UPDATED:</span><span>Dasdsdfs</span></div>
-        <div><span>UPDATED BY: </span><span>John Doe</span></div>
+        <div><span>UPDATED:</span><span>{{apl?.updatedOn | date}}</span></div>
+        <div><span>UPDATED BY: </span><span>{{apl?.updatedBy}}</span></div>
       </div>
       <div>
-        <div><span>APPELLANT:</span><span>Ann Smith</span></div>
+        <div><span>APPELLANT:</span><span>{{apl?.contact[0].firstName}}</span> <span>{{apl?.contact[0].lastName}}</span></div>
         <div><span>AUTHORIZED:</span><span> - </span></div>
       </div>
       <div>
-        <div><span>APPEAL TYPE:</span><span>Above</span></div>
+        <div><span>APPEAL TYPE:</span><span>{{apl?.aplType}}</span></div>
         <div><span>APL SUBTYPE: </span><span>???</span></div>
       </div>
       <div>
-        <div><span>RECEIPT:</span><span>01/01/2023</span></div>
-        <div><span>DAYS SINCE RECEIPT: </span><span>43</span></div>
+        <div><span>RECEIPT:</span><span>{{apl.createdOn | date}}</span></div>
+        <div><span>DAYS SINCE RECEIPT: </span><span>Estimate</span></div>
       </div>
       <div>
-        <div><span>HEARING OFFICER:</span><span>Big Boss</span></div>
+        <div><span>HEARING OFFICER:</span><span>ND</span></div>
         <div><span>APPEAL LOCATION: </span><span>Later ??</span></div>
       </div>
 

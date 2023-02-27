@@ -45,6 +45,7 @@ export class CaseComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit() {
+    console.log('APPEAL DATA', this.apl);
     // @ts-ignore
     this.isIntake = this.router.url.includes('intake');
     this.isAdjud = this.router.url.includes('adjudication');
@@ -63,19 +64,6 @@ export class CaseComponent implements OnInit, AfterContentInit {
 
   addLink() {
     this.links.push(`Link ${this.links.length + 1}`);
-  }
-  onCreateApl() {
-    const doo =  {name: 'Mary', job: 'manager', address: [{street: 'Beans', city: 'Atlanta'}, {street: 'Magnolia', city: 'Cambridge'}]};
-    this.aplService.addToArr(doo);
-    console.log('Added', doo);
-      // const config = new MatDialogConfig();
-      // config.width = '500px';
-      // config.autoFocus = false;
-      // const dialogRef = this.dialog.open(CaseCreateComponent, config);
-      // dialogRef.afterClosed().subscribe(d => {
-      //      console.log(d)
-      //     }
-      // );
   }
 
 }

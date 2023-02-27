@@ -1,6 +1,6 @@
 export const APL_ADJUD_SAMPLE = {
     aplId: "APL-1106",
-        contact: [
+        contacts: [
         {
             contactId: "934343e2-c2ab-41ff-a04a-ef8a511807d9",
             appealId: "APL-1106",

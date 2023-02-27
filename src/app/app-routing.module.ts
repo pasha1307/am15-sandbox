@@ -62,12 +62,12 @@ const routes: Routes = [
   },
   {
     path: 'mywork', component: MyworkComponent, children: [
-      {path: '', component: MyallComponent},
+      {path: '', component: MyAppealsComponent},
       {path: 'appeals', component: MyAppealsComponent},
       {path: 'tasks', component: MyTasksComponent},
       {path: 'reports', component: MyReportsComponent},
       {path: 'team', component: MyTeamComponent},
-      {path: '**', component: MyallComponent}
+      {path: '**', component: MyAppealsComponent}
     ]
   },
   {path: '**', component: DashComponent},

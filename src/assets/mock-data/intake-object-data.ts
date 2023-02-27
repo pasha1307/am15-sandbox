@@ -58,7 +58,7 @@ export const APL_INTAKE_SAMPLE = [ {
     hearingId: "",
     createdOn: "2022-04-12T12:59:11.332",
     updatedOn: "2022-04-12T12:59:11.332",
-    contactReq: [
+    contacts: [
         {
             sfx: "",
             firstName: "TestF",
