@@ -52,5 +52,5 @@
 
 <mat-dialog-actions align="end">
     <button mat-raised-button mat-dialog-close>Cancel</button>
-    <button (click)="onSubmit()" mat-raised-button color="primary">Submit</button>
+    <button (click)="onSubmit()" mat-raised-button color="primary" [disabled]="!createAppeal.valid">Submit</button>
 </mat-dialog-actions>
