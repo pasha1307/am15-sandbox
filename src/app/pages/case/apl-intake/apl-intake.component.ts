@@ -143,12 +143,34 @@ export class AplIntakeComponent implements OnInit {
     return this.f1.get(controlName)?.hasError(errorName);
   };
 
+  getUpdateObj() {
+    return {
+      ...this.aplData,
+      aplType: this.f1.value.aplType,
+      intakeType: this.f1.value.intakeType,
+      receiptType: this.f1.value.receiptType,
+      pendedReason: this.f1.value.pendedReason,
+      formType: this.f1.value.formType,
+      aplSubmittedBy: this.f1.value.aplSubmittedBy,
+      pendedReqEndDate: this.f1.value.pendedReqEndDate,
+      pendedReqStartDate: this.f1.value.pendedReqStartDate,
+      appCallReleaseHold: this.f1.value.appCallReleaseHold,
+      xreferenceType:  this.f1.value.xreferenceType,
+      xreference: this.f1.value.xreference,
+      recieptDate: this.f1.value.receiptDate,
+      hearingRecieptDate: this.f1.value.hearingRecieptDate,
+      planYear: this.f1.value.planYear,
+    }
+  }
+
   completeStep(): void {
     this.isCompleted = true;
     this.completed = true;
-    this.aplService.updateApl(this.aplData.aplId, this.f1.value);
-    this.aplService.getArr().subscribe(r => console.log('UPODATED ARR', r));
+    const pload = this.getUpdateObj();
+    this.aplService.updateApl(this.aplData.aplId, pload);
+    this.aplService.getArr().subscribe();
   }
+
   onUpdate() {
     const config = new MatDialogConfig();
     config.width = '600px';
