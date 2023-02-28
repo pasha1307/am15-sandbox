@@ -164,11 +164,14 @@ export class AplIntakeComponent implements OnInit {
   }
 
   completeStep(): void {
-    this.isCompleted = true;
-    this.completed = true;
     const pload = this.getUpdateObj();
     this.aplService.updateApl(this.aplData.aplId, pload);
-    this.aplService.getArr().subscribe();
+    this.aplService.getArr().subscribe(r => {
+      if (r) {
+        this.isCompleted = true;
+        this.completed = true;
+      }
+    });
   }
 
   onUpdate() {
