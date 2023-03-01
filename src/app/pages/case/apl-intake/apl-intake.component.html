@@ -173,13 +173,9 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Benefit Year</mat-label>
-            <mat-select formControlName="planYear" required>
-              <ng-container *ngFor="let item of benefitYear$ | async">
-                <mat-option [value]="item.code">{{ item.displayText }}</mat-option>
-              </ng-container>
-            </mat-select>
+            <input type="text" matInput formControlName="planYear" placeholder="type the year">
             <mat-error *ngIf="f1.get('planYear')?.hasError('required')"
-            >Benefit year is required. Select a Benefit year option from the dropdown
+            >Benefit year is required.
             </mat-error
             >
           </mat-form-field>
