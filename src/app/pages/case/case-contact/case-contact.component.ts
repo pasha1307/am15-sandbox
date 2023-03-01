@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AppealService} from "../../../services/appeal.service";
 
 @Component({
   selector: 'app-case-contact',
   templateUrl: './case-contact.component.html',
   styleUrls: ['./case-contact.component.scss']
 })
-export class CaseContactComponent {
+export class CaseContactComponent implements OnInit {
   firstNameMaxLength = 35;
   middleNameMaxLength = 25;
   lastNameMaxLength = 60;
@@ -30,8 +31,10 @@ export class CaseContactComponent {
     adrSameAsApllant: [false]
   });
 
-  constructor(private fb: FormBuilder) {
-
+  constructor(private fb: FormBuilder, private aplService: AppealService) {
+  }
+  ngOnInit() {
+    this.aplService.getArr().subscribe(r => console.log('APL OBJ', r));
   }
 
 }

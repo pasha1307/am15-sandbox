@@ -28,6 +28,7 @@ export class AplIntakeComponent implements OnInit {
   addresses1 = CONTACTS_USER1;
   addresses2 = CONTACTS_USER2;
   aplData?: any;
+  contactsArr?: any;
   menu = INTAKE_STEPS;
   err = 'ERROROWWERWRERE';
   completed = false;
@@ -105,8 +106,10 @@ export class AplIntakeComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.aplService.getArr().subscribe(r => console.log('INTAKE OBJ ARR', r))
     if (history.state.data) {
       this.aplData = history.state.data;
+      this.contactsArr = this.aplData.contacts;
       console.log('HISTORY APL', this.aplData);
       this.f1.setValue({
         aplType: this.aplData.aplType || '',
