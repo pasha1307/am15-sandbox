@@ -61,15 +61,15 @@ export const APL_INTAKE_SAMPLE = [ {
     contacts: [
         {
             sfx: "",
-            firstName: "TestF",
-            middleName: "TestM",
-            lastName: "TestL",
+            firstName: "Jane",
+            middleName: "T",
+            lastName: "Hernandos",
             createDateTime: "",
             updateDateTime: "",
-            type: "",
-            prsnType: "",
-            primaryContact: "",
-            dob: "",
+            type: "type???",
+            prsnType: "person type??",
+            primaryContact: "true",
+            dob: "01/01/1991",
             emplrName: "",
             dtSgnd: "",
             sgntrInd: "",
@@ -91,14 +91,14 @@ export const APL_INTAKE_SAMPLE = [ {
                 {
                     createDtTime: "",
                     updateDateTime: "",
-                    addressType: "",
-                    stAddressType1: "",
-                    stAddressType2: "",
-                    city: "",
-                    state: "",
-                    zip: "",
+                    addressType: "home",
+                    stAddressType1: "111 Main St",
+                    stAddressType2: "apt. 101",
+                    city: "Madison",
+                    state: "WI",
+                    zip: "01899",
                     county: "",
-                    country: ""
+                    country: "USA"
                 }
             ],
             contactEmail: [
@@ -106,8 +106,8 @@ export const APL_INTAKE_SAMPLE = [ {
                     createDtTime: "",
                     updateDateTime: "",
                     emailPrefn: "",
-                    emailType: "",
-                    email: ""
+                    emailType: "home",
+                    email: "my@email.com"
                 }
             ],
             contactTellInfo: [
@@ -115,7 +115,8 @@ export const APL_INTAKE_SAMPLE = [ {
                     createDtTime: "",
                     updateDateTime: "",
                     txtPrefnc: "",
-                    phoneType: "",
+                    phone: "12312211232",
+                    phoneType: "home",
                     extNo: ""
                 }
             ]
