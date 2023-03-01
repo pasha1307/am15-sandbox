@@ -71,39 +71,39 @@ export class AplIntakeComponent implements OnInit {
   );
 
   constructor(private fb: FormBuilder, private drops: DropdownsService, public dialog: MatDialog, private aplService: AppealService) {
-    this.f1.controls.pendedReason.valueChanges.subscribe((val) => {
-      const pendedReqStartDate = this.f1.controls.pendedReqStartDate;
-      const pendedReqEndDate = this.f1.controls.pendedReqEndDate;
-
-      if (val != '') {
-        pendedReqStartDate.setValidators(Validators.required);
-        pendedReqEndDate.setValidators(Validators.required);
-        pendedReqStartDate.enable();
-        pendedReqEndDate.enable();
-      } else {
-        pendedReqStartDate.clearValidators();
-        pendedReqEndDate.clearValidators();
-        pendedReqStartDate.disable();
-        pendedReqEndDate.disable();
-      }
-      pendedReqStartDate.updateValueAndValidity();
-      pendedReqEndDate.updateValueAndValidity();
-    });
-
-    this.f1.controls.receiptDate.valueChanges.subscribe((value) => {
-      if (this.f1.controls.receiptDate.status == 'VALID') {
-        this.isDisplayDate = true;
-        const date = new Date();
-        // @ts-ignore
-        this.processingDateValue = date.setDate(new Date());
-      } else {
-        this.isDisplayDate = false;
-      }
-    });
-
-    this.f1.controls.xreferenceType.valueChanges.subscribe((value) => {
-      value ? this.f1.controls.xreference.enable() : this.f1.controls.xreference.disable();
-    });
+    // this.f1.controls.pendedReason.valueChanges.subscribe((val) => {
+    //   const pendedReqStartDate = this.f1.controls.pendedReqStartDate;
+    //   const pendedReqEndDate = this.f1.controls.pendedReqEndDate;
+    //
+    //   if (val != '') {
+    //     pendedReqStartDate.setValidators(Validators.required);
+    //     pendedReqEndDate.setValidators(Validators.required);
+    //     pendedReqStartDate.enable();
+    //     pendedReqEndDate.enable();
+    //   } else {
+    //     pendedReqStartDate.clearValidators();
+    //     pendedReqEndDate.clearValidators();
+    //     pendedReqStartDate.disable();
+    //     pendedReqEndDate.disable();
+    //   }
+    //   pendedReqStartDate.updateValueAndValidity();
+    //   pendedReqEndDate.updateValueAndValidity();
+    // });
+    //
+    // this.f1.controls.receiptDate.valueChanges.subscribe((value) => {
+    //   if (this.f1.controls.receiptDate.status == 'VALID') {
+    //     this.isDisplayDate = true;
+    //     const date = new Date();
+    //     // @ts-ignore
+    //     this.processingDateValue = date.setDate(new Date());
+    //   } else {
+    //     this.isDisplayDate = false;
+    //   }
+    // });
+    //
+    // this.f1.controls.xreferenceType.valueChanges.subscribe((value) => {
+    //   value ? this.f1.controls.xreference.enable() : this.f1.controls.xreference.disable();
+    // });
   }
   ngOnInit() {
     this.aplService.getArr().subscribe(r => console.log('INTAKE OBJ ARR', r))
@@ -139,12 +139,12 @@ export class AplIntakeComponent implements OnInit {
     // submittedByTypes = []
   }
 
-  hasError = (controlName: string, errorName: string) => {
+  hasError(controlName: string, errorName: string) {
     if (!this.f1.controls.hasOwnProperty(controlName)) {
       throw new Error(`Control with name ${controlName} not found in form group`);
     }
     return this.f1.get(controlName)?.hasError(errorName);
-  };
+  }
 
   getUpdateObj() {
     return {
