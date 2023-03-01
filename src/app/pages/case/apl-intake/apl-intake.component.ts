@@ -192,4 +192,18 @@ export class AplIntakeComponent implements OnInit {
     });
 
   }
+
+  onNewAplContact() {
+      const config = new MatDialogConfig();
+      config.width = '600px';
+      config.autoFocus = false;
+      // config.data = item;
+      const dialogRef = this.dialog.open(CaseContactComponent, config);
+      dialogRef.afterClosed().subscribe(data => {
+        console.log("Dialog output:", data)
+        if (data) {
+          // this.addresses1[index] = data;
+        }
+      });
+  }
 }
