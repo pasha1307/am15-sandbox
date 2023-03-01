@@ -16,7 +16,15 @@
 <!--                </li>-->
 <!--            </ul>-->
             <div  >
-                <mat-checkbox class="div-appeal-info-xref-buttons" formControlName="primaryContact">Primary Contact</mat-checkbox>
+                <mat-slide-toggle formControlName="primaryContact" #pc>
+                    <span *ngIf="!form.controls.primaryContact.value">Not </span>
+                    <span *ngIf="form.controls.primaryContact.value"> Is Set As </span>
+                    <span >Primary Contact</span>
+                </mat-slide-toggle>
+
+<!--                <mat-slide-toggle formControlName="acceptTerms">Accept Terms of Service</mat-slide-toggle>-->
+
+<!--                <mat-checkbox class="div-appeal-info-xref-buttons" formControlName="primaryContact">Primary Contact</mat-checkbox>-->
                 <mat-checkbox class="div-appeal-info-xref-buttons" formControlName="ubleToContact"
                 >Unable to contact
                     <mat-error *ngIf="form.get('ubleToContact')?.hasError('required')">Unable to contact is required. </mat-error>
