@@ -203,12 +203,12 @@
       <ng-container *ngIf="contactsArr.length">
 
         <mat-tab label="Appellants">
-          <button mat-fab extended color="primary" class="ml-10 mt-4">
-            <mat-icon>add</mat-icon>
-            New Appellant
-          </button>
-          <div class="mt-4 flex flex-wrap">
 
+          <div class="mt-4 flex flex-wrap">
+            <button mat-fab extended color="primary" class="ml-10 mt-4">
+              <mat-icon>add</mat-icon>
+              New Appellant
+            </button>
             <!--          <app-intake-contacts *ngFor="let p of addresses1" [person]="p" (click)="onUpdate()"></app-intake-contacts>-->
             <ng-container *ngFor="let c of contactsArr; let i = index">
               <mat-card class="m-4 long-card w-1/4 mat-elevation-z6" >
@@ -313,12 +313,18 @@
           </div>
         </mat-tab>
         <mat-tab label="Representatives">
-          <button mat-fab extended color="primary" class="ml-10 mt-4">
-            <mat-icon>add</mat-icon>
-            New Representative
-          </button>
+          <div class="mt-10 ml-10 content-center">
+            <div *ngIf="!reps.length">
+              <h2 class="mat-headline-4">This Appeal does not have representatives. Please, click button to add new.</h2>
+            </div>
+            <button mat-fab extended color="primary" >
+              <mat-icon>add</mat-icon>
+              New Representative
+            </button>
+          </div>
+
           <!--        <div class="flex justify-around mt-9">-->
-          <app-contact></app-contact>
+<!--          <app-contact></app-contact>-->
           <!--          <app-intake-contacts></app-intake-contacts>-->
           <!--          <app-intake-contacts></app-intake-contacts>-->
           <!--          <app-intake-contacts></app-intake-contacts>-->

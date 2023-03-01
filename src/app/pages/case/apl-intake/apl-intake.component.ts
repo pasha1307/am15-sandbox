@@ -27,6 +27,7 @@ import {AppealService} from "../../../services/appeal.service";
 export class AplIntakeComponent implements OnInit {
   addresses1 = CONTACTS_USER1;
   addresses2 = CONTACTS_USER2;
+  reps = [];
   aplData?: any;
   contactsArr?: any;
   menu = INTAKE_STEPS;
