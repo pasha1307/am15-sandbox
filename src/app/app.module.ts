@@ -99,6 +99,7 @@ import { AppealReasonComponent } from './pages/case/apl-intake/sections/appeal-r
 import { CaseContactComponent } from './pages/case/case-contact/case-contact.component';
 import {CdkOption} from "@angular/cdk/listbox";
 import { CaseCreateComponent } from './pages/case/case-create/case-create.component';
+import { NewContactDialogComponent } from './shared/dialogs/new-contact-dialog/new-contact-dialog.component';
 
 // @ts-ignore
 // import {MaterialTabsModule} from 'angular-vertical-material-tabs/dist/material-tabs';
@@ -164,7 +165,8 @@ import { CaseCreateComponent } from './pages/case/case-create/case-create.compon
     MarketplaceComponent,
     AppealReasonComponent,
     CaseContactComponent,
-    CaseCreateComponent
+    CaseCreateComponent,
+    NewContactDialogComponent
   ],
     imports: [
         BrowserModule,

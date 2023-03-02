@@ -12,6 +12,7 @@ import {NewInconDialogComponent} from "../../../shared/dialogs/new-incon-dialog/
 import {IntakeContactsComponent} from "./sections/intake-contacts/intake-contacts.component";
 import {CaseContactComponent} from "../case-contact/case-contact.component";
 import {AppealService} from "../../../services/appeal.service";
+import {NewContactDialogComponent} from "../../../shared/dialogs/new-contact-dialog/new-contact-dialog.component";
 
 @Component({
   selector: 'app-apl-intake',
@@ -198,7 +199,7 @@ export class AplIntakeComponent implements OnInit {
       config.width = '600px';
       config.autoFocus = false;
       // config.data = item;
-      const dialogRef = this.dialog.open(CaseContactComponent, config);
+      const dialogRef = this.dialog.open(NewContactDialogComponent, config);
       dialogRef.afterClosed().subscribe(data => {
         console.log("Dialog output:", data)
         if (data) {

@@ -1,0 +1,140 @@
+<h2 mat-dialog-title> Create New Appellant</h2>
+
+<mat-dialog-content [formGroup]="form" class="flex-col modal-content flex-grow justify-between">
+
+    <section class="flex justify-center m-4 p-1">
+            <div class="ea-section-row inline-form">
+                <!--            <label class="example-listbox-label" id="example-shirt-size-label">-->
+                <!--                Suffix-->
+                <!--            </label>-->
+                <!--            <ul cdkListbox-->
+                <!--                cdkListboxOrientation="horizontal"-->
+                <!--                aria-labelledby="example-shirt-size-label"-->
+                <!--                class="example-listbox">-->
+                <!--                <li *ngFor="let size of sfx"-->
+                <!--                    [cdkOption]="size"-->
+                <!--                    class="example-option">-->
+                <!--                    {{size}}-->
+                <!--                </li>-->
+                <!--            </ul>-->
+                <div>
+                    <mat-slide-toggle formControlName="primaryContact" #pc>
+                        <span *ngIf="!form.controls.primaryContact.value">Not </span>
+                        <span *ngIf="form.controls.primaryContact.value"> Is Set As </span>
+                        <span >Primary Contact</span>
+                    </mat-slide-toggle>
+
+                    <!--                <mat-slide-toggle formControlName="acceptTerms">Accept Terms of Service</mat-slide-toggle>-->
+
+                    <!--                <mat-checkbox class="div-appeal-info-xref-buttons" formControlName="primaryContact">Primary Contact</mat-checkbox>-->
+                    <mat-checkbox class="div-appeal-info-xref-buttons" formControlName="ubleToContact"
+                    >Unable to contact
+                        <mat-error *ngIf="form.get('ubleToContact')?.hasError('required')">Unable to contact is required. </mat-error>
+                    </mat-checkbox>
+
+                  <mat-form-field class="mt-4">
+                      <mat-label>Select Person Type</mat-label>
+                      <mat-select formControlName="prsnType">
+                          <mat-option value="1">Type 1</mat-option>
+                          <mat-option value="2">Type 2</mat-option>
+                          <mat-option value="3">Type 3</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                </div>
+                <div   class="div-full-name">
+                    <mat-form-field appearance="fill" >
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName" />
+                        <mat-error *ngIf="form.get('firstName')?.hasError('required')"
+                        >First Name is required. Enter a First Name in the text box.</mat-error
+                        >
+                        <mat-error *ngIf="form.get('firstName')?.hasError('maxlength')"
+                        >First Name should be less than {{ firstNameMaxLength }} characters
+                        </mat-error>
+
+                        <mat-error *ngIf="form.get('firstName')?.hasError('pattern')"
+                        >{{ form.get('firstName')!.value }} is not a valid First Name. Enter a valid First Name using capitalized letters only.
+                        </mat-error>
+                        <mat-hint align="end">{{ form.get('firstName')!.value?.length || 0 }}/{{ firstNameMaxLength }}</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" >
+                        <mat-label>Middle Name</mat-label>
+                        <input matInput formControlName="middleName" />
+                        <mat-error *ngIf="form.get('middleName')?.hasError('maxlength')"
+                        >Middle Name should be less than {{ middleNameMaxLength }} characters
+                        </mat-error>
+                        <mat-error *ngIf="form.get('middleName')?.hasError('middleName', 'pattern')"
+                        >Only Alpha Characters, '-' are allowed in Middle name
+                        </mat-error>
+                        <mat-hint align="end">{{ form.get('middleName')!.value?.length || 0 }}/{{ middleNameMaxLength }}</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" >
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName" />
+                        <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required. Enter a Last Name in the text box.</mat-error>
+                        <mat-error *ngIf="form.get('lastName')?.hasError('maxlength')"
+                        >Last Name should be less than {{ lastNameMaxLength }} characters</mat-error
+                        >
+                        <mat-error *ngIf="form.get('lastName')?.hasError('pattern')"
+                        >{{ form.get('lastName')!.value }} is not a valid Last Name. Enter a valid Last Name using capitalized letters only.
+                        </mat-error>
+                        <mat-hint align="end">{{ form.get('lastName')!.value?.length || 0 }}/{{ lastNameMaxLength }}</mat-hint>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" fxFlex="15">
+                        <mat-label>Suffix</mat-label>
+                        <mat-select formControlName="sfx">
+                            <ng-container *ngFor="let suffix of aplSuffixArr">
+                                <mat-option [value]="suffix">{{ suffix }}</mat-option>
+                            </ng-container>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div  >
+                    <mat-form-field appearance="fill" >
+                        <mat-label>Date of Birth</mat-label>
+                        <input matInput formControlName="dob" [matDatepicker]="hear" />
+                        <mat-datepicker-toggle matSuffix [for]="hear"></mat-datepicker-toggle>
+                        <mat-datepicker #hear></mat-datepicker>
+                        <mat-hint></mat-hint>
+                        <mat-error *ngIf="form?.get('dob')?.hasError('required')"> Date of Birth is required (MM/DD/YYYY). </mat-error>
+                        <mat-error *ngIf="form?.get('dob')?.hasError('dateLessThanNewDate')">
+                            Date of Birth must be a previous date. Select a valid Date of Birth from the calendar.
+                        </mat-error>
+                    </mat-form-field>
+
+                    <div class="div-appeal-info-xref-buttons" >
+                        <mat-checkbox fxLayoutAlign="space-around end" formControlName="sgntrInd">Signature Indicator </mat-checkbox>
+                    </div>
+
+                    <mat-form-field appearance="fill" >
+                        <mat-label>Date Signed</mat-label>
+                        <input matInput formControlName="dtSgnd" [matDatepicker]="dateSigned" />
+                        <mat-datepicker-toggle matSuffix [for]="dateSigned"></mat-datepicker-toggle>
+                        <mat-datepicker #dateSigned></mat-datepicker>
+                        <mat-error *ngIf="form?.get('dtSgnd')?.hasError('required')"> Date Signed is required (MM/DD/YYYY). </mat-error>
+                        <mat-error *ngIf="form?.get('dtSgnd')?.hasError('dateLessThanNewDate')">
+                            Date Signed must be a previous date. Select a valid Date from the calendar.
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+<!--                <div  >-->
+<!--                    <mat-checkbox class="div-appeal-info-xref-buttons" formControlName="adrSameAsApllant">Address same as Appellant 1</mat-checkbox>-->
+<!--                </div>-->
+            </div>
+    </section>
+
+
+<!--    <mat-dialog-actions>-->
+<!--        <button mat-raised-button (click)="onClose()">Cancel</button>-->
+<!--        <button mat-raised-button color="primary" (click)="onSave()">Create</button>-->
+<!--&lt;!&ndash;        <button mat-raised-button color="primary" (click)="onSave()" *ngIf="customData?.length">Update</button>&ndash;&gt;-->
+<!--    </mat-dialog-actions>-->
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button (click)="onClose()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="onSave()">Create</button>
+    <!--        <button mat-raised-button color="primary" (click)="onSave()" *ngIf="customData?.length">Update</button>-->
+</mat-dialog-actions>
