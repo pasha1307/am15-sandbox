@@ -100,6 +100,8 @@ import { CaseContactComponent } from './pages/case/case-contact/case-contact.com
 import {CdkOption} from "@angular/cdk/listbox";
 import { CaseCreateComponent } from './pages/case/case-create/case-create.component';
 import { NewContactDialogComponent } from './shared/dialogs/new-contact-dialog/new-contact-dialog.component';
+import { NewPhoneDialogComponent } from './shared/dialogs/new-phone-dialog/new-phone-dialog.component';
+import { NewEmailDialogComponent } from './shared/dialogs/new-email-dialog/new-email-dialog.component';
 
 // @ts-ignore
 // import {MaterialTabsModule} from 'angular-vertical-material-tabs/dist/material-tabs';
@@ -166,7 +168,9 @@ import { NewContactDialogComponent } from './shared/dialogs/new-contact-dialog/n
     AppealReasonComponent,
     CaseContactComponent,
     CaseCreateComponent,
-    NewContactDialogComponent
+    NewContactDialogComponent,
+    NewPhoneDialogComponent,
+    NewEmailDialogComponent
   ],
     imports: [
         BrowserModule,

@@ -14,6 +14,7 @@ import {CaseContactComponent} from "../case-contact/case-contact.component";
 import {AppealService} from "../../../services/appeal.service";
 import {NewContactDialogComponent} from "../../../shared/dialogs/new-contact-dialog/new-contact-dialog.component";
 import {ModalComponent} from "../../../shared/modal/modal.component";
+import {NewPhoneDialogComponent} from "../../../shared/dialogs/new-phone-dialog/new-phone-dialog.component";
 
 @Component({
   selector: 'app-apl-intake',
@@ -231,19 +232,17 @@ export class AplIntakeComponent implements OnInit {
           zip: data.postalCode
         }
         this.contactsArr[index].contactAddress.push(obj);
-        // this.contactsArr[index].contactAddress.push(data);
-        console.log('OBJ', obj)
-        console.log('DATA', data)
-        console.log('CONTACTS',this.contactsArr)
-        console.log('ADDESS',this.contactsArr[index].contactAddress)
-        // if (arr === 'a1') {
-        //   console.log("DATA -1 :", data);
-        //   this.addresses1.push(obj)
-        // } else {
-        //   console.log("DATA -2 :", data);
-        //   this.addresses2.push(obj)
-        // }
       }
+    })
+  }
+
+  onNewPhone(index: number) {
+    const config = new MatDialogConfig();
+    config.width = '400px';
+    config.minHeight = '400px';
+    const dialogRef = this.dialog.open(NewPhoneDialogComponent, config);
+    dialogRef.afterClosed().subscribe(data => {
+     console.log('Phone Data');
     })
   }
 }

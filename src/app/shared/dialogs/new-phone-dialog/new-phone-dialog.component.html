@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Add Phone</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" class="apl-phone-form">
+        <div >
+            <mat-checkbox formControlName="txtPrefnc">Text Preference </mat-checkbox>
+        </div>
+        <div fxLayout="row" fxLayoutGap="2rem">
+            <mat-form-field appearance="outline">
+                <mat-label>Phone Type</mat-label>
+                <mat-select formControlName="phoneType">
+                    <mat-option value="1">One</mat-option>
+                    <mat-option value="2">Two</mat-option>
+<!--                    <ng-container *ngFor="let type of phoneType$ | async">-->
+<!--                        <mat-option [value]="type.code" [disabled]="form.controls.txtPrefnc.value === true && type.code !== 'Mobile'">{{-->
+<!--                            type.displayText-->
+<!--                            }}</mat-option>-->
+<!--                    </ng-container>-->
+                </mat-select>
+                <mat-error *ngIf="form.get('phoneType')?.hasError('textPreferenceNotMobile')">
+                    Not an applicable Phone Type with selected Text Preference. Choose an applicable Mobile Phone Type option from the dropdown
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input matInput placeholder="xxx-xxx-xxxx" value="" formControlName="telePhoneNumber" />
+                <mat-error *ngIf="form.get('telePhoneNumber')?.hasError('pattern')">
+                    {{ form.controls['telePhoneNumber'].value }} is not a valid phone number. Enter a valid phone number using 10 numerical digits only.
+                </mat-error>
+                <mat-error *ngIf="form.get('telePhoneNumber')?.hasError('required')">
+                    A Phone Number is required when a Phone Type is selected. Enter a Phone Number in the text box
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Extension</mat-label>
+                <input matInput placeholder="Extension" value="" formControlName="extNo" />
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-stroked-button color="primary" type="button" class="mr-2" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid"
+            (click)="onSubmit()">
+        Submit
+    </button>
+</mat-dialog-actions>
