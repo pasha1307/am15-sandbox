@@ -13,6 +13,7 @@ import {IntakeContactsComponent} from "./sections/intake-contacts/intake-contact
 import {CaseContactComponent} from "../case-contact/case-contact.component";
 import {AppealService} from "../../../services/appeal.service";
 import {NewContactDialogComponent} from "../../../shared/dialogs/new-contact-dialog/new-contact-dialog.component";
+import {ModalComponent} from "../../../shared/modal/modal.component";
 
 @Component({
   selector: 'app-apl-intake',
@@ -51,25 +52,25 @@ export class AplIntakeComponent implements OnInit {
   isDisplayDate = false;
   isCompleted = false;
   f1 = this.fb.group(
-    {
-      aplType: ['', Validators.required],
-      intakeType: ['', Validators.required],
-      receiptType: [''],
-      pendedReason: [''],
-      formType: [''],
-      aplSubmittedBy: [''],
-      pendedReqEndDate: [{value: '', disabled: true}, Validators.required],
-      pendedReqStartDate: [{value: '', disabled: true}, Validators.required],
-      appCallReleaseHold: ['', Validators.required],
-      xreferenceType: [''],
-      xreference: ['', [Validators.required] ],
-      receiptDate: ['', {validators: [Validators.required]}],
-      hearingRecieptDate: [''],
-      planYear: [''],
-    },
-    {
-      validators: Validators.required,
-    }
+      {
+        aplType: ['', Validators.required],
+        intakeType: ['', Validators.required],
+        receiptType: [''],
+        pendedReason: [''],
+        formType: [''],
+        aplSubmittedBy: [''],
+        pendedReqEndDate: [{value: '', disabled: true}, Validators.required],
+        pendedReqStartDate: [{value: '', disabled: true}, Validators.required],
+        appCallReleaseHold: ['', Validators.required],
+        xreferenceType: [''],
+        xreference: ['', [Validators.required]],
+        receiptDate: ['', {validators: [Validators.required]}],
+        hearingRecieptDate: [''],
+        planYear: [''],
+      },
+      {
+        validators: Validators.required,
+      }
   );
 
   constructor(private fb: FormBuilder, private drops: DropdownsService, public dialog: MatDialog, private aplService: AppealService) {
@@ -107,6 +108,7 @@ export class AplIntakeComponent implements OnInit {
     //   value ? this.f1.controls.xreference.enable() : this.f1.controls.xreference.disable();
     // });
   }
+
   ngOnInit() {
     this.aplService.getArr().subscribe(r => console.log('INTAKE OBJ ARR', r))
     if (history.state.data) {
@@ -123,7 +125,7 @@ export class AplIntakeComponent implements OnInit {
         pendedReqEndDate: this.aplData.pendedReqEndDate || '',
         pendedReqStartDate: this.aplData.pendedReqStartDate || '',
         appCallReleaseHold: this.aplData.appCallReleaseHold || '',
-        xreferenceType:  this.aplData.xreferenceType || '',
+        xreferenceType: this.aplData.xreferenceType || '',
         xreference: this.aplData.xreference || '',
         receiptDate: this.aplData.recieptDate || '',
         hearingRecieptDate: this.aplData.hearingRecieptDate || '',
@@ -160,7 +162,7 @@ export class AplIntakeComponent implements OnInit {
       pendedReqEndDate: this.f1.value.pendedReqEndDate,
       pendedReqStartDate: this.f1.value.pendedReqStartDate,
       appCallReleaseHold: this.f1.value.appCallReleaseHold,
-      xreferenceType:  this.f1.value.xreferenceType,
+      xreferenceType: this.f1.value.xreferenceType,
       xreference: this.f1.value.xreference,
       recieptDate: this.f1.value.receiptDate,
       hearingRecieptDate: this.f1.value.hearingRecieptDate,
@@ -195,16 +197,53 @@ export class AplIntakeComponent implements OnInit {
   }
 
   onNewAplContact() {
-      const config = new MatDialogConfig();
-      config.width = '600px';
-      config.autoFocus = false;
-      // config.data = item;
-      const dialogRef = this.dialog.open(NewContactDialogComponent, config);
-      dialogRef.afterClosed().subscribe(data => {
-        console.log("Dialog output:", data)
-        if (data) {
-          // this.addresses1[index] = data;
+    const config = new MatDialogConfig();
+    config.width = '600px';
+    config.autoFocus = false;
+    // config.data = item;
+    const foo = this.aplData.contacts;
+    const dialogRef = this.dialog.open(NewContactDialogComponent, config);
+    dialogRef.afterClosed().subscribe(data => {
+      console.log("Dialog output:", data)
+      if (data) {
+        const pload = {...data, contactAddress: [], contactEmail: [], contactTellInfo:[] }
+        console.log('PALOAD', pload)
+        this.contactsArr.push(pload);
+        console.log("CONTACTS ARR:", this.contactsArr)
+        // this.addresses1[index] = data;
+      }
+    });
+  }
+
+  onNewContactAddress(index: number) {
+    const config = new MatDialogConfig();
+    config.width = '600px';
+    config.minHeight = '400px';
+    const dialogRef = this.dialog.open(ModalComponent, config);
+    dialogRef.afterClosed().subscribe(data => {
+      if (data.city) {
+        const sadr = data.address2 ? 'two' : 'one';
+        const obj = {
+          addressType: data.type,
+          stAddressType1: data.address,
+          city: data.city,
+          state: data.state,
+          zip: data.postalCode
         }
-      });
+        this.contactsArr[index].contactAddress.push(obj);
+        // this.contactsArr[index].contactAddress.push(data);
+        console.log('OBJ', obj)
+        console.log('DATA', data)
+        console.log('CONTACTS',this.contactsArr)
+        console.log('ADDESS',this.contactsArr[index].contactAddress)
+        // if (arr === 'a1') {
+        //   console.log("DATA -1 :", data);
+        //   this.addresses1.push(obj)
+        // } else {
+        //   console.log("DATA -2 :", data);
+        //   this.addresses2.push(obj)
+        // }
+      }
+    })
   }
 }

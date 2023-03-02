@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {AppealService} from "../../../services/appeal.service";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-new-contact-dialog',
@@ -31,15 +32,18 @@ export class NewContactDialogComponent implements OnInit {
     adrSameAsApllant: [false]
   });
 
-  constructor(private fb: FormBuilder, private aplService: AppealService) {
+  constructor(private fb: FormBuilder, private aplService: AppealService, private dialog: MatDialogRef<NewContactDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) data: any) {
   }
 
   ngOnInit() {
   }
-  onSave() {
 
+  onSave() {
+    // console.log('FORM', this.form.value)
+      this.dialog.close(this.form.value)
   }
   onClose() {
-
+    this.dialog.close();
   }
 }
