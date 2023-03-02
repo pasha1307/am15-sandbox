@@ -23,11 +23,11 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Phone Number</mat-label>
-                <input matInput placeholder="xxx-xxx-xxxx" value="" formControlName="telePhoneNumber" />
-                <mat-error *ngIf="form.get('telePhoneNumber')?.hasError('pattern')">
-                    {{ form.controls['telePhoneNumber'].value }} is not a valid phone number. Enter a valid phone number using 10 numerical digits only.
+                <input matInput placeholder="xxx-xxx-xxxx" value="" formControlName="phone" />
+                <mat-error *ngIf="form.get('phone')?.hasError('pattern')">
+                    {{ form.controls['phone'].value }} is not a valid phone number. Enter a valid phone number using 10 numerical digits only.
                 </mat-error>
-                <mat-error *ngIf="form.get('telePhoneNumber')?.hasError('required')">
+                <mat-error *ngIf="form.get('phone')?.hasError('required')">
                     A Phone Number is required when a Phone Type is selected. Enter a Phone Number in the text box
                 </mat-error>
             </mat-form-field>

@@ -13,7 +13,7 @@ export class NewPhoneDialogComponent {
         {
             txtPrefnc: [false],
             phoneType: [''],
-            telePhoneNumber: ['', Validators.pattern('^[0-9]{3}-[0-9]{3}-[0-9]{4}$')],
+            phone: ['', Validators.pattern('^[0-9]{3}-[0-9]{3}-[0-9]{4}$')],
             extNo: [''],
             contractTellInfoId: [''],
             appealId: [''],

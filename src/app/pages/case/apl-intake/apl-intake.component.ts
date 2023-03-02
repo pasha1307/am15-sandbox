@@ -243,7 +243,7 @@ export class AplIntakeComponent implements OnInit {
     config.minHeight = '400px';
     const dialogRef = this.dialog.open(NewPhoneDialogComponent, config);
     dialogRef.afterClosed().subscribe(data => {
-     console.log('Phone Data', data, index);
+      this.contactsArr[index].contactTellInfo.push(data);
     })
   }
 
@@ -253,7 +253,7 @@ export class AplIntakeComponent implements OnInit {
     config.minHeight = '400px';
     const dialogRef = this.dialog.open(NewEmailDialogComponent, config);
     dialogRef.afterClosed().subscribe(data => {
-      console.log('Email Data and index', data, index);
+      this.contactsArr[index].contactEmail.push(data);
     })
   }
 }
