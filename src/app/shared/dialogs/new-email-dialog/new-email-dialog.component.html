@@ -1,1 +1,40 @@
-<p>new-email-dialog works!</p>
+<h2 mat-dialog-title>Add Email</h2>
+<mat-dialog-content>
+    <form [formGroup]="form" class="apl-email-form">
+        <div fxLayout="row" fxLayoutGap="2rem">
+            <mat-checkbox formControlName="emailPrefn">Email Preference </mat-checkbox>
+        </div>
+        <div fxLayout="row" fxLayoutGap="2rem">
+            <mat-form-field appearance="outline" fxFlex="25rem">
+                <mat-label>Email Type</mat-label>
+                <mat-select formControlName="emailType">
+                    <mat-option value="1">One</mat-option>
+                    <mat-option value="2">Two</mat-option>
+
+                    <!--                <ng-container >-->
+                    <!--                    <mat-option [value]="type.code">{{ type.displayText }}</mat-option>-->
+                    <!--                </ng-container>-->
+                </mat-select>
+                <mat-error *ngIf="form.get('emailType')?.hasError('required')">
+                    Email Preference was selected. Choose an Email Type option from the dropdown
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" fxFlex="25rem">
+                <mat-label>Email Addresses</mat-label>
+                <input matInput placeholder="" value="" formControlName="email" />
+                <mat-error *ngIf="form.get('email')?.hasError('required')">
+                    An Email Address is required when an Email Type is selected. Enter an Email Address in the text box
+                </mat-error>
+                <mat-error *ngIf="form.get('email')?.hasError('email')"> Enter a valid email address </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-stroked-button color="primary" type="button" class="mr-2" (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid"
+            (click)="onSubmit()">
+        Submit
+    </button>
+</mat-dialog-actions>

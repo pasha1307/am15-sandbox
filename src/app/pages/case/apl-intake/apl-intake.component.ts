@@ -15,6 +15,7 @@ import {AppealService} from "../../../services/appeal.service";
 import {NewContactDialogComponent} from "../../../shared/dialogs/new-contact-dialog/new-contact-dialog.component";
 import {ModalComponent} from "../../../shared/modal/modal.component";
 import {NewPhoneDialogComponent} from "../../../shared/dialogs/new-phone-dialog/new-phone-dialog.component";
+import {NewEmailDialogComponent} from "../../../shared/dialogs/new-email-dialog/new-email-dialog.component";
 
 @Component({
   selector: 'app-apl-intake',
@@ -242,7 +243,17 @@ export class AplIntakeComponent implements OnInit {
     config.minHeight = '400px';
     const dialogRef = this.dialog.open(NewPhoneDialogComponent, config);
     dialogRef.afterClosed().subscribe(data => {
-     console.log('Phone Data');
+     console.log('Phone Data', data, index);
+    })
+  }
+
+  onNewEmail(index: number) {
+    const config = new MatDialogConfig();
+    config.width = '400px';
+    config.minHeight = '400px';
+    const dialogRef = this.dialog.open(NewEmailDialogComponent, config);
+    dialogRef.afterClosed().subscribe(data => {
+      console.log('Email Data and index', data, index);
     })
   }
 }
