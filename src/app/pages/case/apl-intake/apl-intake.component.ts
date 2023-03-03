@@ -228,9 +228,10 @@ export class AplIntakeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       console.log("Dialog output:", data)
       if (data) {
-        const pload = {...data, contactAddress: [], contactEmail: [], contactTellInfo:[] }
-        console.log('PALOAD', pload)
-        this.contactsArr[index] = data;
+        // const pload = {...data, contactAddress: [], contactEmail: [], contactTellInfo:[] }
+        console.log('PALOAD UPDATED', data)
+        this.contactsArr[index] = {...this.contactsArr[index],...data };
+        
         console.log("CONTACTS ARR:", this.contactsArr)
         // this.addresses1[index] = data;
       }
