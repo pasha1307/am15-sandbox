@@ -198,10 +198,11 @@ export class AplIntakeComponent implements OnInit {
 
   }
 
-  onNewAplContact() {
+  onNewAplContact(obj?: any) {
     const config = new MatDialogConfig();
     config.width = '600px';
     config.autoFocus = false;
+
     // config.data = item;
     const foo = this.aplData.contacts;
     const dialogRef = this.dialog.open(NewContactDialogComponent, config);
@@ -211,6 +212,25 @@ export class AplIntakeComponent implements OnInit {
         const pload = {...data, contactAddress: [], contactEmail: [], contactTellInfo:[] }
         console.log('PALOAD', pload)
         this.contactsArr.push(pload);
+        console.log("CONTACTS ARR:", this.contactsArr)
+        // this.addresses1[index] = data;
+      }
+    });
+  }
+
+  onUpdateContact(obj: any, index: number) {
+    const config = new MatDialogConfig();
+    config.width = '600px';
+    config.autoFocus = false;
+
+    config.data = obj;
+    const dialogRef = this.dialog.open(NewContactDialogComponent, config);
+    dialogRef.afterClosed().subscribe(data => {
+      console.log("Dialog output:", data)
+      if (data) {
+        const pload = {...data, contactAddress: [], contactEmail: [], contactTellInfo:[] }
+        console.log('PALOAD', pload)
+        this.contactsArr[index] = data;
         console.log("CONTACTS ARR:", this.contactsArr)
         // this.addresses1[index] = data;
       }

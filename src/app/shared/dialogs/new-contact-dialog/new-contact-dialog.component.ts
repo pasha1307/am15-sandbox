@@ -34,9 +34,28 @@ export class NewContactDialogComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private aplService: AppealService, private dialog: MatDialogRef<NewContactDialogComponent>,
               @Inject(MAT_DIALOG_DATA) data: any) {
+    console.log('DATA??', data)
+    if (data) {
+
+      this.form.patchValue({
+        prsnType: data.prsnType,
+        type: data.type,
+        primaryContact: data.primaryContact,
+        ubleToContact: data.ubleToContact,
+        firstName: data.firstName,
+        middleName: data.middleName,
+        lastName: data.lastName,
+        sfx: data.sfx,
+        dob: data.dob,
+        sgntrInd: data.sgntrInd,
+        dtSgnd: data.dtSgnd,
+        adrSameAsApllant: data.adrSameAsApllant
+      });
+    }
   }
 
   ngOnInit() {
+
   }
 
   onSave() {
