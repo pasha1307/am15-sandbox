@@ -277,4 +277,8 @@ export class AplIntakeComponent implements OnInit {
       this.contactsArr[index].contactEmail.push(data);
     })
   }
+
+  onCancel() {
+    this.f1.reset();
+  }
 }
