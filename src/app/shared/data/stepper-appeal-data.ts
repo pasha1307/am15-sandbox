@@ -140,5 +140,13 @@ export const INTAKE_STEPS: StepperNav[] = [
     color: '#267bd9',
     step: 9,
     phase: 'Phase Nine'
+  },
+  {
+    title: 'Cross-references',
+    label: 'Cross-references',
+    icon: 'next_plan',
+    color: '#267bd9',
+    step: 9,
+    phase: 'Phase Ten'
   }
 ]

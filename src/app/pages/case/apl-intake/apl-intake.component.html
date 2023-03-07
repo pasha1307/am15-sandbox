@@ -108,36 +108,36 @@
             </mat-checkbox>
           </div>
 
-          <mat-form-field appearance="fill">
-            <mat-label>Xreference Type</mat-label>
-            <mat-select formControlName="xreferenceType">
-              <ng-container *ngFor="let xrt of xRefTypes">
-                <mat-option [value]="xrt">{{ xrt}}</mat-option>
-              </ng-container>
-            </mat-select>
-            <mat-error *ngIf="hasError('xreferenceType', 'required')"> Please, select a Xreference Type from the
-              dropdown
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="full-width" appearance="fill">
-            <mat-label>Appeal Xreference</mat-label>
-            <input matInput formControlName="xreference" placeholder="Only valid Appeal format, APL-XX is allowed"/>
-<!--            <mat-error *ngIf="hasError('xreference', 'pattern')"> Only valid Appeal format, APL-XX is allowed.-->
+<!--          <mat-form-field appearance="fill">-->
+<!--            <mat-label>Xreference Type</mat-label>-->
+<!--            <mat-select formControlName="xreferenceType">-->
+<!--              <ng-container *ngFor="let xrt of xRefTypes">-->
+<!--                <mat-option [value]="xrt">{{ xrt}}</mat-option>-->
+<!--              </ng-container>-->
+<!--            </mat-select>-->
+<!--            <mat-error *ngIf="hasError('xreferenceType', 'required')"> Please, select a Xreference Type from the-->
+<!--              dropdown-->
 <!--            </mat-error>-->
-<!--            <mat-error *ngIf="hasError('xreference', 'required')"> Appeal Xreference must be entered in the text box.-->
-<!--            </mat-error>-->
-          </mat-form-field>
+<!--          </mat-form-field>-->
 
-          <div>
-            <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
-                    [mat-dialog-close]="true">Add Xref
-            </button>
-            <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
-                    [mat-dialog-close]="true">
-              Xref Appeals
-            </button>
-          </div>
+<!--          <mat-form-field class="full-width" appearance="fill">-->
+<!--            <mat-label>Appeal Xreference</mat-label>-->
+<!--            <input matInput formControlName="xreference" placeholder="Only valid Appeal format, APL-XX is allowed"/>-->
+<!--&lt;!&ndash;            <mat-error *ngIf="hasError('xreference', 'pattern')"> Only valid Appeal format, APL-XX is allowed.&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-error>&ndash;&gt;-->
+<!--&lt;!&ndash;            <mat-error *ngIf="hasError('xreference', 'required')"> Appeal Xreference must be entered in the text box.&ndash;&gt;-->
+<!--&lt;!&ndash;            </mat-error>&ndash;&gt;-->
+<!--          </mat-form-field>-->
+
+<!--          <div>-->
+<!--            <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"-->
+<!--                    [mat-dialog-close]="true">Add Xref-->
+<!--            </button>-->
+<!--            <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"-->
+<!--                    [mat-dialog-close]="true">-->
+<!--              Xref Appeals-->
+<!--            </button>-->
+<!--          </div>-->
           <h3 class="mat-subheading-2">Processing Dates</h3>
           <mat-form-field appearance="fill">
             <mat-label>Receipt Date</mat-label>
@@ -358,5 +358,37 @@
   <cdk-step>Content 7</cdk-step>
   <cdk-step>Content 8</cdk-step>
   <cdk-step>Content 9</cdk-step>
+  <cdk-step>
+    <mat-form-field appearance="fill">
+      <mat-label>Xreference Type</mat-label>
+      <mat-select formControlName="xreferenceType">
+        <ng-container *ngFor="let xrt of xRefTypes">
+          <mat-option [value]="xrt">{{ xrt}}</mat-option>
+        </ng-container>
+      </mat-select>
+      <mat-error *ngIf="hasError('xreferenceType', 'required')"> Please, select a Xreference Type from the
+        dropdown
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Appeal Xreference</mat-label>
+      <input matInput formControlName="xreference" placeholder="Only valid Appeal format, APL-XX is allowed"/>
+      <!--            <mat-error *ngIf="hasError('xreference', 'pattern')"> Only valid Appeal format, APL-XX is allowed.-->
+      <!--            </mat-error>-->
+      <!--            <mat-error *ngIf="hasError('xreference', 'required')"> Appeal Xreference must be entered in the text box.-->
+      <!--            </mat-error>-->
+    </mat-form-field>
+
+    <div>
+      <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
+              [mat-dialog-close]="true">Add Xref
+      </button>
+      <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
+              [mat-dialog-close]="true">
+        Xref Appeals
+      </button>
+    </div>
+  </cdk-step>
 
 </app-nav-stepper>
