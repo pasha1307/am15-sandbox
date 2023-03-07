@@ -359,36 +359,62 @@
   <cdk-step>Content 8</cdk-step>
   <cdk-step>Content 9</cdk-step>
   <cdk-step>
-    <mat-form-field appearance="fill">
-      <mat-label>Xreference Type</mat-label>
-      <mat-select formControlName="xreferenceType">
-        <ng-container *ngFor="let xrt of xRefTypes">
-          <mat-option [value]="xrt">{{ xrt}}</mat-option>
-        </ng-container>
-      </mat-select>
-      <mat-error *ngIf="hasError('xreferenceType', 'required')"> Please, select a Xreference Type from the
-        dropdown
-      </mat-error>
-    </mat-form-field>
+    <mat-card class="w-2/3 m-auto">
+      <section [formGroup]="f1">
+        <mat-card-header class="my-2">
+          <mat-card-title>Appeal Xreferences</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <h2>Appeal References List</h2>
+          <h2>If no Xreferences, then instead of table the button Add Reference</h2>
 
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>Appeal Xreference</mat-label>
-      <input matInput formControlName="xreference" placeholder="Only valid Appeal format, APL-XX is allowed"/>
-      <!--            <mat-error *ngIf="hasError('xreference', 'pattern')"> Only valid Appeal format, APL-XX is allowed.-->
-      <!--            </mat-error>-->
-      <!--            <mat-error *ngIf="hasError('xreference', 'required')"> Appeal Xreference must be entered in the text box.-->
-      <!--            </mat-error>-->
-    </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Xreference Type</mat-label>
+            <mat-select formControlName="xreferenceType">
+              <ng-container *ngFor="let xrt of xRefTypes">
+                <mat-option [value]="xrt">{{ xrt}}</mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error *ngIf="hasError('xreferenceType', 'required')"> Please, select a Xreference Type from the
+              dropdown
+            </mat-error>
+          </mat-form-field>
 
-    <div>
-      <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
-              [mat-dialog-close]="true">Add Xref
-      </button>
-      <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
-              [mat-dialog-close]="true">
-        Xref Appeals
-      </button>
-    </div>
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Appeal Xreference</mat-label>
+            <input matInput formControlName="xreference" placeholder="Only valid Appeal format, APL-XX is allowed"/>
+            <!--            <mat-error *ngIf="hasError('xreference', 'pattern')"> Only valid Appeal format, APL-XX is allowed.-->
+            <!--            </mat-error>-->
+            <!--            <mat-error *ngIf="hasError('xreference', 'required')"> Appeal Xreference must be entered in the text box.-->
+            <!--            </mat-error>-->
+          </mat-form-field>
+
+          <div>
+            <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
+                    [mat-dialog-close]="true">Add Xref
+            </button>
+            <button disabled class="div-appeal-info-xref-buttons-button" mat-stroked-button color="primary"
+                    [mat-dialog-close]="true">
+              Xref Appeals
+            </button>
+          </div>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions align="end" class="my-3">
+<!--          <div class="flex justify-around">-->
+<!--            &lt;!&ndash;            <button mat-button matStepperNext>Cancel</button>&ndash;&gt;-->
+<!--            <button mat-button (click)="onCancel()">Cancel</button>-->
+<!--            <button matStepperNext mat-flat-button color="primary" [disabled]="f1.invalid" (click)="completeStep()">Complete Step-->
+<!--            </button>-->
+<!--          </div>-->
+        </mat-card-actions>
+      </section>
+      <!--      <pre>-->
+      <!--          {{f1.value | json}}-->
+      <!--        </pre>-->
+    </mat-card>
+
   </cdk-step>
 
 </app-nav-stepper>
