@@ -18,7 +18,6 @@ export class NewContactDialogComponent implements OnInit {
   form = this.fb.group({
     contactId: [''],
     appealId: [''],
-    prsnType: [''],
     type: [''],
     primaryContact: [false],
     ubleToContact: [false, [Validators.required]],
@@ -26,9 +25,10 @@ export class NewContactDialogComponent implements OnInit {
     middleName: ['', [Validators.maxLength(this.lastNameMaxLength), Validators.pattern('^[a-zA-Z-]+')]],
     lastName: ['', [Validators.required, Validators.maxLength(this.lastNameMaxLength), Validators.pattern('^[a-zA-Z-]+')]],
     sfx: [''],
-    dob: ['', Validators.required],
+    gender: ['', [Validators.required]],
+    dob: [''],
     sgntrInd: [false],
-    dtSgnd: ['', Validators.required],
+    dtSgnd: [''],
     adrSameAsApllant: [false]
   });
 
@@ -38,7 +38,6 @@ export class NewContactDialogComponent implements OnInit {
     if (data) {
 
       this.form.patchValue({
-        prsnType: data.prsnType,
         type: data.type,
         primaryContact: data.primaryContact,
         ubleToContact: data.ubleToContact,
@@ -47,6 +46,7 @@ export class NewContactDialogComponent implements OnInit {
         lastName: data.lastName,
         sfx: data.sfx,
         dob: data.dob,
+        gender: '',
         sgntrInd: data.sgntrInd,
         dtSgnd: data.dtSgnd,
         adrSameAsApllant: data.adrSameAsApllant

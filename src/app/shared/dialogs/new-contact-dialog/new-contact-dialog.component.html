@@ -32,14 +32,6 @@
                         <mat-error *ngIf="form.get('ubleToContact')?.hasError('required')">Unable to contact is required. </mat-error>
                     </mat-checkbox>
 
-                  <mat-form-field class="mt-4">
-                      <mat-label>Select Person Type</mat-label>
-                      <mat-select formControlName="prsnType">
-                          <mat-option value="appellant">Appellant</mat-option>
-                          <mat-option value="rep">Respresentative</mat-option>
-                          <mat-option value="3">What else?</mat-option>
-                      </mat-select>
-                  </mat-form-field>
                 </div>
                 <div   class="div-full-name">
                     <mat-form-field appearance="fill" >
@@ -92,7 +84,18 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div  >
+                <mat-form-field class="mt-4">
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName="gender">
+                        <mat-option value="male">Male</mat-option>
+                        <mat-option value="female">Female</mat-option>
+                        <mat-option value="undefined">Undefined</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="form?.get('gender')?.hasError('required')">
+                        Please, select gender.
+                    </mat-error>
+                </mat-form-field>
+                <div >
                     <mat-form-field appearance="fill" >
                         <mat-label>Date of Birth</mat-label>
                         <input matInput formControlName="dob" [matDatepicker]="hear" />
@@ -106,7 +109,7 @@
                     </mat-form-field>
 
                     <div class="div-appeal-info-xref-buttons" >
-                        <mat-checkbox fxLayoutAlign="space-around end" formControlName="sgntrInd">Signature Indicator </mat-checkbox>
+                        <mat-checkbox formControlName="sgntrInd">Signature Indicator </mat-checkbox>
                     </div>
 
                     <mat-form-field appearance="fill" >
@@ -135,6 +138,6 @@
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-raised-button (click)="onClose()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="onSave()">Create</button>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Submit</button>
     <!--        <button mat-raised-button color="primary" (click)="onSave()" *ngIf="customData?.length">Update</button>-->
 </mat-dialog-actions>
