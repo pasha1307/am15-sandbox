@@ -249,7 +249,7 @@
                       <ng-container *ngFor="let ad of c?.contactAddress; let ind = index">
                         <section class="address-item max-w-[200px] flex justify-between">
                           <div class="max-w-[200px]">
-                            <span>[{{ad.addressType}}]</span><br>
+                            <span class="font-semibold">[{{ad.addressType}}]</span><br>
                             <span>{{ad.stAddressType1}}</span>
                             <span> {{ad.stAddressType2}}</span><br>
                             <span>{{ad.city}}, {{ad.state}} {{ad.zip}}</span>
