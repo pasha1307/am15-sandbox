@@ -3,7 +3,7 @@
 <mat-dialog-content [formGroup]="form" class="flex-col modal-content flex-grow justify-between">
 
     <section class="flex justify-center m-4 p-1">
-            <div class="ea-section-row inline-form">
+            <div>
                 <!--            <label class="example-listbox-label" id="example-shirt-size-label">-->
                 <!--                Suffix-->
                 <!--            </label>-->
@@ -17,20 +17,23 @@
                 <!--                    {{size}}-->
                 <!--                </li>-->
                 <!--            </ul>-->
-                <div>
+                <div class="flex justify-between mb-4">
                     <mat-slide-toggle formControlName="primaryContact" #pc>
-                        <span *ngIf="!form.controls.primaryContact.value">Not </span>
-                        <span *ngIf="form.controls.primaryContact.value"> Is Set As </span>
-                        <span >Primary Contact</span>
+                        <span *ngIf="!form.controls.primaryContact.value">Turn to Primary Contact </span>
+                        <span *ngIf="form.controls.primaryContact.value"> Primary Contact </span>
                     </mat-slide-toggle>
 
                     <!--                <mat-slide-toggle formControlName="acceptTerms">Accept Terms of Service</mat-slide-toggle>-->
 
                     <!--                <mat-checkbox class="div-appeal-info-xref-buttons" formControlName="primaryContact">Primary Contact</mat-checkbox>-->
-                    <mat-checkbox class="div-appeal-info-xref-buttons" formControlName="ubleToContact"
-                    >Unable to contact
-                        <mat-error *ngIf="form.get('ubleToContact')?.hasError('required')">Unable to contact is required. </mat-error>
-                    </mat-checkbox>
+
+<!--                    <mat-slide-toggle formControlName="ubleToContact" color="primary">-->
+<!--                        <span>Unable to contact</span>-->
+<!--                    </mat-slide-toggle>-->
+<!--                    <mat-checkbox class="div-appeal-info-xref-buttons" formControlName="ubleToContact"-->
+<!--                    >Unable to contact-->
+<!--                        <mat-error *ngIf="form.get('ubleToContact')?.hasError('required')">Unable to contact is required. </mat-error>-->
+<!--                    </mat-checkbox>-->
 
                 </div>
                 <div   class="div-full-name">

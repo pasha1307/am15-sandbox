@@ -20,7 +20,7 @@ export class NewContactDialogComponent implements OnInit {
     appealId: [''],
     type: [''],
     primaryContact: [false],
-    ubleToContact: [false, [Validators.required]],
+    ubleToContact: [false],
     firstName: ['', [Validators.required, Validators.maxLength(this.firstNameMaxLength), Validators.pattern('^[a-zA-Z-]+')]],
     middleName: ['', [Validators.maxLength(this.lastNameMaxLength), Validators.pattern('^[a-zA-Z-]+')]],
     lastName: ['', [Validators.required, Validators.maxLength(this.lastNameMaxLength), Validators.pattern('^[a-zA-Z-]+')]],
@@ -40,7 +40,7 @@ export class NewContactDialogComponent implements OnInit {
       this.form.patchValue({
         type: data.type,
         primaryContact: data.primaryContact,
-        ubleToContact: data.ubleToContact,
+        ubleToContact: false,
         firstName: data.firstName,
         middleName: data.middleName,
         lastName: data.lastName,
