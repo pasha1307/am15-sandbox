@@ -9,7 +9,7 @@ export const APL_INTAKE_SAMPLE = [ {
     aplStage: 'Intake',
     aplLink: 'intake',
     aplId: "APL-51",
-    aplType: "Large Employer ",
+    aplType: "Large Employer",
     aplSubType: "CHIP",
     aplIssue: "Individual Exemption",
     status: "New",

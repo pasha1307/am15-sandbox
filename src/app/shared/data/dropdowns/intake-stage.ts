@@ -1,4 +1,4 @@
-export const AppealTypes = ['Individual', 'Large Employer ', 'SHOP Employee', 'SHOP Employer'];
+export const AppealTypes = ['Individual', 'Large Employer', 'SHOP Employee', 'SHOP Employer'];
 export const IntakeTypes = ['Appeal', 'Return Mail', 'State Info Exchange', 'Supporting Docs', 'Supporting Info'];
 export const AplSources =
     [
