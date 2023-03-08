@@ -69,10 +69,12 @@
           <div class="form-section-2">
             <mat-form-field appearance="fill" >
               <mat-label>Pended Reason</mat-label>
-              <mat-select formControlName="pendedReason" #pend>
-                <mat-option value="one">Reason One</mat-option>
-                <mat-option value="two">Reason Two</mat-option>
-              </mat-select>
+                <mat-select formControlName="pendedReason" #pend>
+                  <mat-option value="">---</mat-option>
+                  <ng-container *ngFor="let it of pendedReasons">
+                    <mat-option [value]="it">{{ it}}</mat-option>
+                  </ng-container>
+                </mat-select>
             </mat-form-field>
 
             <mat-form-field appearance="fill" *ngIf="pend.selected">
@@ -157,7 +159,7 @@
               >
             </mat-form-field>
           </div>
-          
+
         </mat-card-content>
         <mat-divider></mat-divider>
         <mat-card-actions align="end" class="my-3">

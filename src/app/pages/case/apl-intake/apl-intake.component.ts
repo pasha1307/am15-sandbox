@@ -37,6 +37,7 @@ export class AplIntakeComponent implements OnInit {
     submittedByTypes: any[] = []
     aplTypes: any[] = [];
     intakeTypes: any[] = [];
+    pendedReasons = ['Appellant Request', 'Disaster Extension', 'Escalated to MAG']
 
 
     pendedReason$ = of([{code: '1', displayText: 'option one'}]);
