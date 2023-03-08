@@ -6,10 +6,6 @@ import {of} from "rxjs";
 import {CONTACTS_USER1, CONTACTS_USER2} from "../../../../assets/addresses-sample-data";
 import {DropdownsService} from "../../../services/dropdowns.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {ModalUpdateComponent} from "../../../shared/modal-update/modal-update.component";
-import {AplHearingComponent} from "../apl-hearing/apl-hearing.component";
-import {NewInconDialogComponent} from "../../../shared/dialogs/new-incon-dialog/new-incon-dialog.component";
-import {IntakeContactsComponent} from "./sections/intake-contacts/intake-contacts.component";
 import {CaseContactComponent} from "../case-contact/case-contact.component";
 import {AppealService} from "../../../services/appeal.service";
 import {NewContactDialogComponent} from "../../../shared/dialogs/new-contact-dialog/new-contact-dialog.component";
@@ -29,8 +25,6 @@ import {NewEmailDialogComponent} from "../../../shared/dialogs/new-email-dialog/
     ],
 })
 export class AplIntakeComponent implements OnInit {
-    addresses1 = CONTACTS_USER1;
-    addresses2 = CONTACTS_USER2;
     reps = [];
     aplData?: any;
     contactsArr?: any;
@@ -61,8 +55,8 @@ export class AplIntakeComponent implements OnInit {
             pendedReason: [''],
             formType: [''],
             aplSubmittedBy: [''],
-            pendedReqEndDate: [{value: '', disabled: true}, Validators.required],
-            pendedReqStartDate: [{value: '', disabled: true}, Validators.required],
+            pendedReqEndDate: ['', Validators.required],
+            pendedReqStartDate: ['', Validators.required],
             appCallReleaseHold: ['', Validators.required],
             xreferenceType: [''],
             xreference: ['', [Validators.required]],

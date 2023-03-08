@@ -2,6 +2,18 @@
   margin-top: 8px;
 }
 
+.form-section-1 {
+  .mat-mdc-form-field {
+    max-width: 410px;
+    min-width: 300px;
+  }
+}
+.form-section-2 {
+  .mat-mdc-form-field {
+    max-width: 410px;
+    min-width: 300px;
+  }
+}
 .mat-mdc-form-field {
   //margin-top: 16px;
   width: 45%;
