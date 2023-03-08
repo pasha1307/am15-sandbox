@@ -12,6 +12,7 @@ import {NewContactDialogComponent} from "../../../shared/dialogs/new-contact-dia
 import {ModalComponent} from "../../../shared/modal/modal.component";
 import {NewPhoneDialogComponent} from "../../../shared/dialogs/new-phone-dialog/new-phone-dialog.component";
 import {NewEmailDialogComponent} from "../../../shared/dialogs/new-email-dialog/new-email-dialog.component";
+import {AppealTypes} from "../../../shared/data/dropdowns/intake-stage";
 
 @Component({
     selector: 'app-apl-intake',
@@ -35,7 +36,7 @@ export class AplIntakeComponent implements OnInit {
     receiptTypes: any[] = [];
     xRefTypes: any[] = [];
     submittedByTypes: any[] = []
-    aplTypes: any[] = [];
+    aplTypes = AppealTypes;
     intakeTypes: any[] = [];
     pendedReasons = ['Appellant Request', 'Disaster Extension', 'Escalated to MAG']
 
@@ -58,55 +59,28 @@ export class AplIntakeComponent implements OnInit {
             aplSubmittedBy: [''],
             pendedReqEndDate: ['', Validators.required],
             pendedReqStartDate: ['', Validators.required],
-            appCallReleaseHold: ['', Validators.required],
+            appCallReleaseHold: [''],
             xreferenceType: [''],
-            xreference: ['', [Validators.required]],
-            receiptDate: ['', {validators: [Validators.required]}],
+            xreference: [''],
+            receiptDate: [''],
             hearingRecieptDate: [''],
             planYear: [''],
         },
         {
-            validators: Validators.required,
+            // validators: Validators.required,
         }
     );
 
     constructor(private fb: FormBuilder, private drops: DropdownsService, public dialog: MatDialog, private aplService: AppealService) {
-        // this.f1.controls.pendedReason.valueChanges.subscribe((val) => {
-        //   const pendedReqStartDate = this.f1.controls.pendedReqStartDate;
-        //   const pendedReqEndDate = this.f1.controls.pendedReqEndDate;
-        //
-        //   if (val != '') {
-        //     pendedReqStartDate.setValidators(Validators.required);
-        //     pendedReqEndDate.setValidators(Validators.required);
-        //     pendedReqStartDate.enable();
-        //     pendedReqEndDate.enable();
-        //   } else {
-        //     pendedReqStartDate.clearValidators();
-        //     pendedReqEndDate.clearValidators();
-        //     pendedReqStartDate.disable();
-        //     pendedReqEndDate.disable();
-        //   }
-        //   pendedReqStartDate.updateValueAndValidity();
-        //   pendedReqEndDate.updateValueAndValidity();
-        // });
-        //
-        // this.f1.controls.receiptDate.valueChanges.subscribe((value) => {
-        //   if (this.f1.controls.receiptDate.status == 'VALID') {
-        //     this.isDisplayDate = true;
-        //     const date = new Date();
-        //     // @ts-ignore
-        //     this.processingDateValue = date.setDate(new Date());
-        //   } else {
-        //     this.isDisplayDate = false;
-        //   }
-        // });
-        //
-        // this.f1.controls.xreferenceType.valueChanges.subscribe((value) => {
-        //   value ? this.f1.controls.xreference.enable() : this.f1.controls.xreference.disable();
-        // });
     }
 
     ngOnInit() {
+        // this.aplTypes = this.drops.getAppealType();
+        this.formTypes = this.drops.getFormType()
+        this.receiptTypes = this.drops.getReceiptType();
+        this.xRefTypes = this.drops.getXrefType();
+        this.submittedByTypes = this.drops.getSourceType();
+        this.intakeTypes = this.drops.getIntakeType();
         this.aplService.getArr().subscribe(r => console.log('INTAKE OBJ ARR', r))
         if (history.state.data) {
             this.aplData = history.state.data;
@@ -130,12 +104,7 @@ export class AplIntakeComponent implements OnInit {
             })
         }
         // @ts-ignore
-        this.aplTypes = this.drops.getAplTypes();
-        this.formTypes = this.drops.getFormType()
-        this.receiptTypes = this.drops.getReceiptType();
-        this.xRefTypes = this.drops.getXrefType();
-        this.submittedByTypes = this.drops.getSourceType();
-        this.intakeTypes = this.drops.getIntakeType();
+
 
         // submittedByTypes = []
     }

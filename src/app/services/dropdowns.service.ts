@@ -1,13 +1,21 @@
 import {Injectable} from '@angular/core';
 import {APP_DROPDOWNS_OBJ} from "../../assets/mock-data/dropdown-values-data";
 import * as _ from 'lodash';
-import {AplSources, FormTypes, IntakeTypes, ReceiptTypes, XrefTypes} from "../shared/data/dropdowns/intake-stage";
+import {
+    AplSources,
+    AppealTypes,
+    FormTypes,
+    IntakeTypes,
+    ReceiptTypes,
+    XrefTypes
+} from "../shared/data/dropdowns/intake-stage";
 
 @Injectable({
     providedIn: 'root'
 })
 export class DropdownsService {
     data = APP_DROPDOWNS_OBJ;
+    appealTypes = AppealTypes;
     intakeTypes = IntakeTypes;
     submittedByArr = AplSources;
     receiptTypes = ReceiptTypes;
@@ -39,6 +47,10 @@ export class DropdownsService {
 
     getReceiptType() {
         return [...this.receiptTypes];
+    }
+
+    getAppealType() {
+        return [...this.appealTypes];
     }
 
     getAplTypes() {

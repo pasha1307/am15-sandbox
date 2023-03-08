@@ -3,17 +3,17 @@
     <mat-card class="w-2/3 m-auto">
       <section [formGroup]="f1">
         <mat-card-header class="my-2">
-          <mat-card-title>Appeal Overview</mat-card-title>
+          <mat-card-title>Appeal Overview </mat-card-title>
         </mat-card-header>
         <mat-divider></mat-divider>
         <mat-card-content>
-          <div class="form-section-1 felx-auto">
-            <mat-form-field appearance="fill">
+          <div class="form-section-1 flex-auto">
+            <mat-form-field appearance="fill" >
               <mat-label>Appeal Type</mat-label>
               <mat-select formControlName="aplType">
-                <mat-option value="">---</mat-option>
+                <mat-option [value]="">---</mat-option>
                 <ng-container *ngFor="let it of aplTypes">
-                  <mat-option [value]="it.displayText">{{ it?.displayText}}</mat-option>
+                  <mat-option [value]="it">{{it}}</mat-option>
                 </ng-container>
               </mat-select>
               <mat-error *ngIf="hasError('aplType', 'required')">
