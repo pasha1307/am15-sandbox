@@ -1,55 +1,70 @@
 <div class="case-page">
-  <div class="flex flex-col gap-4 bg-white px-10">
-    <div class="w-full flex justify-between mb-0 pb-0">
 
-      <h1> <span class="material-symbols-outlined"
-                 style="color: #673ab7; font-size: 2.0em; transform: translateY(12px); padding-right: 10px;">
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header class="h-[60px]">
+        <mat-panel-title>
+          <div>
+            <h2>
+                <span (click)="onPanel()" class="material-symbols-outlined"
+                       style="color: #673ab7; font-size: 2em; transform: translateY(12px); padding-right: 10px;">
 work
-</span><span>APPEAL ID: {{apl?.aplId}} STAGE: {{apl?.aplStage}}</span></h1>
-      <div class="flex justify-end gap-2.5 pt-3">
+</span>
+                <span><span style="font-size: 0.6em">APPEAL ID </span> <span style="color: #673ab7">{{apl?.aplId}}</span><span style="font-size: 0.6em">STAGE: </span> <span style="color: #673ab7">{{apl?.aplStage}}</span></span>
+            </h2>
+          </div>
+        </mat-panel-title>
 
-        <button mat-flat-button color="primary">Take Actions</button>
-        <button mat-flat-button color="primary" *ngIf="apl.aplStage === 'Adjudication'">Open Intake</button>
-        <button mat-flat-button color="accent">Save</button>
-        <button mat-flat-button color="primary">Attachments</button>
-        <button mat-flat-button color="primary">History</button>
-      </div>
+        <mat-panel-description class="justify-end">
+<div>
+    <button mat-flat-button color="primary">Take Actions</button>
+    <button mat-flat-button color="primary" *ngIf="apl.aplStage === 'Adjudication'">Open Intake</button>
+    <button mat-flat-button color="accent">Save</button>
+    <button mat-flat-button color="primary">Attachments</button>
+    <button mat-flat-button color="primary">History</button>
+</div>
+
+        </mat-panel-description>
+
+      </mat-expansion-panel-header>
+        <div class="flex justify-between">
+            <div>
+                <div><span>CREATED:</span><span>{{apl?.createdOn | date}}</span></div>
+                <div><span>CREATED BY:</span><span>{{apl?.contacts[0]?.firstName}}</span> <span>{{apl?.contacts[0]?.lastName}}</span></div>
+            </div>
+            <div>
+                <div><span>UPDATED:</span><span>{{apl?.updatedOn | date}}</span></div>
+                <div><span>UPDATED BY: </span><span>{{apl?.updatedBy}}</span></div>
+            </div>
+            <div>
+                <div><span>APPELLANT:</span><span>{{apl?.contacts[0].firstName}}</span> <span>{{apl?.contacts[0].lastName}}</span></div>
+                <div><span>AUTHORIZED:</span><span> - </span></div>
+            </div>
+            <div>
+                <div><span>APPEAL TYPE:</span><span>{{apl?.aplType}}</span></div>
+                <div><span>APL SUBTYPE: </span><span>???</span></div>
+            </div>
+            <div>
+                <div><span>RECEIPT:</span><span>{{apl.createdOn | date}}</span></div>
+                <div><span>DAYS SINCE RECEIPT: </span><span>Estimate</span></div>
+            </div>
+            <div>
+                <div><span>HEARING OFFICER:</span><span>ND</span></div>
+                <div><span>APPEAL LOCATION: </span><span>Later ??</span></div>
+            </div>
+
+        </div>
+
+    </mat-expansion-panel>
 
 
-    </div>
-    <div class="w-full flex justify-between min-h-[70px]">
-      <div>
-        <div><span>CREATED:</span><span>{{apl?.createdOn | date}}</span></div>
-        <div><span>CREATED BY:</span><span>{{apl?.contacts[0]?.firstName}}</span> <span>{{apl?.contacts[0]?.lastName}}</span></div>
-      </div>
-      <div>
-        <div><span>UPDATED:</span><span>{{apl?.updatedOn | date}}</span></div>
-        <div><span>UPDATED BY: </span><span>{{apl?.updatedBy}}</span></div>
-      </div>
-      <div>
-        <div><span>APPELLANT:</span><span>{{apl?.contacts[0].firstName}}</span> <span>{{apl?.contacts[0].lastName}}</span></div>
-        <div><span>AUTHORIZED:</span><span> - </span></div>
-      </div>
-      <div>
-        <div><span>APPEAL TYPE:</span><span>{{apl?.aplType}}</span></div>
-        <div><span>APL SUBTYPE: </span><span>???</span></div>
-      </div>
-      <div>
-        <div><span>RECEIPT:</span><span>{{apl.createdOn | date}}</span></div>
-        <div><span>DAYS SINCE RECEIPT: </span><span>Estimate</span></div>
-      </div>
-      <div>
-        <div><span>HEARING OFFICER:</span><span>ND</span></div>
-        <div><span>APPEAL LOCATION: </span><span>Later ??</span></div>
-      </div>
+  </mat-accordion>
 
-    </div>
-  </div>
   <mat-divider></mat-divider>
   <router-outlet></router-outlet>
-  <!--<button mat-raised-button class="example-action-button" (click)="addLink()">-->
-  <!--  Add link-->
-  <!--</button>-->
+<!--  <button mat-raised-button class="example-action-button" (click)="addLink()">-->
+<!--    Add link-->
+<!--  </button>-->
 </div>
 
 

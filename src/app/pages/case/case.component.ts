@@ -1,4 +1,4 @@
-import {AfterContentInit, ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {AfterContentInit, ChangeDetectionStrategy, Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ThemePalette} from "@angular/material/core";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToggleService} from "../../services/toggle.service";
@@ -10,6 +10,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {NewInconDialogComponent} from "../../shared/dialogs/new-incon-dialog/new-incon-dialog.component";
 import {CaseCreateComponent} from "./case-create/case-create.component";
 import {AppealService} from "../../services/appeal.service";
+import {MatAccordion} from "@angular/material/expansion";
 
 @Component({
   selector: 'app-case',
@@ -17,6 +18,8 @@ import {AppealService} from "../../services/appeal.service";
   styleUrls: ['./case.component.scss'],
 })
 export class CaseComponent implements OnInit, AfterContentInit {
+  @ViewChild(MatAccordion) accordion?: MatAccordion;
+  panelOpenState = false;
   menu = MAIN_SIDE;
   @Input() isClosed = true;
   links = ['Intake', 'Adjudication/IR', 'Hearing', 'Effectuation/Closure'];
@@ -64,6 +67,10 @@ export class CaseComponent implements OnInit, AfterContentInit {
 
   addLink() {
     this.links.push(`Link ${this.links.length + 1}`);
+  }
+
+  onPanel() {
+    this.panelOpenState = !this.panelOpenState;
   }
 
 }

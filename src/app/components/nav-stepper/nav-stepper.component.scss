@@ -23,7 +23,7 @@
 }
 
 .stepper-content {
-  height: 88vh;
+  height: 80vh;
   overflow-y: hidden;
   //background-color: green;
 }
@@ -35,7 +35,7 @@
 
 .stepper-content-area {
   overflow: auto;
-  height: calc(100% - 180px);
+  height: calc(100vh - 250px);
   background-color: #E1F3F8;
 }
 
