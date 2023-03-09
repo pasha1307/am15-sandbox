@@ -1,14 +1,17 @@
 <div class="case-page">
 
-  <mat-accordion class="example-headers-align" multi>
-    <mat-expansion-panel>
+  <mat-accordion class="example-headers-align" multi >
+    <mat-expansion-panel (mouseout)="panelOpenState = false"
+                         (mouseover)="panelOpenState = true">
       <mat-expansion-panel-header class="h-[60px]">
         <mat-panel-title>
           <div>
-            <h2>
+            <h2 >
                 <span (click)="onPanel()" class="material-symbols-outlined"
                        style="color: #673ab7; font-size: 2em; transform: translateY(12px); padding-right: 10px;">
-work
+                    <span *ngIf="!panelOpenState">work</span>
+                    <span *ngIf="panelOpenState">expand_more</span>
+<!--work-->
 </span>
                 <span><span style="font-size: 0.6em">APPEAL ID </span> <span style="color: #673ab7">{{apl?.aplId}}</span><span style="font-size: 0.6em">STAGE: </span> <span style="color: #673ab7">{{apl?.aplStage}}</span></span>
             </h2>
