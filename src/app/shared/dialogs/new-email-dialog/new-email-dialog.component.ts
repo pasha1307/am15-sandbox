@@ -23,6 +23,18 @@ export class NewEmailDialogComponent {
 
   constructor(private fb: FormBuilder, private aplService: AppealService, private dialog: MatDialogRef<NewEmailDialogComponent>,
               @Inject(MAT_DIALOG_DATA) data: any) {
+      if (data) {
+          console.log('EMAIL', data)
+
+          // this.form.patchValue({
+          //     emailPrefn: data,
+          //     emailType: [''],
+          //     email: ['', Validators.email],
+          //     contactEmailId: [''],
+          //     contactId: [''],
+          //     appealId: [''],
+          // });
+      }
   }
 
   onSubmit() {

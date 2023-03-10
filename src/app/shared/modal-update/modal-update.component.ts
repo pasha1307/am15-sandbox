@@ -33,8 +33,9 @@ export class ModalUpdateComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) data: any) {
     this.myData = data;
     const d = this.myData;
+    console.log('ADDRESS DATA', d)
     this.fb.group({
-      type: [d.type || '', Validators.required],
+      // type: [d.type || '', Validators.required],
       street_line: [d.street_line || '', Validators.required],
       is_second: ['', Validators.required],
       secondary: [d.secondary || ''],

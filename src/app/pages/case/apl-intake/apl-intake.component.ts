@@ -13,6 +13,7 @@ import {ModalComponent} from "../../../shared/modal/modal.component";
 import {NewPhoneDialogComponent} from "../../../shared/dialogs/new-phone-dialog/new-phone-dialog.component";
 import {NewEmailDialogComponent} from "../../../shared/dialogs/new-email-dialog/new-email-dialog.component";
 import {AppealTypes} from "../../../shared/data/dropdowns/intake-stage";
+import {ModalUpdateComponent} from "../../../shared/modal-update/modal-update.component";
 
 @Component({
     selector: 'app-apl-intake',
@@ -147,26 +148,12 @@ export class AplIntakeComponent implements OnInit {
         });
     }
 
-    onUpdate() {
+    onUpdateAddress(address: any) {
         const config = new MatDialogConfig();
         config.width = '600px';
         config.autoFocus = false;
-        // config.data = item;
-        const dialogRef = this.dialog.open(CaseContactComponent, config);
-        dialogRef.afterClosed().subscribe(data => {
-            console.log("Dialog output:", data)
-            if (data) {
-                // this.addresses1[index] = data;
-            }
-        });
-    }
-
-    onUpdatePhone() {
-        const config = new MatDialogConfig();
-        config.width = '600px';
-        config.autoFocus = false;
-        // config.data = item;
-        const dialogRef = this.dialog.open(CaseContactComponent, config);
+        config.data = address;
+        const dialogRef = this.dialog.open(ModalUpdateComponent, config);
         dialogRef.afterClosed().subscribe(data => {
             console.log("Dialog output:", data)
             if (data) {
@@ -241,8 +228,26 @@ export class AplIntakeComponent implements OnInit {
         config.minHeight = '400px';
         const dialogRef = this.dialog.open(NewPhoneDialogComponent, config);
         dialogRef.afterClosed().subscribe(data => {
-            this.contactsArr[index].contactTellInfo.push(data);
+            if (data) {
+                this.contactsArr[index].contactTellInfo.push(data);
+            }
+
         })
+    }
+
+    onUpdatePhone() {
+        const config = new MatDialogConfig();
+        config.width = '600px';
+        config.autoFocus = false;
+        // config.data = item;
+        const dialogRef = this.dialog.open(NewPhoneDialogComponent, config);
+        dialogRef.afterClosed().subscribe(data => {
+            console.log("Dialog output:", data)
+            if (data) {
+                console.log('Phone Data', data)
+                // this.addresses1[index] = data;
+            }
+        });
     }
 
     onNewEmail(index: number) {
@@ -251,8 +256,26 @@ export class AplIntakeComponent implements OnInit {
         config.minHeight = '400px';
         const dialogRef = this.dialog.open(NewEmailDialogComponent, config);
         dialogRef.afterClosed().subscribe(data => {
-            this.contactsArr[index].contactEmail.push(data);
+            if (data) {
+                this.contactsArr[index].contactEmail.push(data);
+            }
+
         })
+    }
+
+    onUpdateEmail() {
+        const config = new MatDialogConfig();
+        config.width = '600px';
+        config.autoFocus = false;
+        // config.data = item;
+        const dialogRef = this.dialog.open(NewEmailDialogComponent, config);
+        dialogRef.afterClosed().subscribe(data => {
+            console.log("Dialog output:", data)
+            if (data) {
+                console.log('Phone Data', data)
+                // this.addresses1[index] = data;
+            }
+        });
     }
 
     onCancel() {
