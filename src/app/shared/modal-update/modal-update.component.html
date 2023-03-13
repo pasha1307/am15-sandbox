@@ -42,11 +42,6 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>County</mat-label>
-      <input matInput placeholder="City" formControlName="county">
-    </mat-form-field>
-
-    <mat-form-field>
       <mat-label>State/Territory</mat-label>
       <mat-select placeholder="State/Territory" formControlName="state">
         <mat-option *ngFor="let state of states" [value]="state.abbreviation">

@@ -22,7 +22,6 @@ export class ModalUpdateComponent implements OnInit {
     is_second: ['', Validators.required],
     secondary: [''],
     city: ['', Validators.required],
-    county: [''],
     state: ['', Validators.required],
     zipcode: ['']
   })
@@ -40,7 +39,6 @@ export class ModalUpdateComponent implements OnInit {
       is_second: ['', Validators.required],
       secondary: [d.secondary || ''],
       city: [d.city || '', Validators.required],
-      county: [''],
       state: [d.state || '', Validators.required],
       zipcode: [d.zipcode || '']
     })
@@ -59,7 +57,6 @@ export class ModalUpdateComponent implements OnInit {
       is_second: 'true',
       secondary: d.secondary,
       city: d.city,
-      county: 'nd',
       state: d.state,
       zipcode: d.zipcode
     });
@@ -85,7 +82,6 @@ export class ModalUpdateComponent implements OnInit {
       is_second: 'true',
       secondary: d.secondary,
       city: d.city,
-      county: 'nd',
       state: d.state,
       zipcode: d.zipcode
     });
@@ -94,7 +90,6 @@ export class ModalUpdateComponent implements OnInit {
 
   onLookup() {
     const d = this.form.value;
-    console.log('FROM VAL', d)
     this.smService.getAddress(d).subscribe((r: any) => {
       this.sm = r[0]?.components;
       if (r.length) {
@@ -108,7 +103,6 @@ export class ModalUpdateComponent implements OnInit {
 
   onSave() {
     this.dialogRef.close(this.form.value);
-    console.log(this.form.value);
   }
 
 }

@@ -4,12 +4,12 @@
         <div >
             <mat-checkbox formControlName="txtPrefnc">Text Preference </mat-checkbox>
         </div>
-        <div fxLayout="row" fxLayoutGap="2rem">
-            <mat-form-field appearance="outline">
+        <div>
+            <mat-form-field appearance="fill">
                 <mat-label>Phone Type</mat-label>
                 <mat-select formControlName="phoneType">
-                    <mat-option value="1">One</mat-option>
-                    <mat-option value="2">Two</mat-option>
+                    <mat-option value="h">Home</mat-option>
+                    <mat-option value="b">Business</mat-option>
 <!--                    <ng-container *ngFor="let type of phoneType$ | async">-->
 <!--                        <mat-option [value]="type.code" [disabled]="form.controls.txtPrefnc.value === true && type.code !== 'Mobile'">{{-->
 <!--                            type.displayText-->
@@ -21,7 +21,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="fill">
                 <mat-label>Phone Number</mat-label>
                 <input matInput placeholder="xxx-xxx-xxxx" value="" formControlName="phone" />
                 <mat-error *ngIf="form.get('phone')?.hasError('pattern')">
@@ -32,7 +32,7 @@
                 </mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="fill">
                 <mat-label>Extension</mat-label>
                 <input matInput placeholder="Extension" value="" formControlName="extNo" />
             </mat-form-field>

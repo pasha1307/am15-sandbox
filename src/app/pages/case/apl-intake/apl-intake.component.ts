@@ -188,7 +188,7 @@ export class AplIntakeComponent implements OnInit {
                 const sadr = data.address2 ? 'two' : 'one';
 
                 const obj = {
-                    addressType: data.type,
+                    type: data.type,
                     street_line: data.address,
                     secondary: data.address2,
                     city: data.city,
@@ -199,6 +199,7 @@ export class AplIntakeComponent implements OnInit {
             }
         })
     }
+
     onUpdateAddress(address: any) {
         const config = new MatDialogConfig();
         config.width = '600px';
@@ -213,6 +214,11 @@ export class AplIntakeComponent implements OnInit {
             }
         });
     }
+
+    onDeleteAddr(i: number, index: number) {
+        this.contactsArr[i].contactAddress.splice(index, 1);
+    }
+
     onNewPhone(index: number) {
         const config = new MatDialogConfig();
         config.width = '400px';
@@ -239,6 +245,10 @@ export class AplIntakeComponent implements OnInit {
                 // this.addresses1[index] = data;
             }
         });
+    }
+
+    onDeletePhone(i: number, index: number) {
+        this.contactsArr[i].contactTellInfo.splice(index, 1);
     }
 
     onNewEmail(index: number) {
@@ -269,11 +279,12 @@ export class AplIntakeComponent implements OnInit {
         });
     }
 
+    onDeleteEmail(i: number, index: number) {
+        this.contactsArr[i].contactEmail.splice(index, 1);
+    }
+
     onCancel() {
         this.f1.reset();
     }
 
-    onDeleteAddr(i: number, index: number) {
-        this.contactsArr[i].contactAddress.splice(index, 1);
-    }
 }

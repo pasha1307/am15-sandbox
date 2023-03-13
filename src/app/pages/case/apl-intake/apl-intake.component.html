@@ -261,7 +261,8 @@
                       <mat-icon>add</mat-icon>PHONE
                     </button>
                   </div>
-                    <span *ngFor="let pho of c.contactTellInfo"> {{pho?.phone}}({{pho?.phoneType}}); </span>
+                  <ng-container *ngFor="let pho of c.contactTellInfo; let ind = index">
+                      <span > {{pho?.phone}}({{pho?.phoneType}});</span>
                     <div>
                       <button mat-icon-button [matMenuTriggerFor]="menu2" aria-label="Example icon-button with a menu">
                         <mat-icon>more_vert</mat-icon>
@@ -271,19 +272,21 @@
                           <mat-icon>edit</mat-icon>
                           <span>Edit</span>
                         </button>
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="onDeletePhone(i, ind)">
                           <mat-icon>remove</mat-icon>
                           <span>Delete</span>
                         </button>
                       </mat-menu>
                     </div>
+                  </ng-container>
+
                 </mat-card-actions>
                 <mat-card-actions>
                   <button mat-button (click)="onNewEmail(i)" color="primary">
                     <mat-icon>add</mat-icon>EMAIL
                   </button>
 
-                  <ng-container *ngFor="let em of c?.contactEmail">
+                  <ng-container *ngFor="let em of c?.contactEmail; let ind = index">
                     <span>{{em.email}} ({{em.emailType}}); </span>
                     <div>
                       <button mat-icon-button [matMenuTriggerFor]="menu3" aria-label="Example icon-button with a menu">
@@ -294,7 +297,7 @@
                           <mat-icon>edit</mat-icon>
                           <span>Edit</span>
                         </button>
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="onDeleteEmail(i, ind)">
                           <mat-icon>remove</mat-icon>
                           <span>Delete</span>
                         </button>
