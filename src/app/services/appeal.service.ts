@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {APL_ADJUD_SAMPLE} from "../../assets/mock-data/adjudication-object-data";
-import {APL_INTAKE_SAMPLE} from "../../assets/mock-data/intake-object-data";
+import {APL_INTAKE_ARR, APL_INTAKE_SAMPLE} from "../../assets/mock-data/intake-object-data";
 import {from, of} from "rxjs";
 import * as _ from 'lodash';
 
@@ -21,7 +21,8 @@ export interface SampleAddr {
 
 
 export class AppealService {
-  intakeObj = APL_INTAKE_SAMPLE;
+  intakeObj = APL_INTAKE_ARR;
+  // intakeObj = APL_INTAKE_SAMPLE;
   adjudObj = APL_ADJUD_SAMPLE;
 
   constructor() {}

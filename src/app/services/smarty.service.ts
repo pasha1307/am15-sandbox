@@ -28,6 +28,8 @@ export class SmartyService {
   }
 
   getAddress(val: any) {
+    console.log('Val smart', val);
+
     const {street_line, secondary, city, state, zipcode} = val;
     const sl = street_line.replace(/\s/g, '+');
     const sc = secondary.replace(/\s/g, '+');

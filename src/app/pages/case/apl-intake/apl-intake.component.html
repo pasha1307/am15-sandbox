@@ -225,10 +225,10 @@
                       <ng-container *ngFor="let ad of c?.contactAddress; let ind = index">
                         <section class="address-item max-w-[200px] flex justify-between">
                           <div class="max-w-[200px]">
-                            <span class="font-semibold">[{{ad.addressType}}]</span><br>
-                            <span>{{ad.stAddressType1}}</span>
-                            <span> {{ad.stAddressType2}}</span><br>
-                            <span>{{ad.city}}, {{ad.state}} {{ad.zip}}</span>
+                            <span class="font-semibold">[{{ad.type}}]</span><br>
+                            <span>{{ad.street_line}}</span>
+                            <span> {{ad.secondary}}</span><br>
+                            <span>{{ad.city}}, {{ad.state}} {{ad.zipcode}}</span>
                           </div>
                           <div>
                             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">

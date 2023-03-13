@@ -3,10 +3,8 @@ import {FormBuilder, Validators} from "@angular/forms";
 import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
 import {INTAKE_STEPS} from "../../../shared/data/stepper-appeal-data";
 import {of} from "rxjs";
-import {CONTACTS_USER1, CONTACTS_USER2} from "../../../../assets/addresses-sample-data";
 import {DropdownsService} from "../../../services/dropdowns.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {CaseContactComponent} from "../case-contact/case-contact.component";
 import {AppealService} from "../../../services/appeal.service";
 import {NewContactDialogComponent} from "../../../shared/dialogs/new-contact-dialog/new-contact-dialog.component";
 import {ModalComponent} from "../../../shared/modal/modal.component";
@@ -40,10 +38,6 @@ export class AplIntakeComponent implements OnInit {
     aplTypes = AppealTypes;
     intakeTypes: any[] = [];
     pendedReasons = ['Appellant Request', 'Disaster Extension', 'Escalated to MAG']
-
-
-    pendedReason$ = of([{code: '1', displayText: 'option one'}]);
-    benefitYear$ = of([{code: '1', displayText: 'option one'}]);
     currentYear = new Date().getFullYear();
     minDate = new Date(this.currentYear - 10, 0, 1);
     maxDate = new Date(this.currentYear + 10, 11, 31);
@@ -106,8 +100,6 @@ export class AplIntakeComponent implements OnInit {
         }
         // @ts-ignore
 
-
-        // submittedByTypes = []
     }
 
     hasError(controlName: string, errorName: string) {
@@ -148,20 +140,6 @@ export class AplIntakeComponent implements OnInit {
         });
     }
 
-    onUpdateAddress(address: any) {
-        const config = new MatDialogConfig();
-        config.width = '600px';
-        config.autoFocus = false;
-        config.data = address;
-        const dialogRef = this.dialog.open(ModalUpdateComponent, config);
-        dialogRef.afterClosed().subscribe(data => {
-            console.log("Dialog output:", data)
-            if (data) {
-                // this.addresses1[index] = data;
-            }
-        });
-    }
-
     onNewAplContact(obj?: any) {
         const config = new MatDialogConfig();
         config.width = '600px';
@@ -193,10 +171,7 @@ export class AplIntakeComponent implements OnInit {
             console.log("Dialog output:", data)
             if (data) {
                 // const pload = {...data, contactAddress: [], contactEmail: [], contactTellInfo:[] }
-                console.log('PALOAD UPDATED', data)
                 this.contactsArr[index] = {...this.contactsArr[index], ...data};
-
-                console.log("CONTACTS ARR:", this.contactsArr)
                 // this.addresses1[index] = data;
             }
         });
@@ -208,20 +183,36 @@ export class AplIntakeComponent implements OnInit {
         config.minHeight = '400px';
         const dialogRef = this.dialog.open(ModalComponent, config);
         dialogRef.afterClosed().subscribe(data => {
+            console.log("ADDRESS DATA", data)
             if (data.city) {
                 const sadr = data.address2 ? 'two' : 'one';
+
                 const obj = {
                     addressType: data.type,
-                    stAddressType1: data.address,
+                    street_line: data.address,
+                    secondary: data.address2,
                     city: data.city,
                     state: data.state,
-                    zip: data.postalCode
+                    zipcode: data.postalCode
                 }
                 this.contactsArr[index].contactAddress.push(obj);
             }
         })
     }
-
+    onUpdateAddress(address: any) {
+        const config = new MatDialogConfig();
+        config.width = '600px';
+        config.autoFocus = false;
+        config.data = address;
+        console.log('UPDATE ADDRESS OBJECT', address);
+        const dialogRef = this.dialog.open(ModalUpdateComponent, config);
+        dialogRef.afterClosed().subscribe(data => {
+            console.log("Dialog output:", data)
+            if (data) {
+                // this.addresses1[index] = data;
+            }
+        });
+    }
     onNewPhone(index: number) {
         const config = new MatDialogConfig();
         config.width = '400px';
