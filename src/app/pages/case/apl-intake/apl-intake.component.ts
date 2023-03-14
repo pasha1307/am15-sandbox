@@ -157,7 +157,8 @@ export class AplIntakeComponent implements OnInit {
                 const pload = {...data, contactAddress: [], contactEmail: [], contactTellInfo: []}
                 console.log('PALOAD', pload)
                 this.contactsArr.push(pload);
-                console.log("CONTACTS ARR:", this.contactsArr)
+                this.contactsArr.sort((a: any,b: any) => b.primaryContact - a.primaryContact);
+                console.log("CONTACTS ARR:", this.contactsArr);
                 // this.addresses1[index] = data;
             }
         });
@@ -177,6 +178,7 @@ export class AplIntakeComponent implements OnInit {
             if (data) {
                 // const pload = {...data, contactAddress: [], contactEmail: [], contactTellInfo:[] }
                 this.contactsArr[index] = {...this.contactsArr[index], ...data};
+                this.contactsArr.sort((a: any,b: any) => b.primaryContact - a.primaryContact);
                 // this.addresses1[index] = data;
             }
         });
