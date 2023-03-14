@@ -15,6 +15,7 @@ export class CaseCreateComponent {
     aplLastName: [null, [Validators.required, Validators.maxLength(35), Validators.pattern('^[a-zA-Z-]+')]],
     aplMiddleName: ['', [Validators.maxLength(35), Validators.pattern('^[a-zA-Z-]+')]],
     aplType: ['', Validators.required],
+    gender: ['', Validators.required]
   });
 
   constructor(private fb: FormBuilder,  private dialog: MatDialog,

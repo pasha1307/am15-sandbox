@@ -47,6 +47,20 @@
             </mat-error>
             <mat-hint align="end">{{ createAppeal.get('aplLastName')!.value || 0 }}/35</mat-hint>
         </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                    <mat-option value="female">Female</mat-option>
+                    <mat-option value="male">Male</mat-option>
+                    <mat-option value="undefined">Undefined</mat-option>
+                <!--                <ng-container *ngFor="let at of appealTypes$ | async">-->
+                <!--                    <mat-option [value]="at.code">{{ at.displayText }}</mat-option>-->
+                <!--                </ng-container>-->
+            </mat-select>
+            <mat-error *ngIf="hasError('gender', 'required')"
+            >Gender is required.
+            </mat-error>
+        </mat-form-field>
     </section>
 </mat-dialog-content>
 
