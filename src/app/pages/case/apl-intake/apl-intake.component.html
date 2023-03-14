@@ -183,18 +183,18 @@
 
         <mat-tab label="Appellants">
 
-          <div class="mt-4 flex flex-wrap">
-            <button mat-fab extended color="primary" class="ml-10 mt-4" (click)="onNewAplContact()">
+          <div class="mt-4 flex flex-wrap flex-col">
+            <button mat-fab extended color="primary" class="w-[200px] ml-10 mt-4 mb-4" (click)="onNewAplContact()">
               <mat-icon>add</mat-icon>
               Add Appellant
             </button>
             <!--          <app-intake-contacts *ngFor="let p of addresses1" [person]="p" (click)="onUpdate()"></app-intake-contacts>-->
             <ng-container *ngFor="let c of contactsArr; let i = index">
-              <mat-card class="m-4 long-card min-w-1/3" [ngClass]="c.primaryContact ? 'bg-amber-50 border-amber-500 border-2' : ''">
-                <mat-card-header >
-                  <mat-card-title> {{c.firstName | uppercase }} {{c.lastName | uppercase}}</mat-card-title>
-                  <mat-card-subtitle>Primary Contact: {{c.primaryContact}}; </mat-card-subtitle>
-                  <div>
+              <mat-card class="m-4 long-card max-w-[800px]" [ngClass]="c.primaryContact ? 'bg-amber-50 border-amber-500 border-2' : ''">
+                <mat-card-header class="ml-2 mt-[-20px] bg-white max-w-[600px] border-2">
+                  <mat-card-title > {{c.firstName | uppercase }} {{c.lastName | uppercase}}</mat-card-title>
+<!--                  <mat-card-subtitle>Primary Contact: {{c.primaryContact}}; </mat-card-subtitle>-->
+                  <div class="mt-[-10px]">
                     <button mat-icon-button [matMenuTriggerFor]="newContact" aria-label="Example icon-button with a menu">
                       <mat-icon>more_vert</mat-icon>
                     </button>
@@ -211,26 +211,27 @@
                   </div>
                 </mat-card-header>
                 <!--            <mat-divider></mat-divider>-->
-                <mat-card-content class="min-h-[70px]">
-                  <div class="addresses">
-                    <section class="addresses-header flex  ">
+                <mat-card-content class="flex justify-between">
+                  <section class="addresses">
+                    <div class="addresses-header flex  ">
                       <div>
                         <button mat-button (click)="onNewContactAddress(i)" color="primary">
                           <mat-icon>add</mat-icon> ADDRESS
                         </button>
                       </div>
 
-                    </section>
-                    <div class="flex gap-2">
+                    </div>
+                    <div class="flex-col gap-2">
+
                       <ng-container *ngFor="let ad of c?.contactAddress; let ind = index">
-                        <section class="address-item max-w-[200px] flex justify-between">
-                          <div class="max-w-[200px]">
-                            <span class="font-semibold">[{{ad.type}}]</span><br>
+                        <div class="flex gap-4 align-middle justify-between">
+                          <div>
+                            <span class="font-semibold">[{{ad.type}}]</span>
                             <span>{{ad.street_line}}</span>
-                            <span> {{ad.secondary}}</span><br>
+                            <span> {{ad.secondary}}</span>
                             <span>{{ad.city}}, {{ad.state}} {{ad.zipcode}}</span>
                           </div>
-                          <div>
+                          <div class="mt-[-20px]">
                             <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                               <mat-icon>more_vert</mat-icon>
                             </button>
@@ -245,66 +246,65 @@
                               </button>
                             </mat-menu>
                           </div>
-                        </section>
+                        </div>
+                      </ng-container>
 
-<!--                        <mat-divider vertical inset></mat-divider>-->
+                    </div>
+
+                  </section>
+                  <section class="phones">
+                    <div>
+                      <button mat-button (click)="onNewPhone(i)" color="primary">
+                        <mat-icon>add</mat-icon>PHONE
+                      </button>
+                    </div>
+                    <div class="flex gap-4 align-middle justify-between">
+                      <ng-container *ngFor="let pho of c.contactTellInfo; let ind = index">
+                        <span > {{pho?.phone}}({{pho?.phoneType}});</span>
+                        <div class="mt-[-20px]">
+                          <button mat-icon-button [matMenuTriggerFor]="menu2" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu2="matMenu">
+                            <button mat-menu-item (click)="onUpdatePhone()">
+                              <mat-icon>edit</mat-icon>
+                              <span>Edit</span>
+                            </button>
+                            <button mat-menu-item (click)="onDeletePhone(i, ind)">
+                              <mat-icon>remove</mat-icon>
+                              <span>Delete</span>
+                            </button>
+                          </mat-menu>
+                        </div>
                       </ng-container>
                     </div>
 
-                  </div>
-
-
-                </mat-card-content>
-                <mat-card-actions>
-                  <div>
-                    <button mat-button (click)="onNewPhone(i)" color="primary">
-                      <mat-icon>add</mat-icon>PHONE
+                  </section>
+                  <section class="emails">
+                    <button mat-button (click)="onNewEmail(i)" color="primary">
+                      <mat-icon>add</mat-icon>EMAIL
                     </button>
-                  </div>
-                  <ng-container *ngFor="let pho of c.contactTellInfo; let ind = index">
-                      <span > {{pho?.phone}}({{pho?.phoneType}});</span>
-                    <div>
-                      <button mat-icon-button [matMenuTriggerFor]="menu2" aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                      </button>
-                      <mat-menu #menu2="matMenu">
-                        <button mat-menu-item (click)="onUpdatePhone()">
-                          <mat-icon>edit</mat-icon>
-                          <span>Edit</span>
-                        </button>
-                        <button mat-menu-item (click)="onDeletePhone(i, ind)">
-                          <mat-icon>remove</mat-icon>
-                          <span>Delete</span>
-                        </button>
-                      </mat-menu>
-                    </div>
-                  </ng-container>
 
-                </mat-card-actions>
-                <mat-card-actions>
-                  <button mat-button (click)="onNewEmail(i)" color="primary">
-                    <mat-icon>add</mat-icon>EMAIL
-                  </button>
-
-                  <ng-container *ngFor="let em of c?.contactEmail; let ind = index">
-                    <span>{{em.email}} ({{em.emailType}}); </span>
-                    <div>
-                      <button mat-icon-button [matMenuTriggerFor]="menu3" aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                      </button>
-                      <mat-menu #menu3="matMenu">
-                        <button mat-menu-item (click)="onUpdateEmail()">
-                          <mat-icon>edit</mat-icon>
-                          <span>Edit</span>
+                    <ng-container *ngFor="let em of c?.contactEmail; let ind = index">
+                      <span>{{em.email}} ({{em.emailType}}); </span>
+                      <div>
+                        <button mat-icon-button [matMenuTriggerFor]="menu3" aria-label="Example icon-button with a menu">
+                          <mat-icon>more_vert</mat-icon>
                         </button>
-                        <button mat-menu-item (click)="onDeleteEmail(i, ind)">
-                          <mat-icon>remove</mat-icon>
-                          <span>Delete</span>
-                        </button>
-                      </mat-menu>
-                    </div>
-                  </ng-container>
-                </mat-card-actions>
+                        <mat-menu #menu3="matMenu">
+                          <button mat-menu-item (click)="onUpdateEmail()">
+                            <mat-icon>edit</mat-icon>
+                            <span>Edit</span>
+                          </button>
+                          <button mat-menu-item (click)="onDeleteEmail(i, ind)">
+                            <mat-icon>remove</mat-icon>
+                            <span>Delete</span>
+                          </button>
+                        </mat-menu>
+                      </div>
+                    </ng-container>
+                  </section>
+                </mat-card-content>
               </mat-card>
             </ng-container>
 
