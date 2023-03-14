@@ -44,6 +44,7 @@ export class AplIntakeComponent implements OnInit {
     processingDateValue!: number;
     isDisplayDate = false;
     isCompleted = false;
+    isPrimary?: boolean;
     f1 = this.fb.group(
         {
             aplType: ['', Validators.required],
@@ -80,7 +81,7 @@ export class AplIntakeComponent implements OnInit {
         if (history.state.data) {
             this.aplData = history.state.data;
             this.contactsArr = this.aplData.contacts;
-            console.log('HISTORY APL', this.aplData);
+            // console.log('HISTORY APL', this.aplData);
             this.f1.setValue({
                 aplType: this.aplData.aplType || '',
                 intakeType: this.aplData.intakeType || '',
@@ -144,9 +145,11 @@ export class AplIntakeComponent implements OnInit {
         const config = new MatDialogConfig();
         config.width = '600px';
         config.autoFocus = false;
+        this.isPrimary = !!this.contactsArr.filter((el:any) => el.primaryContact);
+        console.log('PRIMARY CONTACT?', this.isPrimary);
+        config.data = {isPrime: this.isPrimary};
 
         // config.data = item;
-        const foo = this.aplData.contacts;
         const dialogRef = this.dialog.open(NewContactDialogComponent, config);
         dialogRef.afterClosed().subscribe(data => {
             console.log("Dialog output:", data)
@@ -164,8 +167,10 @@ export class AplIntakeComponent implements OnInit {
         const config = new MatDialogConfig();
         config.width = '600px';
         config.autoFocus = false;
+        this.isPrimary = !!this.contactsArr.filter((el:any) => el.primaryContact);
 
-        config.data = obj;
+
+        config.data = {...obj,prim: this.isPrimary};
         const dialogRef = this.dialog.open(NewContactDialogComponent, config);
         dialogRef.afterClosed().subscribe(data => {
             console.log("Dialog output:", data)

@@ -21,6 +21,7 @@
                     <mat-slide-toggle formControlName="primaryContact" #pc>
                         <span *ngIf="!form.controls.primaryContact.value">Turn to Primary Contact </span>
                         <span *ngIf="form.controls.primaryContact.value"> Primary Contact </span>
+                        <mat-error *ngIf="isPrimary && form.controls.primaryContact.value">Primary already exists</mat-error>
                     </mat-slide-toggle>
 
                     <!--                <mat-slide-toggle formControlName="acceptTerms">Accept Terms of Service</mat-slide-toggle>-->
@@ -40,17 +41,17 @@
                     <mat-form-field appearance="fill" >
                         <mat-label>First Name</mat-label>
                         <input matInput formControlName="firstName" />
-                        <mat-error *ngIf="form.get('firstName')?.hasError('required')"
+                        <mat-error *ngIf="form?.get('firstName')?.hasError('required')"
                         >First Name is required. Enter a First Name in the text box.</mat-error
                         >
-                        <mat-error *ngIf="form.get('firstName')?.hasError('maxlength')"
+                        <mat-error *ngIf="form?.get('firstName')?.hasError('maxlength')"
                         >First Name should be less than {{ firstNameMaxLength }} characters
                         </mat-error>
 
-                        <mat-error *ngIf="form.get('firstName')?.hasError('pattern')"
+                        <mat-error *ngIf="form?.get('firstName')?.hasError('pattern')"
                         >{{ form.get('firstName')!.value }} is not a valid First Name. Enter a valid First Name using capitalized letters only.
                         </mat-error>
-                        <mat-hint align="end">{{ form.get('firstName')!.value?.length || 0 }}/{{ firstNameMaxLength }}</mat-hint>
+                        <mat-hint align="end">{{ form?.get('firstName')!.value?.length || 0 }}/{{ firstNameMaxLength }}</mat-hint>
                     </mat-form-field>
 
                     <mat-form-field appearance="fill" >
@@ -141,6 +142,6 @@
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-raised-button (click)="onClose()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Submit</button>
+    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form?.invalid">Submit</button>
     <!--        <button mat-raised-button color="primary" (click)="onSave()" *ngIf="customData?.length">Update</button>-->
 </mat-dialog-actions>

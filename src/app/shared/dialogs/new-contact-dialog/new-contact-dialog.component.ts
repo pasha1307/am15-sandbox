@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AppealService} from "../../../services/appeal.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 
@@ -15,6 +15,8 @@ export class NewContactDialogComponent implements OnInit {
   aplSuffixArr = ['One', 'Two', 'Three'];
   sfx = ['Jr', 'Sr', 'I', 'II', 'III'];
   isPrimaryContact = false;
+  isPrimary?: boolean;
+  // form?: FormGroup;
   form = this.fb.group({
     contactId: [''],
     appealId: [''],
@@ -34,6 +36,11 @@ export class NewContactDialogComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private aplService: AppealService, private dialog: MatDialogRef<NewContactDialogComponent>,
               @Inject(MAT_DIALOG_DATA) data: any) {
+    this.isPrimary = data.isPrime;
+    console.log('IS PRIMARY', this.isPrimary);
+    this.form.get('primaryContact')?.setValue(data.isPrime);
+
+
     console.log('DATA??', data)
     if (data) {
 
@@ -55,12 +62,15 @@ export class NewContactDialogComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.isPrimary) {
+      this.form.get('primaryContact')?.setValue(!this.isPrimary);
+    }
 
   }
 
   onSave() {
     // console.log('FORM', this.form.value)
-      this.dialog.close(this.form.value)
+      this.dialog.close(this.form?.value)
   }
   onClose() {
     this.dialog.close();
