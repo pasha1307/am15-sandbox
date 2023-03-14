@@ -51,7 +51,7 @@
                         <mat-error *ngIf="form?.get('firstName')?.hasError('pattern')"
                         >{{ form.get('firstName')!.value }} is not a valid First Name. Enter a valid First Name using capitalized letters only.
                         </mat-error>
-                        <mat-hint align="end">{{ form?.get('firstName')!.value?.length || 0 }}/{{ firstNameMaxLength }}</mat-hint>
+                        <mat-hint align="end">{{ form.get('firstName')!.value?.length || null }}/{{ firstNameMaxLength }}</mat-hint>
                     </mat-form-field>
 
                     <mat-form-field appearance="fill" >
