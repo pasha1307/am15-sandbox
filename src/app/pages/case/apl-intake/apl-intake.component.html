@@ -191,8 +191,12 @@
             <!--          <app-intake-contacts *ngFor="let p of addresses1" [person]="p" (click)="onUpdate()"></app-intake-contacts>-->
             <ng-container *ngFor="let c of contactsArr; let i = index">
               <mat-card class="m-4 long-card max-w-[900px]" [ngClass]="c.primaryContact ? 'bg-amber-50 border-amber-500 border-2' : ''">
-                <mat-card-header class="ml-2 mt-[-20px] bg-white max-w-[600px] border-2">
-                  <mat-card-title > {{c.firstName | uppercase }} {{c.lastName | uppercase}}</mat-card-title>
+                <mat-card-header class="ml-2 mt-[-20px] bg-white max-w-[600px] border-2" >
+                  <mat-card-title>
+                    <span *ngIf="c.primaryContact" class="material-symbols-outlined">
+star
+</span>
+                  {{c.firstName | uppercase }} {{c.lastName | uppercase}} </mat-card-title>
 <!--                  <mat-card-subtitle>Primary Contact: {{c.primaryContact}}; </mat-card-subtitle>-->
                   <div class="mt-[-10px]">
                     <button mat-icon-button [matMenuTriggerFor]="newContact" aria-label="Example icon-button with a menu">
@@ -284,25 +288,26 @@
                     <button mat-button (click)="onNewEmail(i)" color="primary">
                       <mat-icon>add</mat-icon>EMAIL
                     </button>
-
-                    <ng-container *ngFor="let em of c?.contactEmail; let ind = index">
-                      <span>{{em.email}} ({{em.emailType}}); </span>
-                      <div>
-                        <button mat-icon-button [matMenuTriggerFor]="menu3" aria-label="Example icon-button with a menu">
-                          <mat-icon>more_vert</mat-icon>
-                        </button>
-                        <mat-menu #menu3="matMenu">
-                          <button mat-menu-item (click)="onUpdateEmail()">
-                            <mat-icon>edit</mat-icon>
-                            <span>Edit</span>
+                    <div class="flex gap-4 align-middle justify-between">
+                      <ng-container *ngFor="let em of c?.contactEmail; let ind = index">
+                        <span>{{em.email}} ({{em.emailType}}); </span>
+                        <div class="mt-[-20px]">
+                          <button mat-icon-button [matMenuTriggerFor]="menu3" aria-label="Example icon-button with a menu">
+                            <mat-icon>more_vert</mat-icon>
                           </button>
-                          <button mat-menu-item (click)="onDeleteEmail(i, ind)">
-                            <mat-icon>remove</mat-icon>
-                            <span>Delete</span>
-                          </button>
-                        </mat-menu>
-                      </div>
-                    </ng-container>
+                          <mat-menu #menu3="matMenu">
+                            <button mat-menu-item (click)="onUpdateEmail()">
+                              <mat-icon>edit</mat-icon>
+                              <span>Edit</span>
+                            </button>
+                            <button mat-menu-item (click)="onDeleteEmail(i, ind)">
+                              <mat-icon>remove</mat-icon>
+                              <span>Delete</span>
+                            </button>
+                          </mat-menu>
+                        </div>
+                      </ng-container>
+                    </div>
                   </section>
                 </mat-card-content>
               </mat-card>
