@@ -264,7 +264,7 @@ star
                     </div>
                     <div class="flex gap-4 align-middle justify-between">
                       <ng-container *ngFor="let pho of c.contactTellInfo; let ind = index">
-                        <span > {{pho?.phone}}({{pho?.phoneType}});</span>
+                        <span > [{{pho?.phoneType.charAt(0)}}]{{pho?.phone}}</span>
                         <div class="mt-[-20px]">
                           <button mat-icon-button [matMenuTriggerFor]="menu2" aria-label="Example icon-button with a menu">
                             <mat-icon>more_vert</mat-icon>
@@ -290,7 +290,7 @@ star
                     </button>
                     <div class="flex gap-4 align-middle justify-between">
                       <ng-container *ngFor="let em of c?.contactEmail; let ind = index">
-                        <span>{{em.email}} ({{em.emailType}}); </span>
+                        <span>[{{em.emailType.charAt(0)}}]{{em.email}} </span>
                         <div class="mt-[-20px]">
                           <button mat-icon-button [matMenuTriggerFor]="menu3" aria-label="Example icon-button with a menu">
                             <mat-icon>more_vert</mat-icon>
