@@ -102,6 +102,8 @@ import { CaseCreateComponent } from './pages/case/case-create/case-create.compon
 import { NewContactDialogComponent } from './shared/dialogs/new-contact-dialog/new-contact-dialog.component';
 import { NewPhoneDialogComponent } from './shared/dialogs/new-phone-dialog/new-phone-dialog.component';
 import { NewEmailDialogComponent } from './shared/dialogs/new-email-dialog/new-email-dialog.component';
+import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {MatBadgeModule} from "@angular/material/badge";
 
 // @ts-ignore
 // import {MaterialTabsModule} from 'angular-vertical-material-tabs/dist/material-tabs';
@@ -222,6 +224,8 @@ import { NewEmailDialogComponent } from './shared/dialogs/new-email-dialog/new-e
         MatDatepickerModule,
         MatNativeDateModule,
         CdkOption,
+        MatBottomSheetModule,
+        MatBadgeModule
         // MaterialTabsModule
     ],
   providers: [{provide: NgChartsConfiguration, useValue: {generateColors: true}}],

@@ -1,13 +1,12 @@
 <div class="case-page">
 
   <mat-accordion class="apl-detail-accordion" #koo>
-    <mat-expansion-panel class="apl-detail-panel" #foo (mouseout)="panelOpenState = false"
-                         (mouseover)="panelOpenState = true">
+    <mat-expansion-panel class="apl-detail-panel" >
       <mat-expansion-panel-header class="h-[60px]">
         <mat-panel-title>
-          <div>
+          <div class="flex align-middle gap-5">
             <h2>
-                <span (click)="onPanel()" class="material-symbols-outlined"
+                <span (click)="onPanel($event)" class="material-symbols-outlined"
                        style="color: #673ab7; font-size: 2em; transform: translateY(12px); padding-right: 10px;">
                     <span>work</span>
 <!--                    <span *ngIf="panelOpenState">expand_more</span>-->
@@ -19,8 +18,17 @@
                     <span style="color: #673ab7">{{apl?.aplId}}</span>
                     <span style="font-size: 0.6em">STAGE: </span> <span style="color: #673ab7">{{apl?.aplStage}}</span>
                     <span style="font-size: 0.6em"> STATUS: </span> <span style="color: #673ab7">{{apl?.status}}</span>
+<!--                    <span style="font-size: 0.6em" (click)="onTasks()" matBadge="15" matBadgeColor="warn">-->
+<!--                        TASKS: </span> <span style="color: #673ab7"></span>-->
                 </span>
             </h2>
+              <div class="mt-4" (click)="onTasks()">
+                  <button mat-button color="primary">
+                      TASKS
+                  </button>
+                  <button mat-mini-fab color="primary">8</button>
+              </div>
+
           </div>
         </mat-panel-title>
 

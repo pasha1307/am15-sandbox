@@ -11,6 +11,9 @@ import {NewInconDialogComponent} from "../../shared/dialogs/new-incon-dialog/new
 import {CaseCreateComponent} from "./case-create/case-create.component";
 import {AppealService} from "../../services/appeal.service";
 import {MatAccordion} from "@angular/material/expansion";
+import {MatBottomSheet} from "@angular/material/bottom-sheet";
+import {TaskCorrComponent} from "../tasks/task-corr/task-corr.component";
+import {MyTasksComponent} from "../mywork/my-tasks/my-tasks.component";
 
 @Component({
   selector: 'app-case',
@@ -37,7 +40,7 @@ export class CaseComponent implements OnInit, AfterContentInit {
       shareReplay()
     );
 
-  constructor(private aplService: AppealService, private dialog: MatDialog, private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, public toggleService: ToggleService) {
+  constructor(private bSheet: MatBottomSheet, private aplService: AppealService, private dialog: MatDialog, private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, public toggleService: ToggleService) {
     if (history.state.data) {
       this.apl = history.state.data;
       this.toggleService.toOpen = false;
@@ -69,8 +72,14 @@ export class CaseComponent implements OnInit, AfterContentInit {
     this.links.push(`Link ${this.links.length + 1}`);
   }
 
-  onPanel() {
+  onPanel(e: any) {
+    e.preventDefault();
     this.panelOpenState = !this.panelOpenState;
+  }
+
+  onTasks() {
+
+    this.bSheet.open(MyTasksComponent)
   }
 
 }
