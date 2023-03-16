@@ -104,6 +104,7 @@ import { NewPhoneDialogComponent } from './shared/dialogs/new-phone-dialog/new-p
 import { NewEmailDialogComponent } from './shared/dialogs/new-email-dialog/new-email-dialog.component';
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
 import {MatBadgeModule} from "@angular/material/badge";
+import {NgxTypedJsModule} from "ngx-typed-js";
 
 // @ts-ignore
 // import {MaterialTabsModule} from 'angular-vertical-material-tabs/dist/material-tabs';
@@ -225,7 +226,8 @@ import {MatBadgeModule} from "@angular/material/badge";
         MatNativeDateModule,
         CdkOption,
         MatBottomSheetModule,
-        MatBadgeModule
+        MatBadgeModule,
+        NgxTypedJsModule
         // MaterialTabsModule
     ],
   providers: [{provide: NgChartsConfiguration, useValue: {generateColors: true}}],

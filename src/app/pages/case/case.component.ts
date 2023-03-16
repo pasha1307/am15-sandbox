@@ -78,8 +78,7 @@ export class CaseComponent implements OnInit, AfterContentInit {
   }
 
   onTasks() {
-
-    this.bSheet.open(MyTasksComponent)
+    this.bSheet.open(MyTasksComponent).afterDismissed()
   }
 
 }
