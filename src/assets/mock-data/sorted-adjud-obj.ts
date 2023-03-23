@@ -1,3 +1,20 @@
+const APL_CASE_COMMON = {
+    aplId: '',
+    aplType: '',
+    aplStage: '',
+    aplLink: '',
+    aplStatus: '',
+    createdOn: '',
+    createdBy: '',
+    updatedOn: '',
+    updatedBy: '',
+    location: '',
+    nextActionDate: '',
+    mdcd: '',
+    notes: '',
+    rfiDate: '',
+}
+
 const B_OBJ = {
     ackmtNtcMailedDate: "2022-04-12",
     acsTaxData: true,

@@ -62,3 +62,17 @@ const A_OBJ = {
     xReference: "Some Value",
     xReferenceType: "Appellant on another appeal"
 }
+
+
+// aplId: "APL-51",
+//     aplLink: "intake",
+//     aplStage: "Intake",
+//     aplStatus: "new",
+//     createdOn: "2022-04-12T12:59:11.332",
+//     highProfile: "High Profile Type One",
+//     id: "222",
+//     mdcdGap: true,	mdcd: true,
+//     nextActionDate: "11/23/22",
+//     notes: "Notes Prop",
+//     rfiDate: "RTF Date",
+//     updatedOn: "2022-04-12T12:59:11.332",
