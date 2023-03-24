@@ -23,9 +23,13 @@ export class DTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.aplService.getArr().subscribe(r => {
+    // this.aplService.getArr().subscribe(r => {
+    //   this.dataSource = r;
+    //   console.log('APL SERVICE DATA AFTER ADDED', r);
+    // })
+    this.aplService.getAllArr().subscribe(r => {
       this.dataSource = r;
-      console.log('APL SERVICE DATA AFTER ADDED', r);
+      console.log('NEW ALL APL ARRAY', r);
     })
   }
 

@@ -28,11 +28,14 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log('ADJ OBJ', this.adjObject.adjudication);
-        console.log('INTAKE OBJ', this.intakeObjectArr[0]);
-      this.aplService.getArr().subscribe(r => {
-          console.log('Home Arr', r);
-      })
+        // console.log('ADJ OBJ', this.adjObject.adjudication);
+        // console.log('INTAKE OBJ', this.intakeObjectArr[0]);
+      // this.aplService.getArr().subscribe(r => {
+      //     console.log('Home Arr', r);
+      // })
+        // this.aplService.getAllArr().subscribe(r => {
+        //     console.log('All Arr', r);
+        // })
     }
 
     toggleTabs($tabNumber: number) {

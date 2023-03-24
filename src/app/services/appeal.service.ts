@@ -3,6 +3,7 @@ import {APL_ADJUD_SAMPLE} from "../../assets/mock-data/adjudication-object-data"
 import {APL_INTAKE_ARR, APL_INTAKE_SAMPLE} from "../../assets/mock-data/intake-object-data";
 import {from, of} from "rxjs";
 import * as _ from 'lodash';
+import {APL_ARR_COMMON} from "../../assets/mock-data/appeal-composite-data";
 
 export interface SampleObj {
   name: string;
@@ -22,6 +23,7 @@ export interface SampleAddr {
 
 export class AppealService {
   intakeObj = APL_INTAKE_ARR;
+  aplArr = APL_ARR_COMMON;
   // intakeObj = APL_INTAKE_SAMPLE;
   adjudObj = APL_ADJUD_SAMPLE;
 
@@ -44,6 +46,10 @@ export class AppealService {
 
   getArr() {
     return of(this.intakeObj);
+  }
+
+  getAllArr() {
+    return of(this.aplArr);
   }
 
 
