@@ -212,7 +212,7 @@ export const AKR_ARR = [
     {key: "SCOUT", val: "Security Control Orchestration Utilities and Tooling"},
     {key: "SEED", val: "System of Exchange Enrollment Data"},
     {key: "SEP", val: "Special Enrollment Period"},
-    {key: "SERFF", val: "System for Electronic Rate and Form Filing"},it
+    {key: "SERFF", val: "System for Electronic Rate and Form Filing"},
     {key: "SERS/SERVIS", val: "State Exchange Resource Virtual Information System"},
     {key: "SES", val: "Standalone Eligibility Service"},
     {key: "SIA", val: "Security Impact Analysis"},
