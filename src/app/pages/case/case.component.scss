@@ -1,8 +1,34 @@
 .case-page {
+  .case-panel-title {
+    .case-svg {
+      color: #673ab7;
+      font-size: 2em;
+      transform: translateY(12px);
+      padding-right: 10px;
+    }
+    .title-props {
+      .key {
+        font-size: 0.6em;
+      }
+      .val {
+        color: #673ab7;
+      }
+    }
+  }
+  .case-panel-header {
+    .key {
+      font-size: 0.9em;
+      padding-right: 5px;
+    }
+    .val {
+      font-weight: 500;
+    }
+  }
 }
 .example-action-buttons {
   padding-bottom: 20px;
 }
+
 
 ::ng-deep .apl-detail-panel .mat-expansion-indicator::after {
   border-color: rgba(0,0,0,1);

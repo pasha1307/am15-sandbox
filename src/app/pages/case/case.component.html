@@ -4,20 +4,21 @@
     <mat-expansion-panel class="apl-detail-panel" >
       <mat-expansion-panel-header class="h-[60px]">
         <mat-panel-title>
-          <div class="flex align-middle gap-5">
+          <div class="case-panel-title flex align-middle gap-5">
             <h2>
-                <span (click)="onPanel($event)" class="material-symbols-outlined"
-                       style="color: #673ab7; font-size: 2em; transform: translateY(12px); padding-right: 10px;">
+                <span (click)="onPanel($event)" class="case-svg material-symbols-outlined">
                     <span>work</span>
 <!--                    <span *ngIf="panelOpenState">expand_more</span>-->
 <!--                    <span *ngIf="foo.opened">expand_less</span>-->
 <!--work-->
 </span>
-                <span>
-                    <span style="font-size: 0.6em">APPEAL ID </span>
-                    <span style="color: #673ab7">{{apl?.aplId}}</span>
-                    <span style="font-size: 0.6em">STAGE: </span> <span style="color: #673ab7">{{apl?.aplStage}}</span>
-                    <span style="font-size: 0.6em"> STATUS: </span> <span style="color: #673ab7">{{apl?.status}}</span>
+                <span class="title-props">
+                    <span class="key" >APPEAL ID </span>
+                    <span  class="val" >{{apl?.aplId}}</span>
+                    <span class="key" >STAGE: </span>
+                    <span class="val" >{{apl?.aplStage}}</span>
+                    <span class="key"> STATUS: </span>
+                    <span class="val" >{{apl?.status}}</span>
 <!--                    <span style="font-size: 0.6em" (click)="onTasks()" matBadge="15" matBadgeColor="warn">-->
 <!--                        TASKS: </span> <span style="color: #673ab7"></span>-->
                 </span>
@@ -44,30 +45,65 @@
         </mat-panel-description>
 
       </mat-expansion-panel-header>
-        <div class="flex justify-between">
+        <div class="case-panel-header flex justify-between">
             <div>
-                <div><span>CREATED:</span><span>{{apl?.createdOn | date}}</span></div>
-                <div><span>CREATED BY:</span><span>{{apl?.contacts[0]?.firstName}}</span> <span>{{apl?.contacts[0]?.lastName}}</span></div>
+                <div>
+                    <span class="key">CREATED:</span>
+                    <span class="val">{{apl?.createdOn | date}}</span></div>
+                <div>
+                    <span class="key">CREATED BY:</span>
+                    <span class="val">{{apl?.contacts[0]?.firstName}}</span>
+                    <span class="val">{{apl?.contacts[0]?.lastName}}</span>
+                </div>
             </div>
             <div>
-                <div><span>UPDATED:</span><span>{{apl?.updatedOn | date}}</span></div>
-                <div><span>UPDATED BY: </span><span>{{apl?.updatedBy}}</span></div>
+                <div>
+                    <span class="key">UPDATED:</span>
+                    <span class="val">{{apl?.updatedOn | date}}</span>
+                </div>
+                <div>
+                    <span class="key">UPDATED BY: </span><span class="val">{{apl?.updatedBy}}</span>
+                </div>
             </div>
             <div>
-                <div><span>APPELLANT:</span><span>{{apl?.contacts[0].firstName}}</span> <span>{{apl?.contacts[0].lastName}}</span></div>
-                <div><span>AUTHORIZED:</span><span> - </span></div>
+                <div><span class="key">APPELLANT:</span>
+                    <span class="val">{{apl?.contacts[0].firstName}}</span>
+                    <span class="val">{{apl?.contacts[0].lastName}}</span>
+                </div>
+                <div>
+                    <span class="key">AUTHORIZED:</span>
+                    <span class="val"> - </span>
+                </div>
             </div>
             <div>
-                <div><span>APPEAL TYPE:</span><span>{{apl?.aplType}}</span></div>
-                <div><span>APL SUBTYPE: </span><span>???</span></div>
+                <div>
+                    <span class="key">APPEAL TYPE:</span>
+                    <span class="val">{{apl?.aplType}}</span>
+                </div>
+                <div>
+                    <span class="key">APL SUBTYPE: </span>
+                    <span class="val">???</span>
+                </div>
             </div>
             <div>
-                <div><span>RECEIPT:</span><span>{{apl.createdOn | date}}</span></div>
-                <div><span>DAYS SINCE RECEIPT: </span><span>Estimate</span></div>
+                <div>
+                    <span class="key">RECEIPT:</span>
+                    <span class="val">{{apl.createdOn | date}}</span>
+                </div>
+                <div>
+                    <span class="key">DAYS SINCE RECEIPT: </span>
+                    <span class="val">Need To Estimate</span>
+                </div>
             </div>
             <div>
-                <div><span>HEARING OFFICER:</span><span>ND</span></div>
-                <div><span>APPEAL LOCATION: </span><span>Later ??</span></div>
+                <div>
+                    <span class="key"> HEARING OFFICER:</span>
+                    <span class="val">{{apl?.hearingOfficer}}</span>
+                </div>
+                <div>
+                    <span class="key">APPEAL LOCATION: </span>
+                    <span class="val">{{apl?.location}}</span>
+                </div>
             </div>
 
         </div>

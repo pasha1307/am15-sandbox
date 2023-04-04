@@ -4,19 +4,6 @@
 
     <section class="flex justify-center m-4 p-1">
             <div>
-                <!--            <label class="example-listbox-label" id="example-shirt-size-label">-->
-                <!--                Suffix-->
-                <!--            </label>-->
-                <!--            <ul cdkListbox-->
-                <!--                cdkListboxOrientation="horizontal"-->
-                <!--                aria-labelledby="example-shirt-size-label"-->
-                <!--                class="example-listbox">-->
-                <!--                <li *ngFor="let size of sfx"-->
-                <!--                    [cdkOption]="size"-->
-                <!--                    class="example-option">-->
-                <!--                    {{size}}-->
-                <!--                </li>-->
-                <!--            </ul>-->
                 <div class="flex justify-between mb-4">
                     <mat-slide-toggle formControlName="primaryContact" #pc>
                         <span *ngIf="!form.controls.primaryContact.value">Turn to Primary Contact </span>
@@ -142,6 +129,6 @@
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-raised-button (click)="onClose()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form?.invalid">Submit</button>
+    <button mat-raised-button color="primary" (click)="onSave()">Submit</button>
     <!--        <button mat-raised-button color="primary" (click)="onSave()" *ngIf="customData?.length">Update</button>-->
 </mat-dialog-actions>
