@@ -1,123 +1,131 @@
 <div class="case-page">
 
-  <mat-accordion class="apl-detail-accordion" #koo>
-    <mat-expansion-panel class="apl-detail-panel" >
-      <mat-expansion-panel-header class="h-[60px]">
-        <mat-panel-title>
-          <div class="case-panel-title flex align-middle gap-5">
-            <h2>
+    <mat-accordion class="apl-detail-accordion">
+        <mat-expansion-panel class="apl-detail-panel" >
+            <mat-expansion-panel-header class="apl-detail-header h-[60px]">
+                <mat-panel-title >
+                    <div class="case-panel-title flex align-middle">
+                        <h2>
                 <span (click)="onPanel($event)" class="case-svg material-symbols-outlined">
                     <span>work</span>
-<!--                    <span *ngIf="panelOpenState">expand_more</span>-->
-<!--                    <span *ngIf="foo.opened">expand_less</span>-->
-<!--work-->
 </span>
-                <span class="title-props">
+                            <span class="title-props">
                     <span class="key" >APPEAL ID </span>
                     <span  class="val" >{{apl?.aplId}}</span>
                     <span class="key" >STAGE: </span>
                     <span class="val" >{{apl?.aplStage}}</span>
                     <span class="key"> STATUS: </span>
                     <span class="val" >{{apl?.status}}</span>
-<!--                    <span style="font-size: 0.6em" (click)="onTasks()" matBadge="15" matBadgeColor="warn">-->
-<!--                        TASKS: </span> <span style="color: #673ab7"></span>-->
+                    <span class="key"> SINCE RECEIPT: </span>
+                    <span class="val" >10 days</span>
+                                <!--                    <span style="font-size: 0.6em" (click)="onTasks()" matBadge="15" matBadgeColor="warn">-->
+                                <!--                        TASKS: </span> <span style="color: #673ab7"></span>-->
                 </span>
-            </h2>
-              <div class="mt-4" (click)="onTasks()">
-                  <button mat-button color="primary">
-                      TASKS
-                  </button>
-                  <button mat-mini-fab color="primary">8</button>
-              </div>
+                        </h2>
+                        <div class="mt-4" (click)="onTasks()">
+                            <button mat-button color="primary">
+                                TASKS
+                            </button>
+                            <button mat-mini-fab color="primary">8</button>
+                        </div>
 
-          </div>
-        </mat-panel-title>
+                    </div>
+                </mat-panel-title>
 
-        <mat-panel-description class="justify-end">
-<div>
-    <button mat-flat-button color="primary">Take Actions</button>
-    <button mat-flat-button color="primary" *ngIf="apl.aplStage === 'Adjudication'">Open Intake</button>
-    <button mat-flat-button color="accent">Save</button>
-    <button mat-flat-button color="primary">Attachments</button>
-    <button mat-flat-button color="primary">History</button>
+                <mat-panel-description class="justify-end max-w-fit">
+                    <div>
+                        <button mat-flat-button color="primary">Take Actions</button>
+                        <button mat-flat-button color="primary" *ngIf="apl.aplStage === 'Adjudication'">Open Intake</button>
+                        <button mat-flat-button color="accent">Save</button>
+                        <button mat-flat-button color="primary">Attachments</button>
+                        <button mat-flat-button color="primary">History</button>
+                    </div>
+
+                </mat-panel-description>
+
+            </mat-expansion-panel-header>
+            <div class="case-panel-header flex justify-between">
+                <div>
+                    <div>
+                        <span class="key">CREATED:</span>
+                        <span class="val">{{apl?.createdOn | date}}</span></div>
+                    <div>
+                        <span class="key">CREATED BY:</span>
+                        <span class="val">{{apl?.createdBy}}</span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span class="key">UPDATED:</span>
+                        <span class="val">{{apl?.updatedOn | date}}</span>
+                    </div>
+                    <div>
+                        <span class="key">UPDATED BY: </span>
+                        <span class="val">{{apl?.updatedBy}}</span>
+                    </div>
+                </div>
+                <div>
+                    <div><span class="key">APPELLANT:</span>
+                        <span class="val">{{apl?.contacts[0].firstName}}</span>
+                        <span class="val">{{apl?.contacts[0].lastName}}</span>
+                    </div>
+                    <div>
+                        <span class="key">AUTHORIZED REP:</span>
+                        <span class="val"> - </span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span class="key">APPEAL TYPE:</span>
+                        <span class="val">{{apl?.aplType}}</span>
+                    </div>
+                    <div>
+                        <span class="key">APL SUBTYPE: </span>
+                        <span class="val">???</span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span class="key">RECEIPT:</span>
+                        <span class="val">{{apl.createdOn | date}}</span>
+                    </div>
+                    <div>
+                        <span class="key">DAYS SINCE RECEIPT: </span>
+                        <span class="val">Need To Estimate</span>
+                    </div>
+
+                </div>
+                <div>
+                    <div>
+                        <span class="key">BENEFIT YEAR: </span>
+                        <span class="val">{{apl?.planYear}}</span>
+                    </div>
+                    <div>
+                        <span class="key">DATE ISOS: </span>
+                        <span class="val">{{  apl?.contacts[0].Dob | date }}</span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span class="key"> HEARING OFFICER:</span>
+                        <span class="val">{{apl?.hearingOfficer}}</span>
+                    </div>
+                    <div>
+                        <span class="key">APPEAL LOCATION: </span>
+                        <span class="val">{{apl?.location}}</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </mat-expansion-panel>
+
+
+    </mat-accordion>
+
+    <mat-divider></mat-divider>
+    <router-outlet></router-outlet>
+    <!--  <button mat-raised-button class="example-action-button" (click)="addLink()">-->
+    <!--    Add link-->
+    <!--  </button>-->
 </div>
-
-        </mat-panel-description>
-
-      </mat-expansion-panel-header>
-        <div class="case-panel-header flex justify-between">
-            <div>
-                <div>
-                    <span class="key">CREATED:</span>
-                    <span class="val">{{apl?.createdOn | date}}</span></div>
-                <div>
-                    <span class="key">CREATED BY:</span>
-                    <span class="val">{{apl?.contacts[0]?.firstName}}</span>
-                    <span class="val">{{apl?.contacts[0]?.lastName}}</span>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <span class="key">UPDATED:</span>
-                    <span class="val">{{apl?.updatedOn | date}}</span>
-                </div>
-                <div>
-                    <span class="key">UPDATED BY: </span><span class="val">{{apl?.updatedBy}}</span>
-                </div>
-            </div>
-            <div>
-                <div><span class="key">APPELLANT:</span>
-                    <span class="val">{{apl?.contacts[0].firstName}}</span>
-                    <span class="val">{{apl?.contacts[0].lastName}}</span>
-                </div>
-                <div>
-                    <span class="key">AUTHORIZED:</span>
-                    <span class="val"> - </span>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <span class="key">APPEAL TYPE:</span>
-                    <span class="val">{{apl?.aplType}}</span>
-                </div>
-                <div>
-                    <span class="key">APL SUBTYPE: </span>
-                    <span class="val">???</span>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <span class="key">RECEIPT:</span>
-                    <span class="val">{{apl.createdOn | date}}</span>
-                </div>
-                <div>
-                    <span class="key">DAYS SINCE RECEIPT: </span>
-                    <span class="val">Need To Estimate</span>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <span class="key"> HEARING OFFICER:</span>
-                    <span class="val">{{apl?.hearingOfficer}}</span>
-                </div>
-                <div>
-                    <span class="key">APPEAL LOCATION: </span>
-                    <span class="val">{{apl?.location}}</span>
-                </div>
-            </div>
-
-        </div>
-
-    </mat-expansion-panel>
-
-
-  </mat-accordion>
-
-  <mat-divider></mat-divider>
-  <router-outlet></router-outlet>
-<!--  <button mat-raised-button class="example-action-button" (click)="addLink()">-->
-<!--    Add link-->
-<!--  </button>-->
-</div>
-
-

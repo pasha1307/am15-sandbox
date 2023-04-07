@@ -35,10 +35,10 @@ export class CaseComponent implements OnInit, AfterContentInit {
   isHear?: boolean;
   isEffect?: boolean;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+      .pipe(
+          map(result => result.matches),
+          shareReplay()
+      );
 
   constructor(private bSheet: MatBottomSheet, private aplService: AppealService, private dialog: MatDialog, private breakpointObserver: BreakpointObserver, private route: ActivatedRoute, private router: Router, public toggleService: ToggleService) {
     if (history.state.data) {
@@ -81,4 +81,5 @@ export class CaseComponent implements OnInit, AfterContentInit {
     this.bSheet.open(MyTasksComponent).afterDismissed()
   }
 
+  protected readonly Date = Date;
 }

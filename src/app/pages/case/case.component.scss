@@ -1,20 +1,28 @@
 .case-page {
-  .case-panel-title {
-    .case-svg {
-      color: #673ab7;
-      font-size: 2em;
-      transform: translateY(12px);
-      padding-right: 10px;
-    }
-    .title-props {
-      .key {
-        font-size: 0.6em;
+  .apl-detail-accordion {
+    .apl-detail-panel {
+      .apl-detail-header {
+        .case-panel-title {
+          .case-svg {
+            color: #673ab7;
+            font-size: 2em;
+            transform: translateY(12px);
+            padding-right: 10px;
+          }
+          .title-props {
+            .key {
+              font-size: 0.6em;
+            }
+            .val {
+              color: #673ab7;
+            }
+          }
+        }
       }
-      .val {
-        color: #673ab7;
-      }
     }
+
   }
+
   .case-panel-header {
     .key {
       font-size: 0.9em;
