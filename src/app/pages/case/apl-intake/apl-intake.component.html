@@ -190,8 +190,8 @@
             </button>
             <!--          <app-intake-contacts *ngFor="let p of addresses1" [person]="p" (click)="onUpdate()"></app-intake-contacts>-->
             <ng-container *ngFor="let c of contactsArr; let i = index">
-              <mat-card class="m-4 long-card max-w-[900px]" [ngClass]="c.primaryContact ? 'bg-amber-50 border-2' : ''">
-                <mat-card-header class="long-card-header ml-2 mt-[-20px] bg-amber-100 max-w-[400px] border-2" >
+              <mat-card class="m-4 long-card max-w-[900px]">
+                <mat-card-header class="long-card-header ml-2 mt-[-20px] bg-amber-100 max-w-[400px] border-2" [ngClass]="c.primaryContact ? 'bg-amber-400 border-2' : ''">
                   <mat-card-title>
                     <span *ngIf="c.primaryContact" class="material-symbols-outlined">
 star
