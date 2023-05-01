@@ -175,7 +175,40 @@ export const APL_ARR_COMMON = [
                 cnstdEdnEcn: "test",
                 cnstdEdnDisp: "test",
                 cnstdEdnDispDate: "2022-04-12",
-                dob: "1986-04-12"
+                dob: "1986-04-12",
+                contactAddress: [
+                    {
+                        createDtTime: "",
+                        updateDateTime: "",
+                        type: "Mailing",
+                        street_line: "111 Main St",
+                        secondary: "apt. 101",
+                        city: "Madison",
+                        state: "WI",
+                        zipcode: "01899",
+                        county: "",
+                        country: "USA"
+                    }
+                ],
+                contactEmail: [
+                    {
+                        createDtTime: "",
+                        updateDateTime: "",
+                        emailPrefn: "",
+                        emailType: "home",
+                        email: "my@email.com"
+                    }
+                ],
+                contactTellInfo: [
+                    {
+                        createDtTime: "",
+                        updateDateTime: "",
+                        txtPrefnc: "",
+                        phone: "12312211232",
+                        phoneType: "home",
+                        extNo: ""
+                    }
+                ]
             },
             {
                 contactId: "9e7ef627-e09a-4274-906e-8652d0787d85",
@@ -320,7 +353,40 @@ export const APL_ARR_COMMON = [
                 cnstdEdnEcn: "test",
                 cnstdEdnDisp: "test",
                 cnstdEdnDispDate: "2022-04-12",
-                dob: null
+                dob: null,
+                contactAddress: [
+                    {
+                        createDtTime: "",
+                        updateDateTime: "",
+                        type: "Mailing",
+                        street_line: "111 Main St",
+                        secondary: "apt. 101",
+                        city: "Madison",
+                        state: "WI",
+                        zipcode: "01899",
+                        county: "",
+                        country: "USA"
+                    }
+                ],
+                contactEmail: [
+                    {
+                        createDtTime: "",
+                        updateDateTime: "",
+                        emailPrefn: "",
+                        emailType: "home",
+                        email: "my@email.com"
+                    }
+                ],
+                contactTellInfo: [
+                    {
+                        createDtTime: "",
+                        updateDateTime: "",
+                        txtPrefnc: "",
+                        phone: "12312211232",
+                        phoneType: "home",
+                        extNo: ""
+                    }
+                ]
             }
         ],
         intakeObject: {
