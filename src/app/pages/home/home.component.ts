@@ -11,6 +11,7 @@ import {APL_INTAKE_ARR} from "../../../assets/mock-data/intake-object-data";
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+    isMsg = true;
     adjObject =APL_ADJUD_SAMPLE;
     intakeObjectArr =APL_INTAKE_ARR;
     allDrops = APP_DROPDOWNS_OBJ;
@@ -40,5 +41,8 @@ export class HomeComponent implements OnInit {
 
     toggleTabs($tabNumber: number) {
         this.openTab = $tabNumber;
+    }
+    onCancel() {
+        this.isMsg = false;
     }
 }
