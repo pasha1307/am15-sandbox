@@ -223,9 +223,9 @@ export const APL_ARR_COMMON = [
                 prsnType: null,
                 primaryContact: false,
                 sfx: null,
-                firstName: "TestF",
-                middleName: "TestM",
-                lastName: "TestL",
+                firstName: "Jane",
+                middleName: "M",
+                lastName: "Doe",
                 Dob: null,
                 emplrName: null,
                 dtSgnd: null,
@@ -359,11 +359,11 @@ export const APL_ARR_COMMON = [
                         createDtTime: "",
                         updateDateTime: "",
                         type: "Mailing",
-                        street_line: "111 Main St",
+                        street_line: "222 State St",
                         secondary: "apt. 101",
-                        city: "Madison",
-                        state: "WI",
-                        zipcode: "01899",
+                        city: "Cambridge",
+                        state: "MA",
+                        zipcode: "02138",
                         county: "",
                         country: "USA"
                     }
@@ -374,7 +374,7 @@ export const APL_ARR_COMMON = [
                         updateDateTime: "",
                         emailPrefn: "",
                         emailType: "home",
-                        email: "my@email.com"
+                        email: "12my@email.com"
                     }
                 ],
                 contactTellInfo: [
@@ -382,7 +382,7 @@ export const APL_ARR_COMMON = [
                         createDtTime: "",
                         updateDateTime: "",
                         txtPrefnc: "",
-                        phone: "12312211232",
+                        phone: "32112211232",
                         phoneType: "home",
                         extNo: ""
                     }
