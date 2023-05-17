@@ -1,0 +1,45 @@
+EI-13942 Frontend Architecture:
+Concept Synchronization with the Business Model (Part I)
+I.	Objective
+The objective of this document is to identify Business Model underlying the frontend for EACMS1.0 application and to synchronize it with the EACMS2.0 frontend model. Part I applies to the concept of the Appeal and Appeal Stage in the chain of Workbasket – Stage - Appeal – Task – Issue. It is also important to identify frontend patterns deployed in the EACMS1.0 and whether the same patterns can be used in EACMS2.0.  Finally, the data model aspect is to be synchronized to have viable frontend mapping to microservices.
+II.	Overview
+One of the key aspects in the Frontend Architecture of Angular (or any Single Page Application) is to have a Business Model or Concept that describes key definitions as well as workflows as a single system. Core definitions in EACMS Business concept include Appeal, Task, Report, Workbasket, Worklist, Appeal Stage, Appeal Phase. The following analysis shows that although Business Concept that underlines Pega’s frontend, applies to the EACMS2 Single Page Application, implementation patterns of that concept in the architecture are different. The Appendixes illustrate main patterns that can be applied in EACMS2.0 to implement the Business Concept in relation to the Appeal. There are issues that require coordination with the backend team regarding requirement to the Appeal Data Object.
+ 
+III.	EACMS Business Concept and Frontend Patterns
+3.1.	 EACMS Business Concept: Definition
+
+3.2.	Appeal Business Model
+Create an Appeal that is Saved to the Intake New Basket and to the My-List Appeals. Here is a Display Collection pattern with Tables UI. Next step is to open individual appeal in the view which depends on the stage. Pega Application as monolithic type has a tight connection between data and the view, yet, very loose connection between views. Each view here is an addition of the extensions of pages, following the ‘procedural’ model – new feature is added by adding a new page.
+
+
+ 
+Pic 1. Appeal Business Model
+
+Such frontend model is defined as “bush type”, i.e. it does not have a hierarchical tree structure in the foundation but rather starts with a new view (page) if needed. Such configuration has benefits in monolith app by allowing developers to scale up the application with new features. At the same time, it increases the size of the app drastically by duplicating UIs and has an effect on the performance.
+Pic 2.  EACSM1.0 View-Page “Bush-type” Model
+Pega’s frontend and particular components deployed in features are tightly connected to data layer, as for example, Expandable Tables with inline editing that counter-productive in Single Page Application. That is why such type of component does not exist in Angular Material Component library.
+Such pattern works with a backend rendering, but with a decoupled architecture and single page application this is an anti-pattern that violates a number of basic principles, including single responsibility principle, re-usability principle, and independence from the data source.
+
+VI.	Conclusions
+
+1.	Business model as presented in Pic 1 is feasible for the implementation in the patterns of Single Page Application (Angular).
+2.	Pega application follows approach of ‘master-detail’ data rendering as is established pattern in SPAs. For example, collections (workbaskets) presenting Master View of sizable appeals [tasks, reports] are rendered in tabular forms with a transition to the Appeal [Detail View] with a complete info on a specific appeal.
+3.	However, component patterns deployed in Detail View in Pega cannot be used in single page application architecture. The core difference is the foundation of the architecture model procedural or ‘bush-type’ as opposed to ‘tree-hierarchical’ structure with a single shell-container.
+4.	If Pega presents an ‘open-end’ architecture with new features that are added by new flows to the existing ones, frontend architecture of SPA requires initial  structuring or the concept so that new features, or existing ones have spaces or workflows within a single shell-container.
+5.	Thus SPA is more opinionated what patterns should apply in the frontend architecture. Four patterns are the ground-rules for the Angular application: 1) single-responsibility pattern; 2) master-detail patterns in data rendering; 3) strong correlation between data operations a customer performs (display or modification ) and organization of frontend views and components; 4) usage of dynamic components (forms and dialogs) and dynamic data.
+6.	Developing the architecture based on patterns listed above, provides an Angular Application with Angular Material Component Library a strong ground for re-usability, efficiency, high performance, and moreover, agile development process with on-the-fly adopting of change.
+7.	Another advantage is that such architecture provides angular development team with clear guidelines and patterns, minimizing individual differences in experiences of developers. Pattern-based Development as opposed to Skill-based Development.
+8.	Considering Business Model that assumes access to the previous stage data, coordination with the backend team is required to establish data model pattern.
+
+V.	 Appendixes
+
+5.1.	Frontend Concept Map
+
+5.2.	Data Models to Cope with the Appeal Business Concept
+
+
+5.3.	Master-Detail Pattern in EACMS1.0.
+
+
+5.4.	Master-Detail in Angular
+
